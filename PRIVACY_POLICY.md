@@ -1,6 +1,6 @@
 # Privacy Policy
-**Effective Date:** 2026-07-02
-**Last Updated:** 2026-07-02
+**Effective Date:** 2026-07-13
+**Last Updated:** 2026-07-13
 
 MojFit ("MojFit", "we", "us", or "our") respects your privacy. This Privacy Policy explains how we collect, use, disclose, and protect personal data when you use the MojFit web and mobile applications and related services (collectively, the "Service").
 
@@ -8,8 +8,8 @@ If you do not agree with this Policy, please do not use the Service.
 
 ## 1. Data Controller
 **Controller:** MojFit
-**Contact email:** [makfit2026@gmail.com](mailto:makfit2026@gmail.com)
-**Support email:** [makfit2026@gmail.com](mailto:makfit2026@gmail.com)
+**Contact email:** [mojfit2026@gmail.com](mailto:mojfit2026@gmail.com)
+**Support email:** [mojfit2026@gmail.com](mailto:mojfit2026@gmail.com)
 
 ## 2. Scope
 This Policy applies to data processed through:
@@ -142,7 +142,7 @@ Depending on jurisdiction, you may have rights to:
 - Data portability
 - Withdraw consent (where consent is the legal basis)
 - Lodge a complaint with a data protection authority
-Requests: [makfit2026@gmail.com](mailto:makfit2026@gmail.com)
+Requests: [mojfit2026@gmail.com](mailto:mojfit2026@gmail.com)
 
 ## 14. Children
 MojFit is not directed to children under 16. If you believe a child has provided personal data without authorization, contact us and we will take appropriate action.
@@ -165,5 +165,5 @@ MojFit uses automated logic for product features (for example challenge completi
 We may update this Privacy Policy from time to time. We will update the Last Updated date and provide additional notice where required by law.
 
 ## 18. Contact
-Privacy/legal: [makfit2026@gmail.com](mailto:makfit2026@gmail.com)
-Support: [makfit2026@gmail.com](mailto:makfit2026@gmail.com)
+Privacy/legal: [mojfit2026@gmail.com](mailto:mojfit2026@gmail.com)
+Support: [mojfit2026@gmail.com](mailto:mojfit2026@gmail.com)

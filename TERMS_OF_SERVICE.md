@@ -1,7 +1,7 @@
 # Terms of Service
 
-Effective Date: 2026-06-09
-Last Updated: 2026-06-09
+Effective Date: 2026-07-13
+Last Updated: 2026-07-13
 
 These Terms of Service ("Terms") govern your use of MojFit (the "Service"). By creating an account or using the Service, you agree to these Terms.
 
@@ -10,8 +10,8 @@ If you do not agree, do not use the Service.
 ## 1. Who Provides the Service
 
 Provider: MojFit
-Legal contact: makfit2026@gmail.com
-Support: makfit2026@gmail.com
+Legal contact: mojfit2026@gmail.com
+Support: mojfit2026@gmail.com
 
 If you operate under a different legal entity, replace this section before publication.
 
