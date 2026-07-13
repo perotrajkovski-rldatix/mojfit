@@ -37,9 +37,21 @@ public class StoreKitBillingPlugin: CAPPlugin, CAPBridgedPlugin {
         updatesTask?.cancel()
     }
 
+    // The Capacitor build shipped for this toolchain has a packaging bug: CAPPluginCall.reject(...)
+    // and every optional-returning getString/getArray overload are wrapped in a
+    // `#if compiler(>=5.3) && $NonescapableTypes` block that evaluates false here, so those
+    // symbols don't exist at all under this compiler. Route "rejection" through resolve() with
+    // an error marker instead — storeKitBilling.ts unwraps this back into a real thrown error,
+    // so callers in App.tsx see the exact same try/catch behavior as before.
+    private func rejectViaResolve(_ call: CAPPluginCall, _ message: String) {
+        call.resolve(["__error": message])
+    }
+
     @objc func getProducts(_ call: CAPPluginCall) {
-        guard let productIds = call.getArray("productIds", String.self), !productIds.isEmpty else {
-            call.reject("productIds are required")
+        let rawIds = call.getArray("productIds", [])
+        let productIds = rawIds.compactMap { $0 as? String }
+        guard !productIds.isEmpty else {
+            rejectViaResolve(call, "productIds are required")
             return
         }
 
@@ -65,19 +77,20 @@ public class StoreKitBillingPlugin: CAPPlugin, CAPBridgedPlugin {
 
                 call.resolve(["products": out])
             } catch {
-                call.reject("Product query failed: \(error.localizedDescription)")
+                rejectViaResolve(call, "Product query failed: \(error.localizedDescription)")
             }
         }
     }
 
     @objc func purchaseSubscription(_ call: CAPPluginCall) {
-        guard let productId = call.getString("productId"), !productId.isEmpty else {
-            call.reject("productId is required")
+        let productId = call.getString("productId", "")
+        guard !productId.isEmpty else {
+            rejectViaResolve(call, "productId is required")
             return
         }
 
         guard let product = cachedProducts[productId] else {
-            call.reject("Missing product details for \(productId). Call getProducts first.")
+            rejectViaResolve(call, "Missing product details for \(productId). Call getProducts first.")
             return
         }
 
@@ -91,17 +104,17 @@ public class StoreKitBillingPlugin: CAPPlugin, CAPBridgedPlugin {
                         await transaction.finish()
                         call.resolve(["success": true])
                     case .unverified(_, let error):
-                        call.reject("Purchase verification failed: \(error.localizedDescription)")
+                        rejectViaResolve(call, "Purchase verification failed: \(error.localizedDescription)")
                     }
                 case .userCancelled:
-                    call.reject("Purchase cancelled")
+                    rejectViaResolve(call, "Purchase cancelled")
                 case .pending:
-                    call.reject("Purchase is pending approval (Ask to Buy). It will complete once approved.")
+                    rejectViaResolve(call, "Purchase is pending approval (Ask to Buy). It will complete once approved.")
                 @unknown default:
-                    call.reject("Unknown purchase result")
+                    rejectViaResolve(call, "Unknown purchase result")
                 }
             } catch {
-                call.reject("Purchase failed: \(error.localizedDescription)")
+                rejectViaResolve(call, "Purchase failed: \(error.localizedDescription)")
             }
         }
     }
@@ -121,7 +134,7 @@ public class StoreKitBillingPlugin: CAPPlugin, CAPBridgedPlugin {
                 // requires apps with subscriptions to expose.
                 try await AppStore.sync()
             } catch {
-                call.reject("Restore failed: \(error.localizedDescription)")
+                rejectViaResolve(call, "Restore failed: \(error.localizedDescription)")
                 return
             }
             let purchases = await currentActiveSubscriptions()

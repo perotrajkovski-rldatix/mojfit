@@ -25,11 +25,20 @@ interface CapacitorWithPlugins {
   Plugins?: Record<string, unknown>;
 }
 
+// The native plugin can't call CAPPluginCall.reject(...) under the Xcode toolchain this app
+// currently builds with (a packaging bug in the shipped Capacitor interface hides that method
+// entirely — see StoreKitBillingPlugin.swift). It resolves with an `__error` marker key instead;
+// every method below unwraps that back into a real thrown error, so call sites in App.tsx don't
+// need to know about this workaround at all.
+interface ErrorMarker {
+  __error?: string;
+}
+
 interface StoreKitBillingPlugin {
-  getProducts(options: { productIds: string[] }): Promise<{ products: IOSBillingProduct[] }>;
-  purchaseSubscription(options: { productId: string }): Promise<{ success: boolean }>;
-  getActiveSubscriptions(): Promise<{ purchases: IOSBillingPurchase[] }>;
-  restorePurchases(): Promise<{ purchases: IOSBillingPurchase[] }>;
+  getProducts(options: { productIds: string[] }): Promise<{ products: IOSBillingProduct[] } & ErrorMarker>;
+  purchaseSubscription(options: { productId: string }): Promise<{ success: boolean } & ErrorMarker>;
+  getActiveSubscriptions(): Promise<{ purchases: IOSBillingPurchase[] } & ErrorMarker>;
+  restorePurchases(): Promise<{ purchases: IOSBillingPurchase[] } & ErrorMarker>;
   addListener(
     eventName: 'purchaseRestored',
     listenerFunc: (data: IOSRestoredPurchase) => void,
@@ -52,4 +61,27 @@ export function isStoreKitBridgeAvailable(): boolean {
   return Boolean(nativePlugins?.StoreKitBilling);
 }
 
-export const StoreKitBilling = registerPlugin<StoreKitBillingPlugin>('StoreKitBilling');
+const NativeStoreKitBilling = registerPlugin<StoreKitBillingPlugin>('StoreKitBilling');
+
+function unwrap<T extends ErrorMarker>(result: T): Omit<T, '__error'> {
+  if (result.__error) {
+    throw new Error(result.__error);
+  }
+  return result;
+}
+
+export const StoreKitBilling = {
+  async getProducts(options: { productIds: string[] }) {
+    return unwrap(await NativeStoreKitBilling.getProducts(options));
+  },
+  async purchaseSubscription(options: { productId: string }) {
+    return unwrap(await NativeStoreKitBilling.purchaseSubscription(options));
+  },
+  async getActiveSubscriptions() {
+    return unwrap(await NativeStoreKitBilling.getActiveSubscriptions());
+  },
+  async restorePurchases() {
+    return unwrap(await NativeStoreKitBilling.restorePurchases());
+  },
+  addListener: NativeStoreKitBilling.addListener.bind(NativeStoreKitBilling),
+};

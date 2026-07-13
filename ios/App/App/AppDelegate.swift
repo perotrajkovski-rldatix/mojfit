@@ -40,10 +40,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        // Called when the app was launched with an activity, including Universal Links.
-        // Feel free to add additional processing here, but if you want the App API to support
-        // tracking app url opens, make sure to keep this call
-        return ApplicationDelegateProxy.shared.application(application, continue: userActivity, restorationHandler: restorationHandler)
+        // ApplicationDelegateProxy's continue-userActivity forwarder is hidden behind the same
+        // broken `#if compiler(>=5.3) && $NonescapableTypes` conditional in this Capacitor
+        // release, so it isn't callable under this toolchain. Universal Links aren't used
+        // elsewhere in this app — custom URL scheme auth redirects (Google Sign-In) go through
+        // the separate, unaffected `application(_:open:options:)` method below — so this is a
+        // safe no-op until an unaffected Capacitor release is available.
+        return false
     }
 
 }
