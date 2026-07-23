@@ -178,7 +178,7 @@ public class PlayBillingPlugin extends Plugin {
       .setProductList(products)
       .build();
 
-    ensureBillingReady(() -> billingClient.queryProductDetailsAsync(params, (billingResult, productDetailsList) -> {
+    ensureBillingReady(() -> billingClient.queryProductDetailsAsync(params, (billingResult, queryResult) -> {
       if (billingResult.getResponseCode() != BillingClient.BillingResponseCode.OK) {
         call.reject("Product query failed: " + billingResult.getDebugMessage());
         return;
@@ -186,6 +186,10 @@ public class PlayBillingPlugin extends Plugin {
 
       JSArray out = new JSArray();
       productDetailsById.clear();
+      List<ProductDetails> productDetailsList = queryResult.getProductDetailsList();
+      if (productDetailsList == null) {
+        productDetailsList = new ArrayList<>();
+      }
 
       for (ProductDetails pd : productDetailsList) {
         productDetailsById.put(pd.getProductId(), pd);

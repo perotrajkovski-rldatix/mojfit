@@ -440,12 +440,12 @@ export default function SubscriptionView({ profile, setView, onSubscribe, isTria
                           {plan.badgeText}
                         </span>
                       )}
-                      <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-start justify-between gap-4">
                         <div>
                           <p className="text-sm font-bold text-white">{plan.title}</p>
                           <p className="text-xs text-zinc-400 mt-1">{plan.subtitle}</p>
                         </div>
-                        <div className="text-right">
+                        <div className="text-right mt-2">
                           {plan.isTrial ? (
                             <>
                               <p className="text-2xl font-black text-white leading-none">0 <span className="text-xs font-bold text-zinc-400">МКД денес</span></p>

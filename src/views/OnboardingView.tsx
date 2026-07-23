@@ -188,11 +188,80 @@ export default function OnboardingView({
 }: Props) {
 
   const [nameError, setNameError] = useState(false);
+  const [heightInput, setHeightInput] = useState(String(onboardingData.height));
+  const [ageInput, setAgeInput] = useState(String(onboardingData.age));
+  const [numericFieldError, setNumericFieldError] = useState<{ height: boolean; age: boolean }>({
+    height: false,
+    age: false,
+  });
   const [showImagePicker, setShowImagePicker] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [isDeletingAccount, setIsDeletingAccount] = useState(false);
   const galleryInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!isEditingProfile) return;
+    setHeightInput(String(onboardingData.height));
+    setAgeInput(String(onboardingData.age));
+    setNumericFieldError({ height: false, age: false });
+  }, [isEditingProfile]);
+
+  const handleNumericInputChange = (
+    field: 'height' | 'age',
+    rawValue: string,
+  ) => {
+    const digitsOnly = rawValue.replace(/\D/g, '');
+
+    if (field === 'height') {
+      setHeightInput(digitsOnly);
+    } else {
+      setAgeInput(digitsOnly);
+    }
+
+    setNumericFieldError(prev => ({ ...prev, [field]: false }));
+
+    if (!digitsOnly) return;
+    const parsed = Number(digitsOnly);
+    if (!Number.isFinite(parsed) || parsed <= 0) return;
+
+    setOnboardingData(prev => ({
+      ...prev,
+      [field]: parsed,
+    }));
+  };
+
+  const handleEditProfileSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const trimmedFirstName = firstName.trim();
+    const hasHeight = heightInput.trim().length > 0;
+    const hasAge = ageInput.trim().length > 0;
+
+    setNameError(!trimmedFirstName);
+    setNumericFieldError({
+      height: !hasHeight,
+      age: !hasAge,
+    });
+
+    if (!trimmedFirstName || !hasHeight || !hasAge) return;
+
+    const parsedHeight = Number(heightInput);
+    const parsedAge = Number(ageInput);
+    if (!Number.isFinite(parsedHeight) || parsedHeight <= 0 || !Number.isFinite(parsedAge) || parsedAge <= 0) {
+      setNumericFieldError({ height: true, age: true });
+      return;
+    }
+
+    setOnboardingData(prev => ({
+      ...prev,
+      height: parsedHeight,
+      age: parsedAge,
+    }));
+
+    await handleOnboarding();
+    setIsEditingProfile(false);
+  };
 
   useEffect(() => {
     if (isEditingProfile) window.scrollTo({ top: 0, behavior: 'instant' });
@@ -430,7 +499,7 @@ export default function OnboardingView({
           <h2 className="text-xl font-bold text-center">{firstName} {lastName}</h2>
         </div>
 
-        <form onSubmit={async e => { e.preventDefault(); if (!firstName.trim()) { setNameError(true); return; } await handleOnboarding(); setIsEditingProfile(false); }} className="space-y-6" noValidate>
+        <form onSubmit={handleEditProfileSubmit} className="space-y-6" noValidate>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="text-[10px] uppercase tracking-widest text-zinc-500 mb-2 block">Име</label>
@@ -448,12 +517,27 @@ export default function OnboardingView({
           </div>
           <div>
               <label className="text-[10px] uppercase tracking-widest text-zinc-500 mb-2 block">Висина (цм)</label>
-              <Input type="number" value={onboardingData.height} onChange={e => setOnboardingData({ ...onboardingData, height: Math.max(0, Number(e.target.value)) })} />
+              <Input
+                type="text"
+                inputMode="numeric"
+                value={heightInput}
+                onChange={e => handleNumericInputChange('height', e.target.value)}
+                className={numericFieldError.height ? 'border-red-500' : ''}
+              />
             </div>
           <div>
             <label className="text-[10px] uppercase tracking-widest text-zinc-500 mb-2 block">Години</label>
-            <Input type="number" value={onboardingData.age} onChange={e => setOnboardingData({ ...onboardingData, age: Math.max(0, Number(e.target.value)) })} />
+            <Input
+              type="text"
+              inputMode="numeric"
+              value={ageInput}
+              onChange={e => handleNumericInputChange('age', e.target.value)}
+              className={numericFieldError.age ? 'border-red-500' : ''}
+            />
           </div>
+          {(numericFieldError.height || numericFieldError.age) && (
+            <p className="text-xs text-red-500">Висина и години се задолжителни полиња.</p>
+          )}
           <div>
             <label className="text-[10px] uppercase tracking-widest text-zinc-500 mb-2 block">Пол</label>
             <div className="grid grid-cols-2 gap-2">
