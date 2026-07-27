@@ -24,6 +24,12 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>МојФит користи камера за скенирање баркодови и додавање прогрес фотографии.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>МојФит користи пристап до фотографии за избор на прогрес слики.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>МојФит зачувува прогрес фотографии во вашата библиотека кога ќе изберете зачувување.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

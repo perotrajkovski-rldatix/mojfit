@@ -16,9 +16,13 @@ interface Props {
 }
 
 export default function WeightView({ weightHistory, todayWeight, setTodayWeight, authError, logWeight, isPremium, setView }: Props) {
-  const alreadyLoggedToday = weightHistory.some(
-    log => log.date.split('T')[0] === new Date().toISOString().split('T')[0],
-  );
+  const today = new Date();
+  const alreadyLoggedToday = weightHistory.some(log => {
+    const logDate = new Date(log.date);
+    return logDate.getFullYear() === today.getFullYear()
+      && logDate.getMonth() === today.getMonth()
+      && logDate.getDate() === today.getDate();
+  });
 
   return (
     <motion.div

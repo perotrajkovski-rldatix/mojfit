@@ -1818,7 +1818,7 @@ function AppContent() {
       };
 
       try {
-        await setDoc(doc(db, 'profiles', activeUser.uid), profileData);
+        await setDoc(doc(db, 'profiles', activeUser.uid), profileData, { merge: true });
       } catch (e) { handleFirestoreError(e, OperationType.UPDATE, `profiles/${activeUser.uid}`); }
 
       if (isEditingProfile) {
@@ -2103,6 +2103,7 @@ function AppContent() {
           : undefined;
 
       const subscriptionExpiresAt = addMonths(now, plan.months).toISOString();
+      const subscriptionStartedAt = profile.subscriptionStartedAt || now.toISOString();
       const updatedProfile: Profile = {
         ...profile,
         isPremium: true,
@@ -2112,7 +2113,7 @@ function AppContent() {
         subscriptionDurationMonths: plan.months,
         subscriptionPriceMKD: plan.priceMKD,
         subscriptionCurrency: 'MKD',
-        subscriptionStartedAt: now.toISOString(),
+        subscriptionStartedAt,
         subscriptionExpiresAt,
         subscriptionNextChargeAt: subscriptionExpiresAt,
         subscriptionNextPlanId: plan.id,
@@ -2131,7 +2132,7 @@ function AppContent() {
         subscriptionDurationMonths: plan.months,
         subscriptionPriceMKD: plan.priceMKD,
         subscriptionCurrency: 'MKD',
-        subscriptionStartedAt: now.toISOString(),
+        subscriptionStartedAt,
         subscriptionExpiresAt,
         subscriptionNextChargeAt: subscriptionExpiresAt,
         subscriptionNextPlanId: plan.id,
