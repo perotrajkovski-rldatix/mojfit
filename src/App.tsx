@@ -565,7 +565,9 @@ function AppContent() {
         subscriptionDurationMonths: 1,
         subscriptionPriceMKD: MONTHLY_PRICE_MKD,
         subscriptionCurrency: 'MKD',
-        subscriptionStartedAt: now.toISOString(),
+        // Preserve the original trial start so trial-period data stays inside the premium window.
+        // Only set subscriptionStartedAt if it wasn't already recorded during the trial purchase.
+        ...(profile.subscriptionStartedAt ? {} : { subscriptionStartedAt: now.toISOString() }),
         subscriptionExpiresAt: monthlyExpiresAt,
         subscriptionLastChargeAt: now.toISOString(),
         subscriptionNextPlanId: 'monthly',
@@ -682,7 +684,7 @@ function AppContent() {
             await updateDoc(doc(db, 'profiles', user.uid), {
               isPremium: true,
               subscriptionStatus: 'active',
-              subscriptionStartedAt: profile?.subscriptionStartedAt || nowIso,
+              subscriptionStartedAt: nowIso,
               subscriptionPlatform: 'android',
             });
           }
@@ -804,7 +806,7 @@ function AppContent() {
             await updateDoc(doc(db, 'profiles', user.uid), {
               isPremium: true,
               subscriptionStatus: 'active',
-              subscriptionStartedAt: profile?.subscriptionStartedAt || nowIso,
+              subscriptionStartedAt: nowIso,
               subscriptionPlatform: 'ios',
             });
           }
@@ -1165,21 +1167,15 @@ function AppContent() {
       return;
     }
 
-    const key = `mojfit:seen-achievements:${user.uid}`;
-    try {
-      const raw = localStorage.getItem(key);
-      const parsed = raw ? JSON.parse(raw) : [];
-      if (Array.isArray(parsed)) {
-        setSeenAchievementIds(parsed.filter((v): v is string => typeof v === 'string'));
-      } else {
-        setSeenAchievementIds([]);
-      }
-    } catch {
+    // Read seen achievement IDs from Firestore profile (not localStorage)
+    const savedIds = profile.seenAchievementIds || [];
+    if (Array.isArray(savedIds)) {
+      setSeenAchievementIds(savedIds.filter((v): v is string => typeof v === 'string'));
+    } else {
       setSeenAchievementIds([]);
-    } finally {
-      setSeenAchievementsReady(true);
     }
-  }, [user, profile?.isPremium]);
+    setSeenAchievementsReady(true);
+  }, [user, profile?.isPremium, profile?.seenAchievementIds]);
 
   const completedAchievements = useMemo(() => {
     if (!profile || !profile.isPremium) return [] as AchievementToast[];
@@ -1408,11 +1404,11 @@ function AppContent() {
     const mergedSeen = Array.from(new Set([...seenAchievementIds, ...unseenIds]));
     setSeenAchievementIds(mergedSeen);
 
-    const key = `mojfit:seen-achievements:${user.uid}`;
-    try {
-      localStorage.setItem(key, JSON.stringify(mergedSeen));
-    } catch {
-      // Ignore localStorage write failures and still show current-session toasts.
+    // Write seen achievement IDs to Firestore profile instead of localStorage
+    if (user) {
+      updateDoc(doc(db, 'profiles', user.uid), {
+        seenAchievementIds: mergedSeen,
+      }).catch(error => handleFirestoreError(error, OperationType.UPDATE, `profiles/${user.uid}/seenAchievementIds`));
     }
 
     setAchievementQueue(prev => {
@@ -1938,7 +1934,7 @@ function AppContent() {
       await addDoc(collection(db, 'meals'), {
         userId: user.uid,
         type: mealType,
-        date: new Date(selectedDate).toISOString(),
+        date: new Date().toISOString(),
         items: [{
           food: {
             id: `plan-${Date.now()}`,

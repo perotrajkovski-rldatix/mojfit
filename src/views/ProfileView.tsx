@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import type { User as FirebaseUser } from 'firebase/auth';
-import { collection, doc, onSnapshot, query, setDoc, where, writeBatch } from 'firebase/firestore';
+import { collection, doc, onSnapshot, query, setDoc, updateDoc, where, writeBatch } from 'firebase/firestore';
 import { db, OperationType, handleFirestoreError } from '../firebase';
 import { cn } from '../utils/cn';
 import { generateWeekPlan } from '../data/mealPlanData';
@@ -480,19 +480,9 @@ export default function ProfileView({
   const isPremium = profile?.isPremium ?? false;
 
   const savedPremiumBadgeIds = useMemo(() => {
-    if (!user) return [] as string[];
-    const key = `mojfit:seen-achievements:${user.uid}`;
-    try {
-      const raw = localStorage.getItem(key);
-      const parsed = raw ? JSON.parse(raw) : [];
-      if (!Array.isArray(parsed)) return [];
-      return parsed
-        .filter((v): v is string => typeof v === 'string' && v.startsWith('badge:'))
-        .map(v => v.slice('badge:'.length));
-    } catch {
-      return [];
-    }
-  }, [user]);
+    // Read earned badge IDs from Firestore profile instead of localStorage
+    return profile?.unlockedBadgeIds || [];
+  }, [profile?.unlockedBadgeIds]);
 
   useEffect(() => {
     if (!isPremium) {
@@ -797,10 +787,12 @@ export default function ProfileView({
         completedYearly,
       });
 
-      const earnedBadgeIds = [
+      // Deduplicate: a badge earned in a previous period may also be unlocked in the
+      // current period — it should only count once for both display and points.
+      const earnedBadgeIds = Array.from(new Set([
         ...savedPremiumBadgeIds,
         ...badges.filter(b => b.unlocked).map(b => b.id),
-      ];
+      ]));
       const earnedBadges = getBadgesByIds(earnedBadgeIds);
       
       // Calculate points and level only if premium
@@ -819,6 +811,21 @@ export default function ProfileView({
 
           return { earnedBadges, level, points };
         }, [allMeals, challengeSwaps, isPremium, photos, profile?.maxLevelAchieved, profile?.subscriptionStartedAt, profile?.targetCalories, profile?.targetProtein, purchasedChallengeCompletions, savedPremiumBadgeIds, streakRestoreDays, themePurchaseIds.length, weightHistory]);
+
+  // Persist newly earned badges to Firestore
+  useEffect(() => {
+    if (!user || !isPremium) return;
+    const newBadgeIds = badgeState.earnedBadges
+      .map(b => b.id)
+      .filter(id => !savedPremiumBadgeIds.includes(id));
+    
+    if (newBadgeIds.length === 0) return;
+    
+    const mergedBadgeIds = Array.from(new Set([...savedPremiumBadgeIds, ...newBadgeIds]));
+    updateDoc(doc(db, 'profiles', user.uid), {
+      unlockedBadgeIds: mergedBadgeIds,
+    }).catch(error => handleFirestoreError(error, OperationType.UPDATE, `profiles/${user.uid}/unlockedBadgeIds`));
+  }, [user, isPremium, badgeState.earnedBadges, savedPremiumBadgeIds]);
 
   const availablePoints = isPremium ? Math.max(0, badgeState.points - spentPointsTotal) : 0;
   const activeThemeId: ThemeId | null = isThemeId(profile?.activeTheme) ? profile.activeTheme : null;

@@ -50,6 +50,9 @@ export interface Profile {
   mealPlanSeed?: number;
   maxLevelAchieved?: number;
   activeTheme?: 'balanced-green' | 'neon-xp' | 'beast-mode-red' | 'elite-gold' | 'midnight-focus' | 'sunrise-motivation' | 'fresh-nutrition' | 'protein-power';
+  unlockedBadgeIds?: string[];
+  seenAchievementIds?: string[];
+  totalEarnedPoints?: number;
 }
 
 export interface Meal {

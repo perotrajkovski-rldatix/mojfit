@@ -96,14 +96,42 @@ export default function SearchView({ user, isPremium, selectedMealType, selected
       const n = p.nutriments || {};
       const hasPer100ml = [n['energy-kcal_100ml'], n['energy_100ml'], n['proteins_100ml'], n['carbohydrates_100ml'], n['fat_100ml']]
         .some(v => parseNumber(v) !== null);
-      const basis: 'g' | 'ml' = hasPer100ml ? 'ml' : 'g';
+      // Also detect liquids by packaging unit or serving unit (e.g. ml, l, cl)
+      const liquidUnits = ['ml', 'l', 'cl', 'fl oz'];
+      const pkgUnit = String(p.product_quantity_unit || '').toLowerCase().trim();
+      const srvUnit = String(p.serving_quantity_unit || '').toLowerCase().trim();
+      const isLiquidProduct = hasPer100ml || liquidUnits.includes(pkgUnit) || liquidUnits.includes(srvUnit);
+      const basis: 'g' | 'ml' = isLiquidProduct ? 'ml' : 'g';
 
+      // For liquids: prefer _100ml nutriment fields; fall back to _100g (density ≈ 1 for water-based drinks)
+      const getKcal = (...keys: string[]): number => {
+        for (const key of keys) {
+          const v = parseNumber(n[key]);
+          if (v !== null) return v;
+        }
+        return 0;
+      };
+      const getKcalWithKjFallback = (kcalKey: string, kjKey: string): number => {
+        const kcal = parseNumber(n[kcalKey]);
+        if (kcal !== null) return kcal;
+        const kj = parseNumber(n[kjKey]);
+        if (kj !== null) return Math.round(kj / 4.184);
+        return 0;
+      };
       const cal = basis === 'ml'
-        ? (parseNumber(n['energy-kcal_100ml']) ?? (parseNumber(n['energy_100ml']) ? Math.round((parseNumber(n['energy_100ml']) || 0) / 4.184) : 0))
-        : (parseNumber(n['energy-kcal_100g']) ?? (parseNumber(n['energy_100g']) ? Math.round((parseNumber(n['energy_100g']) || 0) / 4.184) : 0));
-      const protein = basis === 'ml' ? (parseNumber(n['proteins_100ml']) ?? 0) : (parseNumber(n['proteins_100g']) ?? 0);
-      const carbs = basis === 'ml' ? (parseNumber(n['carbohydrates_100ml']) ?? 0) : (parseNumber(n['carbohydrates_100g']) ?? 0);
-      const fat = basis === 'ml' ? (parseNumber(n['fat_100ml']) ?? 0) : (parseNumber(n['fat_100g']) ?? 0);
+        ? (getKcal('energy-kcal_100ml', 'energy-kcal_100g') ||
+           getKcalWithKjFallback('energy-kcal_100ml', 'energy_100ml') ||
+           getKcalWithKjFallback('energy-kcal_100g', 'energy_100g'))
+        : getKcalWithKjFallback('energy-kcal_100g', 'energy_100g');
+      const protein = basis === 'ml'
+        ? (parseNumber(n['proteins_100ml']) ?? parseNumber(n['proteins_100g']) ?? 0)
+        : (parseNumber(n['proteins_100g']) ?? 0);
+      const carbs = basis === 'ml'
+        ? (parseNumber(n['carbohydrates_100ml']) ?? parseNumber(n['carbohydrates_100g']) ?? 0)
+        : (parseNumber(n['carbohydrates_100g']) ?? 0);
+      const fat = basis === 'ml'
+        ? (parseNumber(n['fat_100ml']) ?? parseNumber(n['fat_100g']) ?? 0)
+        : (parseNumber(n['fat_100g']) ?? 0);
       const name = p.product_name || p.product_name_en || `Баркод ${barcode}`;
       const defaultPortion = getDefaultPortionFromOff(p.product_quantity, p.product_quantity_unit, basis);
       const scannedFood: Food = {
@@ -132,7 +160,7 @@ export default function SearchView({ user, isPremium, selectedMealType, selected
       await addDoc(collection(db, 'meals'), {
         userId: user.uid,
         type: selectedMealType,
-        date: new Date(selectedDate).toISOString(),
+        date: new Date().toISOString(),
         items: [{ food, amount: quantity / 100 }],
       });
       setView('dashboard');
@@ -182,7 +210,7 @@ export default function SearchView({ user, isPremium, selectedMealType, selected
       await addDoc(collection(db, 'meals'), {
         userId: user.uid,
         type: selectedMealType,
-        date: new Date(selectedDate).toISOString(),
+        date: new Date().toISOString(),
         items: [{ food, amount: quantity / 100 }],
       });
       setView('dashboard');

@@ -136,7 +136,7 @@ service cloud.firestore {
 
     function isValidProfile(data) {
       return data.keys().hasAll(['userId', 'weight', 'height', 'age', 'gender', 'activityLevel', 'goal']) &&
-             hasOnlyAllowedFields(['userId', 'weight', 'height', 'age', 'gender', 'activityLevel', 'goal', 'trainingType', 'trainingFrequency', 'dailyActivity', 'profileImage', 'targetCalories', 'targetProtein', 'targetCarbs', 'targetFat', 'isSetupDone', 'isPremium', 'mealPlanType', 'mealPlanSeed', 'subscriptionPlanId', 'subscriptionPlanTitle', 'subscriptionDurationMonths', 'subscriptionPriceMKD', 'subscriptionCurrency', 'subscriptionStatus', 'subscriptionStartedAt', 'subscriptionExpiresAt', 'subscriptionTrialStartedAt', 'subscriptionTrialEndsAt', 'subscriptionNextChargeAt', 'subscriptionNextPlanId', 'subscriptionNextPlanTitle', 'subscriptionNextPriceMKD', 'subscriptionLastChargeAt', 'subscriptionPaymentLast4', 'subscriptionPlatform', 'maxLevelAchieved', 'activeTheme']) &&
+             hasOnlyAllowedFields(['userId', 'weight', 'height', 'age', 'gender', 'activityLevel', 'goal', 'trainingType', 'trainingFrequency', 'dailyActivity', 'profileImage', 'targetCalories', 'targetProtein', 'targetCarbs', 'targetFat', 'isSetupDone', 'isPremium', 'mealPlanType', 'mealPlanSeed', 'subscriptionPlanId', 'subscriptionPlanTitle', 'subscriptionDurationMonths', 'subscriptionPriceMKD', 'subscriptionCurrency', 'subscriptionStatus', 'subscriptionStartedAt', 'subscriptionExpiresAt', 'subscriptionTrialStartedAt', 'subscriptionTrialEndsAt', 'subscriptionNextChargeAt', 'subscriptionNextPlanId', 'subscriptionNextPlanTitle', 'subscriptionNextPriceMKD', 'subscriptionLastChargeAt', 'subscriptionPaymentLast4', 'subscriptionPlatform', 'maxLevelAchieved', 'activeTheme', 'unlockedBadgeIds', 'seenAchievementIds', 'totalEarnedPoints']) &&
              data.userId == request.auth.uid &&
              data.weight is number && data.weight > 0 && data.weight < 500 &&
              data.height is number && data.height > 0 && data.height < 300 &&
@@ -166,7 +166,10 @@ service cloud.firestore {
              (!('subscriptionPaymentLast4' in data) || data.subscriptionPaymentLast4 == null || data.subscriptionPaymentLast4 is string) &&
              (!('subscriptionPlatform' in data) || data.subscriptionPlatform == null || data.subscriptionPlatform in ['android', 'ios']) &&
              (!('maxLevelAchieved' in data) || (data.maxLevelAchieved is number && data.maxLevelAchieved >= 1 && data.maxLevelAchieved <= 20)) &&
-             (!('activeTheme' in data) || data.activeTheme in ['balanced-green', 'neon-xp', 'beast-mode-red', 'elite-gold', 'midnight-focus', 'sunrise-motivation', 'fresh-nutrition', 'protein-power']);
+             (!('activeTheme' in data) || data.activeTheme in ['balanced-green', 'neon-xp', 'beast-mode-red', 'elite-gold', 'midnight-focus', 'sunrise-motivation', 'fresh-nutrition', 'protein-power']) &&
+             (!('unlockedBadgeIds' in data) || (data.unlockedBadgeIds is list && data.unlockedBadgeIds.size() <= 100)) &&
+             (!('seenAchievementIds' in data) || (data.seenAchievementIds is list && data.seenAchievementIds.size() <= 1000)) &&
+             (!('totalEarnedPoints' in data) || (data.totalEarnedPoints is number && data.totalEarnedPoints >= 0));
     }
 
     function isValidMeal(data) {
