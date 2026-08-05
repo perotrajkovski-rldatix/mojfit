@@ -1,1161 +1,529 @@
 [
   {
     "meal_type": "breakfast",
-    "name": "Авокадо и јајца",
-    "kcal": 350,
-    "protein": 20,
-    "carbs": 8,
-    "fat": 26,
-    "categories": ["low_carbs"],
-    "ingredients": [
-      { "name": "Авокадо", "amount": 80, "unit": "г" },
-      { "name": "Јајца", "amount": 2, "unit": "ком" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Бурек со сирење",
-    "kcal": 540,
-    "protein": 16,
-    "carbs": 58,
-    "fat": 26,
-    "categories": ["vegetarian"],
-    "ingredients": [
-      { "name": "Фило кори", "amount": 150, "unit": "г" },
-      { "name": "Бело сирење", "amount": 150, "unit": "г" },
-      { "name": "Јајца", "amount": 2, "unit": "ком" },
-      { "name": "Масло", "amount": 20, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Грчки јогурт со овес",
-    "kcal": 430,
-    "protein": 30,
-    "carbs": 55,
-    "fat": 9,
-    "categories": ["high_protein"],
-    "ingredients": [
-      { "name": "Грчки јогурт", "amount": 250, "unit": "г" },
-      { "name": "Овес", "amount": 50, "unit": "г" },
-      { "name": "Боровинки", "amount": 80, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Житарки и млеко",
-    "kcal": 290,
-    "protein": 14,
-    "carbs": 50,
-    "fat": 3,
-    "categories": ["low_fat"],
-    "ingredients": [
-      { "name": "Житарки", "amount": 60, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Зелник со сирење",
-    "kcal": 510,
-    "protein": 16,
-    "carbs": 62,
-    "fat": 22,
-    "categories": ["vegetarian"],
-    "ingredients": [
-      { "name": "Фило кори", "amount": 120, "unit": "г" },
-      { "name": "Спанаќ", "amount": 200, "unit": "г" },
-      { "name": "Бело сирење", "amount": 120, "unit": "г" },
-      { "name": "Јајца", "amount": 2, "unit": "ком" },
-      { "name": "Масло", "amount": 15, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Јајца и леб",
-    "kcal": 380,
-    "protein": 20,
-    "carbs": 30,
-    "fat": 18,
-    "categories": ["lactose_free"],
-    "ingredients": [
-      { "name": "Јајца", "amount": 3, "unit": "ком" },
-      { "name": "Леб", "amount": 80, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Кајгана со сирење",
-    "kcal": 340,
-    "protein": 24,
-    "carbs": 4,
-    "fat": 26,
-    "categories": ["low_carbs"],
-    "ingredients": [
-      { "name": "Јајца", "amount": 3, "unit": "ком" },
-      { "name": "Сирење", "amount": 50, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Кикирики путер на тост",
-    "kcal": 460,
-    "protein": 16,
-    "carbs": 50,
-    "fat": 24,
-    "categories": ["vegetarian"],
-    "ingredients": [
-      { "name": "Интегрален леб", "amount": 100, "unit": "г" },
-      { "name": "Кикирики путер", "amount": 60, "unit": "г" },
-      { "name": "Банана", "amount": 100, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Овес со бадемово млеко",
-    "kcal": 360,
-    "protein": 11,
-    "carbs": 60,
-    "fat": 8,
-    "categories": ["lactose_free"],
-    "ingredients": [
-      { "name": "Овес", "amount": 60, "unit": "г" },
-      { "name": "Бадемово млеко", "amount": 250, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Овес со јогурт",
-    "kcal": 310,
-    "protein": 18,
-    "carbs": 48,
-    "fat": 4,
-    "categories": ["low_fat"],
-    "ingredients": [
-      { "name": "Овес", "amount": 50, "unit": "г" },
-      { "name": "Јогурт", "amount": 250, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Овес со млеко",
-    "kcal": 390,
-    "protein": 17,
-    "carbs": 55,
-    "fat": 11,
-    "categories": ["vegetarian"],
-    "ingredients": [
-      { "name": "Овес", "amount": 60, "unit": "г" },
-      { "name": "Млеко", "amount": 250, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Омлет",
-    "kcal": 300,
-    "protein": 28,
-    "carbs": 5,
-    "fat": 18,
-    "categories": ["low_carbs"],
-    "ingredients": [
-      { "name": "Јајца", "amount": 3, "unit": "ком" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Палачинки со мед",
-    "kcal": 460,
-    "protein": 14,
-    "carbs": 72,
-    "fat": 12,
-    "categories": ["vegetarian", "low_fat"],
-    "ingredients": [
-      { "name": "Брашно", "amount": 80, "unit": "г" },
-      { "name": "Јајца", "amount": 2, "unit": "ком" },
-      { "name": "Млеко", "amount": 150, "unit": "мл" },
-      { "name": "Мед", "amount": 30, "unit": "г" },
-      { "name": "Путер", "amount": 15, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Палачинки со овес",
-    "kcal": 470,
-    "protein": 35,
-    "carbs": 50,
-    "fat": 11,
-    "categories": ["high_protein"],
-    "ingredients": [
-      { "name": "Овес", "amount": 60, "unit": "г" },
-      { "name": "Јајца", "amount": 2, "unit": "ком" },
-      { "name": "Урда", "amount": 100, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Палачинки со урда",
-    "kcal": 430,
-    "protein": 18,
-    "carbs": 62,
-    "fat": 12,
-    "categories": ["vegetarian", "low_fat"],
-    "ingredients": [
-      { "name": "Брашно", "amount": 80, "unit": "г" },
-      { "name": "Јајца", "amount": 2, "unit": "ком" },
-      { "name": "Млеко", "amount": 150, "unit": "мл" },
-      { "name": "Урда", "amount": 150, "unit": "г" },
-      { "name": "Мед", "amount": 20, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Пита со сирење",
-    "kcal": 480,
-    "protein": 18,
-    "carbs": 54,
-    "fat": 20,
-    "categories": ["vegetarian"],
-    "ingredients": [
-      { "name": "Пита кора", "amount": 120, "unit": "г" },
-      { "name": "Бело сирење", "amount": 150, "unit": "г" },
-      { "name": "Јајце", "amount": 1, "unit": "ком" },
-      { "name": "Масло", "amount": 10, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Пита со спанаќ",
-    "kcal": 420,
-    "protein": 14,
-    "carbs": 52,
+    "name": "Овес со млеко, урда и банана",
+    "kcal": 690,
+    "protein": 45,
+    "carbs": 86,
     "fat": 16,
-    "categories": ["vegetarian", "low_fat"],
+    "categories": ["high_protein", "vegetarian"],
     "ingredients": [
-      { "name": "Пита кора", "amount": 120, "unit": "г" },
-      { "name": "Спанаќ", "amount": 200, "unit": "г" },
-      { "name": "Бело сирење", "amount": 100, "unit": "г" },
-      { "name": "Масло", "amount": 15, "unit": "мл" }
+      { "name": "Овес", "amount": 80, "unit": "г" },
+      { "name": "Млеко", "amount": 250, "unit": "мл" },
+      { "name": "Нискомаслена урда", "amount": 250, "unit": "г" },
+      { "name": "Банана", "amount": 120, "unit": "г" }
     ]
   },
   {
-    "meal_type": "breakfast",
-    "name": "Питулици со сирење",
-    "kcal": 400,
-    "protein": 12,
-    "carbs": 56,
-    "fat": 14,
-    "categories": ["vegetarian", "low_fat"],
-    "ingredients": [
-      { "name": "Брашно", "amount": 100, "unit": "г" },
-      { "name": "Бело сирење", "amount": 100, "unit": "г" },
-      { "name": "Јајца", "amount": 2, "unit": "ком" },
-      { "name": "Масло", "amount": 10, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Попара",
+    "meal_type": "snack",
+    "name": "Варени јајца со интегрален леб",
     "kcal": 420,
-    "protein": 16,
-    "carbs": 60,
-    "fat": 12,
-    "categories": ["vegetarian"],
-    "ingredients": [
-      { "name": "Леб", "amount": 120, "unit": "г" },
-      { "name": "Сирење", "amount": 50, "unit": "г" },
-      { "name": "Млеко", "amount": 150, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Протеински омлет",
-    "kcal": 520,
-    "protein": 42,
-    "carbs": 28,
-    "fat": 28,
+    "protein": 24,
+    "carbs": 30,
+    "fat": 22,
     "categories": ["high_protein"],
     "ingredients": [
       { "name": "Јајца", "amount": 3, "unit": "ком" },
-      { "name": "Белки", "amount": 150, "unit": "г" },
       { "name": "Интегрален леб", "amount": 80, "unit": "г" }
     ]
   },
   {
-    "meal_type": "breakfast",
-    "name": "Тост мисиркино",
-    "kcal": 320,
-    "protein": 24,
-    "carbs": 42,
-    "fat": 4,
-    "categories": ["low_fat"],
-    "ingredients": [
-      { "name": "Леб", "amount": 90, "unit": "г" },
-      { "name": "Мисиркино", "amount": 80, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Тост со авокадо",
-    "kcal": 390,
-    "protein": 10,
-    "carbs": 38,
-    "fat": 22,
-    "categories": ["vegetarian", "lactose_free"],
-    "ingredients": [
-      { "name": "Интегрален леб", "amount": 100, "unit": "г" },
-      { "name": "Авокадо", "amount": 100, "unit": "г" },
-      { "name": "Јајце", "amount": 1, "unit": "ком" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Тост со авокадо и јајца",
-    "kcal": 470,
-    "protein": 20,
-    "carbs": 40,
-    "fat": 26,
-    "categories": ["high_protein", "vegetarian", "lactose_free"],
-    "ingredients": [
-      { "name": "Интегрален леб", "amount": 100, "unit": "г" },
-      { "name": "Авокадо", "amount": 100, "unit": "г" },
-      { "name": "Јајца", "amount": 2, "unit": "ком" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Тост со јајца и шунка",
-    "kcal": 420,
-    "protein": 28,
-    "carbs": 34,
-    "fat": 18,
-    "categories": ["high_protein", "low_carbs"],
-    "ingredients": [
-      { "name": "Тост", "amount": 100, "unit": "г" },
-      { "name": "Јајца", "amount": 2, "unit": "ком" },
-      { "name": "Шунка", "amount": 80, "unit": "г" },
-      { "name": "Путер", "amount": 10, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Туна тост",
-    "kcal": 410,
-    "protein": 30,
-    "carbs": 40,
-    "fat": 8,
-    "categories": ["lactose_free"],
-    "ingredients": [
-      { "name": "Туна", "amount": 100, "unit": "г" },
-      { "name": "Леб", "amount": 90, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Туна тост (450 kcal)",
-    "kcal": 450,
-    "protein": 36,
-    "carbs": 45,
-    "fat": 10,
-    "categories": ["high_protein", "lactose_free"],
-    "ingredients": [
-      { "name": "Туна", "amount": 100, "unit": "г" },
-      { "name": "Интегрален леб", "amount": 100, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "breakfast",
-    "name": "Урда и јајца",
-    "kcal": 410,
-    "protein": 38,
-    "carbs": 20,
-    "fat": 18,
-    "categories": ["high_protein"],
-    "ingredients": [
-      { "name": "Урда", "amount": 200, "unit": "г" },
-      { "name": "Јајца", "amount": 2, "unit": "ком" }
-    ]
-  },
-  {
     "meal_type": "lunch",
-    "name": "Говедски гулаш со ориз",
-    "kcal": 580,
-    "protein": 34,
-    "carbs": 58,
-    "fat": 18,
-    "categories": ["high_protein", "lactose_free"],
-    "ingredients": [
-      { "name": "Говедско месо", "amount": 200, "unit": "г" },
-      { "name": "Ориз", "amount": 80, "unit": "г" },
-      { "name": "Кромид", "amount": 80, "unit": "г" },
-      { "name": "Доматен сос", "amount": 100, "unit": "г" },
-      { "name": "Масло", "amount": 15, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Грав салата",
-    "kcal": 290,
-    "protein": 16,
-    "carbs": 45,
-    "fat": 2,
-    "categories": ["low_fat"],
-    "ingredients": [
-      { "name": "Грав", "amount": 200, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Јавнија со говедско",
-    "kcal": 560,
-    "protein": 32,
-    "carbs": 50,
-    "fat": 18,
-    "categories": ["high_protein", "lactose_free"],
-    "ingredients": [
-      { "name": "Говедско месо", "amount": 200, "unit": "г" },
-      { "name": "Кромид", "amount": 100, "unit": "г" },
-      { "name": "Компири", "amount": 200, "unit": "г" },
-      { "name": "Масло", "amount": 15, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Јуфки со зеленчук",
-    "kcal": 390,
-    "protein": 14,
-    "carbs": 58,
-    "fat": 12,
-    "categories": ["vegetarian", "low_fat", "lactose_free"],
-    "ingredients": [
-      { "name": "Јуфки", "amount": 100, "unit": "г" },
-      { "name": "Тиквица", "amount": 120, "unit": "г" },
-      { "name": "Пиперка", "amount": 80, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 15, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Леќа чорба со леб",
-    "kcal": 420,
-    "protein": 22,
-    "carbs": 60,
-    "fat": 6,
-    "categories": ["high_protein", "vegetarian", "low_fat", "lactose_free"],
-    "ingredients": [
-      { "name": "Леќа", "amount": 150, "unit": "г" },
-      { "name": "Кромид", "amount": 60, "unit": "г" },
-      { "name": "Морков", "amount": 80, "unit": "г" },
-      { "name": "Масло", "amount": 10, "unit": "мл" },
-      { "name": "Леб", "amount": 60, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Макарони со сирење",
-    "kcal": 510,
-    "protein": 22,
-    "carbs": 68,
-    "fat": 15,
-    "categories": ["vegetarian"],
-    "ingredients": [
-      { "name": "Макарони", "amount": 180, "unit": "г" },
-      { "name": "Сирење", "amount": 60, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Мисиркино со компир",
-    "kcal": 540,
-    "protein": 50,
-    "carbs": 45,
-    "fat": 10,
-    "categories": ["high_protein"],
-    "ingredients": [
-      { "name": "Мисиркино", "amount": 180, "unit": "г" },
-      { "name": "Компир", "amount": 220, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Мисиркино со ориз",
-    "kcal": 430,
-    "protein": 40,
-    "carbs": 50,
-    "fat": 5,
-    "categories": ["low_fat"],
-    "ingredients": [
-      { "name": "Мисиркино", "amount": 150, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Мусака без месо",
-    "kcal": 460,
-    "protein": 18,
-    "carbs": 55,
-    "fat": 16,
-    "categories": ["vegetarian"],
-    "ingredients": [
-      { "name": "Компир", "amount": 250, "unit": "г" },
-      { "name": "Јајца", "amount": 2, "unit": "ком" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Пасуљ чорба со леб",
-    "kcal": 460,
-    "protein": 26,
-    "carbs": 56,
-    "fat": 10,
-    "categories": ["high_protein", "vegetarian", "low_fat", "lactose_free"],
-    "ingredients": [
-      { "name": "Пасуљ", "amount": 150, "unit": "г" },
-      { "name": "Кромид", "amount": 60, "unit": "г" },
-      { "name": "Морков", "amount": 60, "unit": "г" },
-      { "name": "Масло", "amount": 10, "unit": "мл" },
-      { "name": "Леб", "amount": 80, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Пилешка салата",
-    "kcal": 340,
-    "protein": 38,
-    "carbs": 10,
-    "fat": 15,
-    "categories": ["lactose_free"],
-    "ingredients": [
-      { "name": "Пилешко", "amount": 150, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Пилешки тако",
-    "kcal": 420,
-    "protein": 30,
-    "carbs": 40,
+    "name": "Пилешки гради со ориз и салата",
+    "kcal": 620,
+    "protein": 54,
+    "carbs": 62,
     "fat": 14,
     "categories": ["high_protein", "low_fat", "lactose_free"],
     "ingredients": [
-      { "name": "Пилешки гради", "amount": 150, "unit": "г" },
-      { "name": "Тортиља", "amount": 80, "unit": "г" },
-      { "name": "Авокадо", "amount": 60, "unit": "г" },
-      { "name": "Доматен сос", "amount": 40, "unit": "г" },
-      { "name": "Зелена салата", "amount": 30, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Пилешка сницла со компири",
-    "kcal": 620,
-    "protein": 40,
-    "carbs": 58,
-    "fat": 20,
-    "categories": ["high_protein", "lactose_free"],
-    "ingredients": [
       { "name": "Пилешки гради", "amount": 200, "unit": "г" },
-      { "name": "Компири", "amount": 250, "unit": "г" },
-      { "name": "Јајце", "amount": 1, "unit": "ком" },
-      { "name": "Брашно", "amount": 30, "unit": "г" },
-      { "name": "Масло", "amount": 20, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Пилешко во доматен сос",
-    "kcal": 390,
-    "protein": 36,
-    "carbs": 22,
-    "fat": 14,
-    "categories": ["high_protein", "low_fat", "low_carbs", "lactose_free"],
-    "ingredients": [
-      { "name": "Пилешки гради", "amount": 180, "unit": "г" },
-      { "name": "Доматен сос", "amount": 150, "unit": "г" },
-      { "name": "Лук", "amount": 10, "unit": "г" },
+      { "name": "Ориз (варен)", "amount": 150, "unit": "г" },
+      { "name": "Голема салата", "amount": 250, "unit": "г" },
       { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
     ]
   },
   {
     "meal_type": "lunch",
-    "name": "Пилешко во доматен сос со тестенини",
-    "kcal": 550,
-    "protein": 36,
-    "carbs": 58,
+    "name": "Туна со компири и салата",
+    "kcal": 580,
+    "protein": 52,
+    "carbs": 50,
     "fat": 16,
+    "categories": ["high_protein", "lactose_free"],
+    "ingredients": [
+      { "name": "Туна во вода", "amount": 240, "unit": "г" },
+      { "name": "Компири", "amount": 250, "unit": "г" },
+      { "name": "Салата", "amount": 220, "unit": "г" },
+      { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Мисиркино месо со ориз",
+    "kcal": 590,
+    "protein": 49,
+    "carbs": 55,
+    "fat": 14,
     "categories": ["high_protein", "low_fat", "lactose_free"],
     "ingredients": [
-      { "name": "Пилешки гради", "amount": 180, "unit": "г" },
-      { "name": "Тестенини", "amount": 100, "unit": "г" },
-      { "name": "Доматен сос", "amount": 150, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 15, "unit": "мл" }
+      { "name": "Мисиркино месо", "amount": 200, "unit": "г" },
+      { "name": "Ориз (варен)", "amount": 150, "unit": "г" },
+      { "name": "Салата", "amount": 180, "unit": "г" },
+      { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
     ]
   },
   {
     "meal_type": "lunch",
-    "name": "Пилешко на жар со зеленчук",
-    "kcal": 490,
-    "protein": 44,
-    "carbs": 24,
-    "fat": 18,
-    "categories": ["high_protein", "low_carbs", "lactose_free"],
-    "ingredients": [
-      { "name": "Пилешки гради", "amount": 220, "unit": "г" },
-      { "name": "Тиквица", "amount": 150, "unit": "г" },
-      { "name": "Пиперка", "amount": 100, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 15, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Пилешко со брокула",
-    "kcal": 360,
-    "protein": 50,
-    "carbs": 12,
-    "fat": 8,
-    "categories": ["low_carbs"],
-    "ingredients": [
-      { "name": "Пилешко", "amount": 180, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Пилешко со ориз",
-    "kcal": 560,
-    "protein": 42,
-    "carbs": 58,
-    "fat": 12,
+    "name": "Пилешко со тестенини и зеленчук",
+    "kcal": 610,
+    "protein": 47,
+    "carbs": 64,
+    "fat": 14,
     "categories": ["high_protein", "low_fat", "lactose_free"],
     "ingredients": [
       { "name": "Пилешки гради", "amount": 200, "unit": "г" },
-      { "name": "Ориз", "amount": 100, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 15, "unit": "мл" },
-      { "name": "Зачини", "amount": 5, "unit": "г" }
+      { "name": "Тестенини", "amount": 100, "unit": "г" },
+      { "name": "Зеленчук", "amount": 200, "unit": "г" },
+      { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Банана и кафе",
+    "kcal": 115,
+    "protein": 1,
+    "carbs": 27,
+    "fat": 0,
+    "categories": ["low_fat", "vegetarian", "lactose_free"],
+    "ingredients": [
+      { "name": "Банана", "amount": 120, "unit": "г" },
+      { "name": "Кафе", "amount": 200, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Урда со интегрален леб",
+    "kcal": 430,
+    "protein": 40,
+    "carbs": 32,
+    "fat": 16,
+    "categories": ["high_protein"],
+    "ingredients": [
+      { "name": "Урда", "amount": 250, "unit": "г" },
+      { "name": "Интегрален леб", "amount": 80, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Грчки јогурт со 2 јајца и интегрален леб",
+    "kcal": 470,
+    "protein": 39,
+    "carbs": 30,
+    "fat": 22,
+    "categories": ["high_protein"],
+    "ingredients": [
+      { "name": "Грчки јогурт", "amount": 200, "unit": "г" },
+      { "name": "Јајца", "amount": 2, "unit": "ком" },
+      { "name": "Интегрален леб", "amount": 80, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Јогурт",
+    "kcal": 140,
+    "protein": 10,
+    "carbs": 12,
+    "fat": 5,
+    "categories": ["low_fat", "vegetarian"],
+    "ingredients": [
+      { "name": "Јогурт", "amount": 200, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Кефир",
+    "kcal": 130,
+    "protein": 11,
+    "carbs": 10,
+    "fat": 4,
+    "categories": ["low_fat", "vegetarian"],
+    "ingredients": [
+      { "name": "Кефир", "amount": 200, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Овес со вода и грчки јогурт",
+    "kcal": 600,
+    "protein": 43,
+    "carbs": 78,
+    "fat": 12,
+    "categories": ["high_protein", "vegetarian"],
+    "ingredients": [
+      { "name": "Овес", "amount": 80, "unit": "г" },
+      { "name": "Вода", "amount": 250, "unit": "мл" },
+      { "name": "Грчки јогурт", "amount": 250, "unit": "г" },
+      { "name": "Банана", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Омлет со овес и јаболко",
+    "kcal": 620,
+    "protein": 45,
+    "carbs": 63,
+    "fat": 24,
+    "categories": ["high_protein"],
+    "ingredients": [
+      { "name": "Јајца", "amount": 4, "unit": "ком" },
+      { "name": "Овес", "amount": 80, "unit": "г" },
+      { "name": "Јаболко", "amount": 150, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Урда со интегрални лепчиња и домат",
+    "kcal": 560,
+    "protein": 42,
+    "carbs": 44,
+    "fat": 20,
+    "categories": ["high_protein", "vegetarian"],
+    "ingredients": [
+      { "name": "Урда", "amount": 250, "unit": "г" },
+      { "name": "Интегрални лепчиња", "amount": 100, "unit": "г" },
+      { "name": "Домат", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Овес со грчки јогурт и банана",
+    "kcal": 610,
+    "protein": 38,
+    "carbs": 78,
+    "fat": 14,
+    "categories": ["high_protein", "vegetarian"],
+    "ingredients": [
+      { "name": "Грчки јогурт", "amount": 300, "unit": "г" },
+      { "name": "Овес", "amount": 80, "unit": "г" },
+      { "name": "Банана", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Јајца со интегрален леб",
+    "kcal": 430,
+    "protein": 28,
+    "carbs": 31,
+    "fat": 22,
+    "categories": ["high_protein"],
+    "ingredients": [
+      { "name": "Јајца", "amount": 4, "unit": "ком" },
+      { "name": "Интегрален леб", "amount": 80, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Овес со млеко и банана",
+    "kcal": 500,
+    "protein": 22,
+    "carbs": 77,
+    "fat": 11,
+    "categories": ["vegetarian"],
+    "ingredients": [
+      { "name": "Овес", "amount": 80, "unit": "г" },
+      { "name": "Млеко", "amount": 250, "unit": "мл" },
+      { "name": "Банана", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Омлет со интегрален леб",
+    "kcal": 390,
+    "protein": 27,
+    "carbs": 26,
+    "fat": 19,
+    "categories": ["high_protein"],
+    "ingredients": [
+      { "name": "Омлет", "amount": 200, "unit": "г" },
+      { "name": "Интегрален леб", "amount": 70, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Овес со урда",
+    "kcal": 520,
+    "protein": 35,
+    "carbs": 52,
+    "fat": 16,
+    "categories": ["high_protein", "vegetarian"],
+    "ingredients": [
+      { "name": "Овес", "amount": 70, "unit": "г" },
+      { "name": "Урда", "amount": 200, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Грчки јогурт со кикирики",
+    "kcal": 410,
+    "protein": 28,
+    "carbs": 16,
+    "fat": 24,
+    "categories": ["high_protein", "vegetarian", "low_carbs"],
+    "ingredients": [
+      { "name": "Грчки јогурт", "amount": 250, "unit": "г" },
+      { "name": "Кикирики", "amount": 30, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Варени јајца",
+    "kcal": 260,
+    "protein": 22,
+    "carbs": 2,
+    "fat": 18,
+    "categories": ["high_protein", "lactose_free", "low_carbs"],
+    "ingredients": [
+      { "name": "Јајца", "amount": 3, "unit": "ком" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Јогурт со кикирики",
+    "kcal": 320,
+    "protein": 18,
+    "carbs": 20,
+    "fat": 18,
+    "categories": ["high_protein", "vegetarian"],
+    "ingredients": [
+      { "name": "Јогурт", "amount": 250, "unit": "мл" },
+      { "name": "Кикирики", "amount": 30, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Урда",
+    "kcal": 260,
+    "protein": 35,
+    "carbs": 8,
+    "fat": 10,
+    "categories": ["high_protein", "vegetarian", "low_carbs"],
+    "ingredients": [
+      { "name": "Урда", "amount": 250, "unit": "г" }
     ]
   },
   {
     "meal_type": "lunch",
-    "name": "Пилешко со ориз (повисок протеин)",
-    "kcal": 560,
-    "protein": 52,
-    "carbs": 48,
-    "fat": 11,
-    "categories": ["high_protein"],
+    "name": "Пилешки стек со печени компири и салата",
+    "kcal": 620,
+    "protein": 50,
+    "carbs": 52,
+    "fat": 20,
+    "categories": ["high_protein", "lactose_free"],
     "ingredients": [
-      { "name": "Пилешко", "amount": 180, "unit": "г" },
+      { "name": "Пилешки стек", "amount": 200, "unit": "г" },
+      { "name": "Печени компири", "amount": 200, "unit": "г" },
+      { "name": "Салата", "amount": 200, "unit": "г" },
+      { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Мелено мисиркино со ориз",
+    "kcal": 610,
+    "protein": 48,
+    "carbs": 56,
+    "fat": 18,
+    "categories": ["high_protein", "lactose_free"],
+    "ingredients": [
+      { "name": "Мелено мисиркино месо", "amount": 200, "unit": "г" },
       { "name": "Ориз", "amount": 150, "unit": "г" }
     ]
   },
   {
     "meal_type": "lunch",
-    "name": "Риба и компир",
-    "kcal": 470,
-    "protein": 42,
-    "carbs": 38,
-    "fat": 15,
-    "categories": ["lactose_free"],
-    "ingredients": [
-      { "name": "Пастрмка", "amount": 180, "unit": "г" },
-      { "name": "Компир", "amount": 200, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Свинско со салата",
-    "kcal": 450,
-    "protein": 30,
-    "carbs": 8,
-    "fat": 32,
-    "categories": ["low_carbs"],
-    "ingredients": [
-      { "name": "Свинско", "amount": 150, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Сендвич со туна",
-    "kcal": 410,
-    "protein": 28,
-    "carbs": 38,
-    "fat": 14,
-    "categories": ["high_protein", "low_fat", "lactose_free"],
-    "ingredients": [
-      { "name": "Интегрален леб", "amount": 100, "unit": "г" },
-      { "name": "Туна (конзерва)", "amount": 120, "unit": "г" },
-      { "name": "Мајонез", "amount": 20, "unit": "г" },
-      { "name": "Домат", "amount": 50, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Тавче гравче",
-    "kcal": 480,
-    "protein": 22,
-    "carbs": 70,
-    "fat": 10,
-    "categories": ["vegetarian"],
-    "ingredients": [
-      { "name": "Грав", "amount": 300, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Тавче гравче (510 kcal)",
-    "kcal": 510,
-    "protein": 22,
-    "carbs": 72,
-    "fat": 12,
-    "categories": ["high_protein", "vegetarian", "low_fat", "lactose_free"],
-    "ingredients": [
-      { "name": "Грав", "amount": 200, "unit": "г" },
-      { "name": "Кромид", "amount": 80, "unit": "г" },
-      { "name": "Пиперка", "amount": 60, "unit": "г" },
-      { "name": "Масло", "amount": 20, "unit": "мл" },
-      { "name": "Зачини", "amount": 5, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Телешко",
-    "kcal": 430,
-    "protein": 36,
-    "carbs": 10,
-    "fat": 26,
-    "categories": ["low_carbs"],
-    "ingredients": [
-      { "name": "Телешко", "amount": 170, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Телешко со зеленчук",
-    "kcal": 590,
-    "protein": 48,
-    "carbs": 35,
-    "fat": 20,
-    "categories": ["high_protein"],
-    "ingredients": [
-      { "name": "Телешко", "amount": 180, "unit": "г" },
-      { "name": "Зеленчук", "amount": 200, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Тиквица полнета со месо",
-    "kcal": 490,
-    "protein": 30,
-    "carbs": 38,
-    "fat": 22,
-    "categories": ["high_protein", "lactose_free"],
-    "ingredients": [
-      { "name": "Тиквица", "amount": 300, "unit": "г" },
-      { "name": "Мелено месо", "amount": 150, "unit": "г" },
-      { "name": "Ориз", "amount": 50, "unit": "г" },
-      { "name": "Кромид", "amount": 60, "unit": "г" },
-      { "name": "Масло", "amount": 15, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Туна и компир",
-    "kcal": 350,
-    "protein": 33,
-    "carbs": 40,
-    "fat": 2,
-    "categories": ["low_fat"],
-    "ingredients": [
-      { "name": "Туна", "amount": 120, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "lunch",
-    "name": "Ќофтиња",
-    "kcal": 430,
-    "protein": 34,
-    "carbs": 15,
-    "fat": 24,
-    "categories": ["lactose_free"],
-    "ingredients": [
-      { "name": "Мелено месо", "amount": 180, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Запечена риба со зеленчук",
-    "kcal": 380,
-    "protein": 36,
-    "carbs": 16,
-    "fat": 18,
-    "categories": ["high_protein", "low_carbs", "lactose_free"],
-    "ingredients": [
-      { "name": "Бела риба", "amount": 200, "unit": "г" },
-      { "name": "Тиквица", "amount": 150, "unit": "г" },
-      { "name": "Пиперка", "amount": 80, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 15, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Запечено пилешко со компири",
-    "kcal": 590,
-    "protein": 38,
-    "carbs": 54,
-    "fat": 18,
-    "categories": ["high_protein", "lactose_free"],
-    "ingredients": [
-      { "name": "Пилешки бутови", "amount": 250, "unit": "г" },
-      { "name": "Компири", "amount": 250, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 20, "unit": "мл" },
-      { "name": "Зачини", "amount": 5, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Кебапчиња со салата",
-    "kcal": 600,
-    "protein": 36,
-    "carbs": 32,
-    "fat": 34,
-    "categories": ["high_protein", "low_carbs", "lactose_free"],
-    "ingredients": [
-      { "name": "Мешано мелено месо", "amount": 250, "unit": "г" },
-      { "name": "Шопска салата", "amount": 200, "unit": "г" },
-      { "name": "Леб", "amount": 80, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Компир манџа со свинско",
-    "kcal": 570,
-    "protein": 28,
-    "carbs": 58,
-    "fat": 22,
-    "categories": ["high_protein", "lactose_free"],
-    "ingredients": [
-      { "name": "Свинско месо", "amount": 180, "unit": "г" },
-      { "name": "Компири", "amount": 300, "unit": "г" },
-      { "name": "Кромид", "amount": 80, "unit": "г" },
-      { "name": "Масло", "amount": 20, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Лосос со зеленчук",
-    "kcal": 410,
-    "protein": 40,
-    "carbs": 10,
-    "fat": 22,
-    "categories": ["high_protein", "low_carbs", "lactose_free"],
-    "ingredients": [
-      { "name": "Лосос", "amount": 180, "unit": "г" },
-      { "name": "Тиквица", "amount": 150, "unit": "г" },
-      { "name": "Пиперка", "amount": 100, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 15, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Лосос со ориз",
-    "kcal": 580,
+    "name": "Пилешко со тестенини",
+    "kcal": 560,
     "protein": 44,
-    "carbs": 52,
-    "fat": 16,
+    "carbs": 58,
+    "fat": 12,
     "categories": ["high_protein", "low_fat", "lactose_free"],
     "ingredients": [
-      { "name": "Лосос", "amount": 200, "unit": "г" },
-      { "name": "Ориз", "amount": 100, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 15, "unit": "мл" },
-      { "name": "Лимон", "amount": 20, "unit": "г" }
+      { "name": "Пилешко", "amount": 200, "unit": "г" },
+      { "name": "Тестенини", "amount": 100, "unit": "г" }
     ]
   },
   {
-    "meal_type": "dinner",
-    "name": "Мусака со компири",
-    "kcal": 640,
-    "protein": 28,
-    "carbs": 52,
-    "fat": 32,
-    "categories": ["high_protein"],
+    "meal_type": "lunch",
+    "name": "Скуша или туна со варени компири",
+    "kcal": 600,
+    "protein": 52,
+    "carbs": 46,
+    "fat": 22,
+    "categories": ["high_protein", "lactose_free"],
     "ingredients": [
-      { "name": "Мелено месо", "amount": 200, "unit": "г" },
-      { "name": "Компири", "amount": 300, "unit": "г" },
-      { "name": "Јајца", "amount": 1, "unit": "ком" },
-      { "name": "Млеко", "amount": 100, "unit": "мл" },
-      { "name": "Масло", "amount": 20, "unit": "мл" }
+      { "name": "Скуша или туна", "amount": 240, "unit": "г" },
+      { "name": "Варени компири", "amount": 250, "unit": "г" },
+      { "name": "Салата", "amount": 150, "unit": "г" }
     ]
   },
   {
-    "meal_type": "dinner",
-    "name": "Пастрмка",
-    "kcal": 410,
-    "protein": 40,
-    "carbs": 10,
-    "fat": 20,
-    "categories": ["lactose_free"],
-    "ingredients": [
-      { "name": "Пастрмка", "amount": 180, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Пастрмка салата",
-    "kcal": 340,
-    "protein": 34,
-    "carbs": 8,
-    "fat": 18,
-    "categories": ["low_carbs"],
-    "ingredients": [
-      { "name": "Пастрмка", "amount": 150, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Пастрмка со салата",
-    "kcal": 480,
+    "meal_type": "lunch",
+    "name": "Телешко или пилешко со компири",
+    "kcal": 610,
     "protein": 46,
-    "carbs": 12,
+    "carbs": 44,
     "fat": 24,
-    "categories": ["high_protein"],
+    "categories": ["high_protein", "lactose_free"],
     "ingredients": [
-      { "name": "Пастрмка", "amount": 200, "unit": "г" },
+      { "name": "Телешко или пилешко", "amount": 200, "unit": "г" },
+      { "name": "Компири", "amount": 250, "unit": "г" },
       { "name": "Салата", "amount": 150, "unit": "г" }
     ]
   },
   {
     "meal_type": "dinner",
-    "name": "Пилешка салата",
-    "kcal": 420,
-    "protein": 45,
-    "carbs": 10,
-    "fat": 16,
-    "categories": ["high_protein", "lactose_free"],
-    "ingredients": [
-      { "name": "Пилешко", "amount": 180, "unit": "г" },
-      { "name": "Марула", "amount": 150, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Пилешка супа",
-    "kcal": 280,
-    "protein": 28,
-    "carbs": 20,
-    "fat": 4,
-    "categories": ["low_fat"],
-    "ingredients": [
-      { "name": "Пилешко", "amount": 120, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Пилешки бутови со компири",
-    "kcal": 610,
-    "protein": 40,
-    "carbs": 56,
-    "fat": 20,
-    "categories": ["high_protein", "lactose_free"],
-    "ingredients": [
-      { "name": "Пилешки бутови", "amount": 250, "unit": "г" },
-      { "name": "Компири", "amount": 250, "unit": "г" },
-      { "name": "Масло", "amount": 20, "unit": "мл" },
-      { "name": "Зачини", "amount": 5, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Пилешко и зеленчук",
-    "kcal": 390,
-    "protein": 42,
-    "carbs": 18,
-    "fat": 12,
-    "categories": ["lactose_free"],
-    "ingredients": [
-      { "name": "Пилешко", "amount": 180, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Пилешко со спанаќ",
-    "kcal": 480,
-    "protein": 44,
-    "carbs": 12,
-    "fat": 24,
-    "categories": ["high_protein", "low_carbs", "lactose_free"],
-    "ingredients": [
-      { "name": "Пилешки гради", "amount": 220, "unit": "г" },
-      { "name": "Спанаќ", "amount": 200, "unit": "г" },
-      { "name": "Лук", "amount": 10, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 15, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Полнети пиперки посни",
-    "kcal": 390,
-    "protein": 14,
-    "carbs": 60,
-    "fat": 10,
-    "categories": ["vegetarian"],
-    "ingredients": [
-      { "name": "Пиперки", "amount": 250, "unit": "г" },
-      { "name": "Ориз", "amount": 100, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Риба на жар со салата",
-    "kcal": 480,
-    "protein": 40,
-    "carbs": 18,
-    "fat": 22,
-    "categories": ["high_protein", "low_carbs", "lactose_free"],
-    "ingredients": [
-      { "name": "Риба (лосос/скуша)", "amount": 220, "unit": "г" },
-      { "name": "Шопска салата", "amount": 200, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 15, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Риба со зеленчук",
+    "name": "Урда со домат и краставица",
     "kcal": 320,
     "protein": 35,
-    "carbs": 18,
-    "fat": 5,
-    "categories": ["low_fat"],
+    "carbs": 12,
+    "fat": 14,
+    "categories": ["high_protein", "vegetarian", "low_carbs"],
     "ingredients": [
-      { "name": "Риба", "amount": 150, "unit": "г" }
+      { "name": "Урда", "amount": 250, "unit": "г" },
+      { "name": "Домат", "amount": 120, "unit": "г" },
+      { "name": "Краставица", "amount": 120, "unit": "г" }
     ]
   },
   {
     "meal_type": "dinner",
-    "name": "Салата со мисиркино",
+    "name": "Туна со салата",
+    "kcal": 390,
+    "protein": 52,
+    "carbs": 10,
+    "fat": 16,
+    "categories": ["high_protein", "lactose_free", "low_carbs"],
+    "ingredients": [
+      { "name": "Туна во вода", "amount": 240, "unit": "г" },
+      { "name": "Салата", "amount": 200, "unit": "г" },
+      { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Омлет од белки и јајца",
     "kcal": 300,
-    "protein": 32,
-    "carbs": 15,
-    "fat": 4,
-    "categories": ["low_fat"],
-    "ingredients": [
-      { "name": "Мисиркино", "amount": 120, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Сарми со ориз",
-    "kcal": 560,
-    "protein": 26,
-    "carbs": 54,
-    "fat": 24,
-    "categories": ["high_protein", "lactose_free"],
-    "ingredients": [
-      { "name": "Мелено месо", "amount": 150, "unit": "г" },
-      { "name": "Ориз", "amount": 80, "unit": "г" },
-      { "name": "Зелка (листа)", "amount": 200, "unit": "г" },
-      { "name": "Доматен сос", "amount": 100, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Скара мешана",
-    "kcal": 660,
-    "protein": 46,
-    "carbs": 14,
-    "fat": 38,
+    "protein": 38,
+    "carbs": 3,
+    "fat": 14,
     "categories": ["high_protein", "low_carbs", "lactose_free"],
     "ingredients": [
-      { "name": "Свинско на скара", "amount": 150, "unit": "г" },
-      { "name": "Кебап", "amount": 100, "unit": "г" },
-      { "name": "Пилешко на скара", "amount": 100, "unit": "г" },
-      { "name": "Зеленчук", "amount": 100, "unit": "г" }
+      { "name": "Белки", "amount": 5, "unit": "ком" },
+      { "name": "Јајца", "amount": 2, "unit": "ком" }
     ]
   },
   {
     "meal_type": "dinner",
-    "name": "Таратур",
-    "kcal": 240,
-    "protein": 11,
-    "carbs": 18,
-    "fat": 14,
-    "categories": ["vegetarian"],
-    "ingredients": [
-      { "name": "Јогурт", "amount": 300, "unit": "мл" },
-      { "name": "Краставица", "amount": 150, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Телешки ролади со каша",
-    "kcal": 590,
-    "protein": 38,
-    "carbs": 52,
-    "fat": 20,
-    "categories": ["high_protein", "lactose_free"],
-    "ingredients": [
-      { "name": "Телешко месо", "amount": 200, "unit": "г" },
-      { "name": "Кукурузна каша", "amount": 100, "unit": "г" },
-      { "name": "Кромид", "amount": 60, "unit": "г" },
-      { "name": "Масло", "amount": 15, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Туна салата",
-    "kcal": 330,
-    "protein": 32,
-    "carbs": 22,
-    "fat": 9,
-    "categories": ["lactose_free"],
-    "ingredients": [
-      { "name": "Туна", "amount": 120, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Туна салата (390 kcal)",
-    "kcal": 390,
-    "protein": 40,
-    "carbs": 14,
-    "fat": 14,
-    "categories": ["high_protein", "lactose_free"],
-    "ingredients": [
-      { "name": "Туна", "amount": 150, "unit": "г" },
-      { "name": "Зеленчук", "amount": 200, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Туна со авокадо",
-    "kcal": 310,
-    "protein": 30,
-    "carbs": 9,
-    "fat": 16,
-    "categories": ["low_carbs"],
-    "ingredients": [
-      { "name": "Туна", "amount": 120, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "dinner",
-    "name": "Урда со краставица",
-    "kcal": 250,
-    "protein": 28,
+    "name": "Грчки јогурт",
+    "kcal": 190,
+    "protein": 20,
     "carbs": 10,
-    "fat": 9,
-    "categories": ["low_carbs"],
+    "fat": 8,
+    "categories": ["high_protein", "vegetarian", "low_fat"],
     "ingredients": [
-      { "name": "Урда", "amount": 200, "unit": "г" }
+      { "name": "Грчки јогурт", "amount": 250, "unit": "г" }
     ]
   },
   {
     "meal_type": "dinner",
-    "name": "Шопска салата",
+    "name": "Урда со салата",
     "kcal": 310,
-    "protein": 14,
-    "carbs": 15,
-    "fat": 22,
-    "categories": ["vegetarian"],
+    "protein": 34,
+    "carbs": 10,
+    "fat": 14,
+    "categories": ["high_protein", "vegetarian", "low_carbs"],
     "ingredients": [
-      { "name": "Домати", "amount": 150, "unit": "г" },
-      { "name": "Краставици", "amount": 150, "unit": "г" },
-      { "name": "Сирење", "amount": 70, "unit": "г" }
+      { "name": "Урда", "amount": 250, "unit": "г" },
+      { "name": "Салата", "amount": 200, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Јајца со сирење, домат и краставица",
+    "kcal": 620,
+    "protein": 43,
+    "carbs": 9,
+    "fat": 44,
+    "categories": ["high_protein", "low_carbs"],
+    "ingredients": [
+      { "name": "Јајца", "amount": 5, "unit": "ком" },
+      { "name": "Сирење", "amount": 100, "unit": "г" },
+      { "name": "Домат", "amount": 120, "unit": "г" },
+      { "name": "Краставица", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Омлет со печурки",
+    "kcal": 360,
+    "protein": 27,
+    "carbs": 6,
+    "fat": 24,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Јајца", "amount": 4, "unit": "ком" },
+      { "name": "Печурки", "amount": 100, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Јајца со кашкавал",
+    "kcal": 470,
+    "protein": 33,
+    "carbs": 3,
+    "fat": 36,
+    "categories": ["high_protein", "low_carbs"],
+    "ingredients": [
+      { "name": "Јајца", "amount": 4, "unit": "ком" },
+      { "name": "Кашкавал", "amount": 50, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Јајца со домати",
+    "kcal": 400,
+    "protein": 31,
+    "carbs": 7,
+    "fat": 27,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Јајца", "amount": 5, "unit": "ком" },
+      { "name": "Домати", "amount": 150, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Грчки јогурт со бадеми",
+    "kcal": 410,
+    "protein": 34,
+    "carbs": 14,
+    "fat": 24,
+    "categories": ["high_protein", "low_carbs", "vegetarian"],
+    "ingredients": [
+      { "name": "Грчки јогурт", "amount": 300, "unit": "г" },
+      { "name": "Бадеми", "amount": 30, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Омлет од 5 јајца со сирење",
+    "kcal": 590,
+    "protein": 42,
+    "carbs": 4,
+    "fat": 45,
+    "categories": ["high_protein", "low_carbs"],
+    "ingredients": [
+      { "name": "Јајца", "amount": 5, "unit": "ком" },
+      { "name": "Сирење", "amount": 50, "unit": "г" }
     ]
   },
   {
@@ -1165,22 +533,33 @@
     "protein": 6,
     "carbs": 5,
     "fat": 15,
-    "categories": ["low_carbs"],
+    "categories": ["low_carbs", "vegetarian", "lactose_free"],
     "ingredients": [
       { "name": "Бадеми", "amount": 30, "unit": "г" }
     ]
   },
   {
     "meal_type": "snack",
-    "name": "Бадеми и суво грозје",
-    "kcal": 280,
-    "protein": 8,
-    "carbs": 38,
-    "fat": 12,
-    "categories": ["vegetarian", "low_fat", "lactose_free"],
+    "name": "Ореви",
+    "kcal": 200,
+    "protein": 5,
+    "carbs": 4,
+    "fat": 20,
+    "categories": ["low_carbs", "vegetarian", "lactose_free"],
     "ingredients": [
-      { "name": "Бадеми", "amount": 40, "unit": "г" },
-      { "name": "Суво грозје", "amount": 50, "unit": "г" }
+      { "name": "Ореви", "amount": 30, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Кикирики",
+    "kcal": 170,
+    "protein": 8,
+    "carbs": 5,
+    "fat": 14,
+    "categories": ["low_carbs", "vegetarian", "lactose_free"],
+    "ingredients": [
+      { "name": "Кикирики", "amount": 30, "unit": "г" }
     ]
   },
   {
@@ -1190,705 +569,1656 @@
     "protein": 1,
     "carbs": 27,
     "fat": 0,
-    "categories": ["low_fat"],
+    "categories": ["low_fat", "vegetarian", "lactose_free"],
     "ingredients": [
       { "name": "Банана", "amount": 120, "unit": "г" }
     ]
   },
   {
     "meal_type": "snack",
-    "name": "Банана со путер од кикирики",
-    "kcal": 310,
-    "protein": 8,
-    "carbs": 42,
-    "fat": 14,
+    "name": "Овес (пред тренинг)",
+    "kcal": 190,
+    "protein": 6,
+    "carbs": 33,
+    "fat": 3,
     "categories": ["vegetarian", "low_fat"],
     "ingredients": [
-      { "name": "Банана", "amount": 120, "unit": "г" },
-      { "name": "Кикирики путер", "amount": 30, "unit": "г" }
+      { "name": "Овес", "amount": 50, "unit": "г" }
     ]
   },
   {
     "meal_type": "snack",
-    "name": "Боранија со пилешко",
-    "kcal": 340,
-    "protein": 32,
-    "carbs": 22,
-    "fat": 12,
-    "categories": ["high_protein", "low_fat", "low_carbs", "lactose_free"],
+    "name": "Варен ориз (пред тренинг)",
+    "kcal": 130,
+    "protein": 2,
+    "carbs": 28,
+    "fat": 0,
+    "categories": ["low_fat", "vegetarian", "lactose_free"],
     "ingredients": [
-      { "name": "Пилешки гради", "amount": 150, "unit": "г" },
-      { "name": "Боранија", "amount": 200, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 15, "unit": "мл" },
-      { "name": "Лук", "amount": 10, "unit": "г" }
+      { "name": "Варен ориз", "amount": 100, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Варени јајца",
-    "kcal": 180,
-    "protein": 14,
-    "carbs": 2,
-    "fat": 12,
-    "categories": ["vegetarian", "low_fat", "low_carbs", "lactose_free"],
+    "meal_type": "lunch",
+    "name": "Пилешки гради со зелена салата",
+    "kcal": 520,
+    "protein": 58,
+    "carbs": 8,
+    "fat": 28,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
     "ingredients": [
-      { "name": "Јајца", "amount": 2, "unit": "ком" }
+      { "name": "Пилешки гради", "amount": 250, "unit": "г" },
+      { "name": "Зелена салата", "amount": 220, "unit": "г" },
+      { "name": "Маслиново масло", "amount": 15, "unit": "мл" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Варени јајца (260 kcal)",
-    "kcal": 260,
-    "protein": 22,
-    "carbs": 2,
-    "fat": 18,
-    "categories": ["high_protein", "lactose_free"],
-    "ingredients": [
-      { "name": "Јајца", "amount": 3, "unit": "ком" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Говедска чорба со зеленчук",
-    "kcal": 360,
-    "protein": 28,
-    "carbs": 22,
-    "fat": 14,
-    "categories": ["high_protein", "low_fat", "low_carbs", "lactose_free"],
-    "ingredients": [
-      { "name": "Говедско месо", "amount": 150, "unit": "г" },
-      { "name": "Морков", "amount": 100, "unit": "г" },
-      { "name": "Целер", "amount": 80, "unit": "г" },
-      { "name": "Компири", "amount": 100, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Грчка салата со леб",
-    "kcal": 350,
-    "protein": 10,
-    "carbs": 36,
-    "fat": 18,
-    "categories": ["vegetarian"],
-    "ingredients": [
-      { "name": "Домат", "amount": 150, "unit": "г" },
-      { "name": "Краставица", "amount": 100, "unit": "г" },
-      { "name": "Бело сирење", "amount": 80, "unit": "г" },
-      { "name": "Маслинки", "amount": 40, "unit": "г" },
-      { "name": "Леб", "amount": 60, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Грчки јогурт со мед",
-    "kcal": 240,
-    "protein": 16,
-    "carbs": 26,
-    "fat": 6,
-    "categories": ["vegetarian", "low_fat", "low_carbs"],
-    "ingredients": [
-      { "name": "Грчки јогурт", "amount": 200, "unit": "г" },
-      { "name": "Мед", "amount": 20, "unit": "г" },
-      { "name": "Ореви", "amount": 15, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Грчки јогурт со ореви и мед",
-    "kcal": 360,
-    "protein": 20,
-    "carbs": 24,
-    "fat": 18,
-    "categories": ["high_protein", "vegetarian", "low_carbs"],
-    "ingredients": [
-      { "name": "Грчки јогурт", "amount": 250, "unit": "г" },
-      { "name": "Ореви", "amount": 30, "unit": "г" },
-      { "name": "Мед", "amount": 20, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Домат со моцарела",
-    "kcal": 280,
-    "protein": 14,
+    "meal_type": "lunch",
+    "name": "Мисиркино месо со тиквички на скара",
+    "kcal": 500,
+    "protein": 56,
     "carbs": 10,
-    "fat": 20,
-    "categories": ["vegetarian", "low_carbs"],
+    "fat": 24,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
     "ingredients": [
-      { "name": "Домат", "amount": 200, "unit": "г" },
-      { "name": "Моцарела", "amount": 120, "unit": "г" },
+      { "name": "Мисиркино месо", "amount": 250, "unit": "г" },
+      { "name": "Тиквички", "amount": 220, "unit": "г" },
       { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Едамаме со морска сол",
-    "kcal": 210,
-    "protein": 18,
-    "carbs": 14,
-    "fat": 8,
-    "categories": ["high_protein", "vegetarian", "low_fat", "low_carbs", "lactose_free"],
+    "meal_type": "lunch",
+    "name": "Пилешки стек со варен ориз и салата",
+    "kcal": 560,
+    "protein": 54,
+    "carbs": 34,
+    "fat": 18,
+    "categories": ["high_protein", "lactose_free"],
     "ingredients": [
-      { "name": "Едамаме", "amount": 180, "unit": "г" },
-      { "name": "Морска сол", "amount": 2, "unit": "г" }
+      { "name": "Пилешки стек", "amount": 250, "unit": "г" },
+      { "name": "Варен ориз", "amount": 100, "unit": "г" },
+      { "name": "Салата", "amount": 200, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Пилешко со зелка салата",
+    "kcal": 490,
+    "protein": 55,
+    "carbs": 9,
+    "fat": 24,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Пилешко", "amount": 250, "unit": "г" },
+      { "name": "Зелка салата", "amount": 220, "unit": "г" },
+      { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Мисиркино со варени компири",
+    "kcal": 520,
+    "protein": 52,
+    "carbs": 27,
+    "fat": 18,
+    "categories": ["high_protein", "lactose_free"],
+    "ingredients": [
+      { "name": "Мисиркино", "amount": 250, "unit": "г" },
+      { "name": "Варени компири", "amount": 120, "unit": "г" },
+      { "name": "Салата", "amount": 180, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Пилешки стек со брокула",
+    "kcal": 460,
+    "protein": 55,
+    "carbs": 12,
+    "fat": 20,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Пилешки стек", "amount": 250, "unit": "г" },
+      { "name": "Брокула", "amount": 220, "unit": "г" },
+      { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Туна со брокула",
+    "kcal": 420,
+    "protein": 56,
+    "carbs": 10,
+    "fat": 16,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Туна во вода", "amount": 240, "unit": "г" },
+      { "name": "Брокула", "amount": 220, "unit": "г" },
+      { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Скуша со карфиол",
+    "kcal": 470,
+    "protein": 40,
+    "carbs": 11,
+    "fat": 28,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Скуша", "amount": 200, "unit": "г" },
+      { "name": "Карфиол", "amount": 220, "unit": "г" },
+      { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Омлет од 5 јајца",
+    "kcal": 390,
+    "protein": 31,
+    "carbs": 2,
+    "fat": 27,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Јајца", "amount": 5, "unit": "ком" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Скуша со краставици",
+    "kcal": 430,
+    "protein": 39,
+    "carbs": 8,
+    "fat": 26,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Скуша", "amount": 200, "unit": "г" },
+      { "name": "Краставици", "amount": 200, "unit": "г" },
+      { "name": "Маслиново масло", "amount": 8, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Белки и јајца со интегрален леб",
+    "kcal": 430,
+    "protein": 42,
+    "carbs": 31,
+    "fat": 12,
+    "categories": ["high_protein", "low_fat"],
+    "ingredients": [
+      { "name": "Белки", "amount": 6, "unit": "ком" },
+      { "name": "Јајца", "amount": 2, "unit": "ком" },
+      { "name": "Интегрален леб", "amount": 80, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Овес со нискомаслено млеко",
+    "kcal": 510,
+    "protein": 24,
+    "carbs": 78,
+    "fat": 11,
+    "categories": ["vegetarian", "low_fat"],
+    "ingredients": [
+      { "name": "Овес", "amount": 100, "unit": "г" },
+      { "name": "Нискомаслено млеко", "amount": 300, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Белки и јајца со овес",
+    "kcal": 500,
+    "protein": 43,
+    "carbs": 54,
+    "fat": 12,
+    "categories": ["high_protein", "low_fat"],
+    "ingredients": [
+      { "name": "Белки", "amount": 6, "unit": "ком" },
+      { "name": "Јајца", "amount": 2, "unit": "ком" },
+      { "name": "Овес", "amount": 80, "unit": "г" }
     ]
   },
   {
     "meal_type": "snack",
-    "name": "Зеленчукова супа со леб",
-    "kcal": 280,
-    "protein": 8,
+    "name": "Јаболко со грчки јогурт",
+    "kcal": 240,
+    "protein": 20,
+    "carbs": 30,
+    "fat": 4,
+    "categories": ["high_protein", "low_fat", "vegetarian"],
+    "ingredients": [
+      { "name": "Јаболко", "amount": 150, "unit": "г" },
+      { "name": "Грчки јогурт", "amount": 200, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Мисиркино со варени тестенини",
+    "kcal": 600,
+    "protein": 56,
+    "carbs": 48,
+    "fat": 14,
+    "categories": ["high_protein", "low_fat", "lactose_free"],
+    "ingredients": [
+      { "name": "Мисиркино", "amount": 250, "unit": "г" },
+      { "name": "Варени тестенини", "amount": 150, "unit": "г" },
+      { "name": "Салата", "amount": 180, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Пилешко со варени компири",
+    "kcal": 570,
+    "protein": 55,
+    "carbs": 52,
+    "fat": 12,
+    "categories": ["high_protein", "low_fat", "lactose_free"],
+    "ingredients": [
+      { "name": "Пилешко", "amount": 250, "unit": "г" },
+      { "name": "Варени компири", "amount": 300, "unit": "г" },
+      { "name": "Салата", "amount": 200, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Туна со варени компири и зеленчук",
+    "kcal": 520,
+    "protein": 52,
     "carbs": 50,
+    "fat": 9,
+    "categories": ["high_protein", "low_fat", "lactose_free"],
+    "ingredients": [
+      { "name": "Туна во вода", "amount": 200, "unit": "г" },
+      { "name": "Варени компири", "amount": 250, "unit": "г" },
+      { "name": "Зеленчук", "amount": 200, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Туна со зеленчук",
+    "kcal": 300,
+    "protein": 46,
+    "carbs": 12,
+    "fat": 4,
+    "categories": ["high_protein", "low_fat", "lactose_free", "low_carbs"],
+    "ingredients": [
+      { "name": "Туна во вода", "amount": 200, "unit": "г" },
+      { "name": "Зеленчук", "amount": 220, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Овес со грчки јогурт, банана и цимет",
+    "kcal": 620,
+    "protein": 45,
+    "carbs": 82,
+    "fat": 13,
+    "categories": ["high_protein", "vegetarian", "low_fat"],
+    "ingredients": [
+      { "name": "Овес", "amount": 80, "unit": "г" },
+      { "name": "Грчки јогурт", "amount": 300, "unit": "г" },
+      { "name": "Банана", "amount": 120, "unit": "г" },
+      { "name": "Цимет", "amount": 2, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Јајца со интегрален леб и домат",
+    "kcal": 470,
+    "protein": 32,
+    "carbs": 34,
+    "fat": 22,
+    "categories": ["high_protein", "vegetarian"],
+    "ingredients": [
+      { "name": "Јајца", "amount": 4, "unit": "ком" },
+      { "name": "Интегрален леб", "amount": 80, "unit": "г" },
+      { "name": "Домат", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Варени јајца (4)",
+    "kcal": 320,
+    "protein": 28,
+    "carbs": 2,
+    "fat": 22,
+    "categories": ["high_protein", "vegetarian", "low_carbs", "low_fat", "lactose_free"],
+    "ingredients": [
+      { "name": "Јајца", "amount": 4, "unit": "ком" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Грчки јогурт (300 г)",
+    "kcal": 230,
+    "protein": 24,
+    "carbs": 12,
+    "fat": 8,
+    "categories": ["high_protein", "vegetarian", "low_fat"],
+    "ingredients": [
+      { "name": "Грчки јогурт", "amount": 300, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Протеински шејк (whey)",
+    "kcal": 170,
+    "protein": 24,
+    "carbs": 6,
+    "fat": 4,
+    "categories": ["high_protein", "vegetarian", "low_fat"],
+    "ingredients": [
+      { "name": "Whey протеин", "amount": 30, "unit": "г" },
+      { "name": "Вода", "amount": 250, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Леќа со ориз, салата и урда",
+    "kcal": 640,
+    "protein": 45,
+    "carbs": 86,
+    "fat": 12,
+    "categories": ["high_protein", "vegetarian", "low_fat"],
+    "ingredients": [
+      { "name": "Леќа", "amount": 200, "unit": "г" },
+      { "name": "Варен ориз", "amount": 150, "unit": "г" },
+      { "name": "Голема салата", "amount": 220, "unit": "г" },
+      { "name": "Урда", "amount": 100, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Грав со ориз и салата",
+    "kcal": 560,
+    "protein": 26,
+    "carbs": 96,
     "fat": 6,
     "categories": ["vegetarian", "low_fat", "lactose_free"],
     "ingredients": [
-      { "name": "Морков", "amount": 100, "unit": "г" },
-      { "name": "Целер", "amount": 80, "unit": "г" },
-      { "name": "Компири", "amount": 100, "unit": "г" },
-      { "name": "Кромид", "amount": 60, "unit": "г" },
-      { "name": "Леб", "amount": 60, "unit": "г" }
+      { "name": "Грав", "amount": 200, "unit": "г" },
+      { "name": "Варен ориз", "amount": 150, "unit": "г" },
+      { "name": "Салата", "amount": 200, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Тофу со компири и зеленчук",
+    "kcal": 520,
+    "protein": 34,
+    "carbs": 52,
+    "fat": 20,
+    "categories": ["high_protein", "vegetarian", "lactose_free"],
+    "ingredients": [
+      { "name": "Тофу", "amount": 200, "unit": "г" },
+      { "name": "Компири", "amount": 200, "unit": "г" },
+      { "name": "Зеленчук", "amount": 200, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Чили без месо (грав и леќа)",
+    "kcal": 510,
+    "protein": 28,
+    "carbs": 74,
+    "fat": 10,
+    "categories": ["vegetarian", "low_fat", "lactose_free"],
+    "ingredients": [
+      { "name": "Грав", "amount": 150, "unit": "г" },
+      { "name": "Леќа", "amount": 120, "unit": "г" },
+      { "name": "Зеленчук", "amount": 220, "unit": "г" },
+      { "name": "Доматен сос", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Тофу со ориз и зеленчук",
+    "kcal": 560,
+    "protein": 36,
+    "carbs": 64,
+    "fat": 18,
+    "categories": ["high_protein", "vegetarian", "lactose_free"],
+    "ingredients": [
+      { "name": "Тофу", "amount": 250, "unit": "г" },
+      { "name": "Варен ориз", "amount": 150, "unit": "г" },
+      { "name": "Зеленчук", "amount": 200, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Темпе со компири и салата",
+    "kcal": 540,
+    "protein": 36,
+    "carbs": 50,
+    "fat": 20,
+    "categories": ["high_protein", "vegetarian", "lactose_free"],
+    "ingredients": [
+      { "name": "Темпе", "amount": 200, "unit": "г" },
+      { "name": "Компири", "amount": 220, "unit": "г" },
+      { "name": "Салата", "amount": 200, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Омлет од белки и јајца со зеленчук",
+    "kcal": 330,
+    "protein": 35,
+    "carbs": 9,
+    "fat": 15,
+    "categories": ["high_protein", "vegetarian", "low_carbs", "low_fat"],
+    "ingredients": [
+      { "name": "Белки", "amount": 4, "unit": "ком" },
+      { "name": "Јајца", "amount": 2, "unit": "ком" },
+      { "name": "Зеленчук", "amount": 180, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Грчки јогурт со ореви",
+    "kcal": 380,
+    "protein": 25,
+    "carbs": 14,
+    "fat": 24,
+    "categories": ["high_protein", "vegetarian", "low_carbs"],
+    "ingredients": [
+      { "name": "Грчки јогурт", "amount": 250, "unit": "г" },
+      { "name": "Ореви", "amount": 30, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Сендвич со урда и зеленчук",
+    "kcal": 410,
+    "protein": 30,
+    "carbs": 44,
+    "fat": 12,
+    "categories": ["high_protein", "vegetarian", "low_fat"],
+    "ingredients": [
+      { "name": "Интегрален леб", "amount": 90, "unit": "г" },
+      { "name": "Урда", "amount": 180, "unit": "г" },
+      { "name": "Зеленчук", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Овес со lactose-free млеко, банана и whey isolate",
+    "kcal": 640,
+    "protein": 45,
+    "carbs": 82,
+    "fat": 11,
+    "categories": ["high_protein", "low_fat", "lactose_free"],
+    "ingredients": [
+      { "name": "Овес", "amount": 80, "unit": "г" },
+      { "name": "Lactose-free млеко", "amount": 300, "unit": "мл" },
+      { "name": "Банана", "amount": 120, "unit": "г" },
+      { "name": "Whey isolate", "amount": 30, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Омлет со јајца, печурки и пиперки",
+    "kcal": 430,
+    "protein": 33,
+    "carbs": 10,
+    "fat": 28,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Јајца", "amount": 5, "unit": "ком" },
+      { "name": "Печурки", "amount": 120, "unit": "г" },
+      { "name": "Пиперки", "amount": 100, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Јајца со интегрален леб и авокадо",
+    "kcal": 520,
+    "protein": 30,
+    "carbs": 36,
+    "fat": 28,
+    "categories": ["high_protein", "lactose_free"],
+    "ingredients": [
+      { "name": "Јајца", "amount": 4, "unit": "ком" },
+      { "name": "Интегрален леб", "amount": 80, "unit": "г" },
+      { "name": "Авокадо", "amount": 80, "unit": "г" }
     ]
   },
   {
     "meal_type": "snack",
-    "name": "Јаболко и бадеми",
-    "kcal": 240,
-    "protein": 6,
-    "carbs": 22,
-    "fat": 14,
-    "categories": ["lactose_free"],
+    "name": "Варени јајца (4) со зеленчук",
+    "kcal": 340,
+    "protein": 29,
+    "carbs": 8,
+    "fat": 22,
+    "categories": ["high_protein", "low_carbs", "lactose_free", "low_fat"],
     "ingredients": [
-      { "name": "Јаболко", "amount": 150, "unit": "г" },
+      { "name": "Јајца", "amount": 4, "unit": "ком" },
+      { "name": "Зеленчук", "amount": 150, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Whey isolate со вода",
+    "kcal": 120,
+    "protein": 26,
+    "carbs": 1,
+    "fat": 0,
+    "categories": ["high_protein", "low_fat", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Whey isolate", "amount": 30, "unit": "г" },
+      { "name": "Вода", "amount": 250, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Lactose-free грчки јогурт (300 г)",
+    "kcal": 220,
+    "protein": 24,
+    "carbs": 11,
+    "fat": 7,
+    "categories": ["high_protein", "low_fat", "lactose_free"],
+    "ingredients": [
+      { "name": "Lactose-free грчки јогурт", "amount": 300, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Lactose-free јогурт",
+    "kcal": 140,
+    "protein": 10,
+    "carbs": 12,
+    "fat": 5,
+    "categories": ["low_fat", "lactose_free"],
+    "ingredients": [
+      { "name": "Lactose-free јогурт", "amount": 250, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Овошје и бадеми",
+    "kcal": 260,
+    "protein": 7,
+    "carbs": 28,
+    "fat": 14,
+    "categories": ["lactose_free", "vegetarian"],
+    "ingredients": [
+      { "name": "Овошје", "amount": 150, "unit": "г" },
       { "name": "Бадеми", "amount": 30, "unit": "г" }
     ]
   },
   {
+    "meal_type": "lunch",
+    "name": "Пилешки гради со варен ориз и салата",
+    "kcal": 700,
+    "protein": 60,
+    "carbs": 62,
+    "fat": 20,
+    "categories": ["high_protein", "lactose_free"],
+    "ingredients": [
+      { "name": "Пилешки гради", "amount": 250, "unit": "г" },
+      { "name": "Варен ориз", "amount": 200, "unit": "г" },
+      { "name": "Салата", "amount": 200, "unit": "г" },
+      { "name": "Маслиново масло", "amount": 15, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Лосос или ослич со зеленчук",
+    "kcal": 430,
+    "protein": 42,
+    "carbs": 12,
+    "fat": 22,
+    "categories": ["high_protein", "lactose_free", "low_carbs"],
+    "ingredients": [
+      { "name": "Лосос или ослич", "amount": 200, "unit": "г" },
+      { "name": "Зеленчук", "amount": 220, "unit": "г" },
+      { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Телешко или мисиркино со салата",
+    "kcal": 480,
+    "protein": 50,
+    "carbs": 10,
+    "fat": 24,
+    "categories": ["high_protein", "lactose_free", "low_carbs"],
+    "ingredients": [
+      { "name": "Телешко или мисиркино", "amount": 250, "unit": "г" },
+      { "name": "Салата", "amount": 220, "unit": "г" },
+      { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Риба со салата (250 г)",
+    "kcal": 460,
+    "protein": 48,
+    "carbs": 9,
+    "fat": 24,
+    "categories": ["high_protein", "lactose_free", "low_carbs"],
+    "ingredients": [
+      { "name": "Риба", "amount": 250, "unit": "г" },
+      { "name": "Салата", "amount": 220, "unit": "г" },
+      { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Протеинско смути со овес, млеко и банана",
+    "kcal": 640,
+    "protein": 50,
+    "carbs": 82,
+    "fat": 10,
+    "categories": ["high_protein", "low_fat"],
+    "ingredients": [
+      { "name": "Овес", "amount": 80, "unit": "г" },
+      { "name": "Млеко (0-1.5%)", "amount": 300, "unit": "мл" },
+      { "name": "Whey isolate/concentrate low fat", "amount": 30, "unit": "г" },
+      { "name": "Банана", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
     "meal_type": "snack",
-    "name": "Јајца",
-    "kcal": 210,
-    "protein": 18,
-    "carbs": 1,
+    "name": "Урда low-fat со јаболко",
+    "kcal": 330,
+    "protein": 30,
+    "carbs": 24,
+    "fat": 8,
+    "categories": ["high_protein", "low_fat", "vegetarian"],
+    "ingredients": [
+      { "name": "Нискомаслена урда", "amount": 200, "unit": "г" },
+      { "name": "Јаболко", "amount": 150, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Пилешки гради со булгур и зеленчук",
+    "kcal": 690,
+    "protein": 60,
+    "carbs": 65,
+    "fat": 16,
+    "categories": ["high_protein", "low_fat", "lactose_free"],
+    "ingredients": [
+      { "name": "Пилешки гради", "amount": 250, "unit": "г" },
+      { "name": "Варен булгур", "amount": 200, "unit": "г" },
+      { "name": "Зеленчук", "amount": 220, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Бела риба со компир и салата",
+    "kcal": 560,
+    "protein": 45,
+    "carbs": 52,
+    "fat": 14,
+    "categories": ["high_protein", "low_fat", "lactose_free"],
+    "ingredients": [
+      { "name": "Бела риба (ослич/бакалар)", "amount": 250, "unit": "г" },
+      { "name": "Компир", "amount": 250, "unit": "г" },
+      { "name": "Салата", "amount": 200, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Белки и јајца со интегрален леб и домат",
+    "kcal": 430,
+    "protein": 40,
+    "carbs": 33,
+    "fat": 12,
+    "categories": ["high_protein", "low_fat"],
+    "ingredients": [
+      { "name": "Белки", "amount": 5, "unit": "ком" },
+      { "name": "Јајца", "amount": 2, "unit": "ком" },
+      { "name": "Интегрален леб", "amount": 80, "unit": "г" },
+      { "name": "Домат", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Грчки јогурт со бобинки",
+    "kcal": 270,
+    "protein": 35,
+    "carbs": 20,
+    "fat": 6,
+    "categories": ["high_protein", "low_fat", "vegetarian"],
+    "ingredients": [
+      { "name": "Грчки јогурт 0-2%", "amount": 300, "unit": "г" },
+      { "name": "Бобинки", "amount": 100, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Мисиркино филе со ориз и зеленчук",
+    "kcal": 650,
+    "protein": 55,
+    "carbs": 58,
+    "fat": 14,
+    "categories": ["high_protein", "low_fat", "lactose_free"],
+    "ingredients": [
+      { "name": "Мисиркино филе", "amount": 250, "unit": "г" },
+      { "name": "Варен ориз", "amount": 150, "unit": "г" },
+      { "name": "Зеленчук", "amount": 220, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Туна wrap со интегрална тортиља",
+    "kcal": 510,
+    "protein": 45,
+    "carbs": 42,
+    "fat": 14,
+    "categories": ["high_protein", "low_fat", "lactose_free"],
+    "ingredients": [
+      { "name": "Интегрална тортиља", "amount": 70, "unit": "г" },
+      { "name": "Туна во вода", "amount": 200, "unit": "г" },
+      { "name": "Зеленчук", "amount": 150, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Пилешко со сладок компир и салата",
+    "kcal": 700,
+    "protein": 60,
+    "carbs": 60,
+    "fat": 16,
+    "categories": ["high_protein", "low_fat", "lactose_free"],
+    "ingredients": [
+      { "name": "Пилешко", "amount": 250, "unit": "г" },
+      { "name": "Сладок компир", "amount": 250, "unit": "г" },
+      { "name": "Салата", "amount": 200, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Омлет од 6 белки и 2 јајца со зеленчук",
+    "kcal": 360,
+    "protein": 40,
+    "carbs": 9,
     "fat": 15,
-    "categories": ["low_carbs"],
+    "categories": ["high_protein", "low_fat", "low_carbs", "lactose_free"],
     "ingredients": [
-      { "name": "Јајца", "amount": 3, "unit": "ком" }
+      { "name": "Белки", "amount": 6, "unit": "ком" },
+      { "name": "Јајца", "amount": 2, "unit": "ком" },
+      { "name": "Зеленчук", "amount": 180, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Протеински палачинки од овес и белки",
+    "kcal": 560,
+    "protein": 50,
+    "carbs": 62,
+    "fat": 10,
+    "categories": ["high_protein", "low_fat"],
+    "ingredients": [
+      { "name": "Овес", "amount": 80, "unit": "г" },
+      { "name": "Белки", "amount": 4, "unit": "ком" },
+      { "name": "Банана", "amount": 100, "unit": "г" },
+      { "name": "Whey протеин", "amount": 25, "unit": "г" }
     ]
   },
   {
     "meal_type": "snack",
-    "name": "Јогурт",
-    "kcal": 180,
-    "protein": 10,
-    "carbs": 15,
-    "fat": 7,
-    "categories": ["vegetarian", "low_fat"],
+    "name": "Нискомаслен јогурт со овошје",
+    "kcal": 240,
+    "protein": 25,
+    "carbs": 28,
+    "fat": 3,
+    "categories": ["high_protein", "low_fat", "vegetarian"],
     "ingredients": [
-      { "name": "Јогурт", "amount": 250, "unit": "мл" }
+      { "name": "Нискомаслен јогурт", "amount": 250, "unit": "мл" },
+      { "name": "Овошје", "amount": 150, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Јогурт со ленено семе",
-    "kcal": 210,
-    "protein": 15,
-    "carbs": 16,
+    "meal_type": "lunch",
+    "name": "Пилешко со тестенини и доматен сос",
+    "kcal": 690,
+    "protein": 55,
+    "carbs": 72,
+    "fat": 14,
+    "categories": ["high_protein", "low_fat", "lactose_free"],
+    "ingredients": [
+      { "name": "Пилешко", "amount": 250, "unit": "г" },
+      { "name": "Тестенини", "amount": 200, "unit": "г" },
+      { "name": "Доматен сос", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Ракчиња со ориз и зеленчук",
+    "kcal": 500,
+    "protein": 45,
+    "carbs": 38,
+    "fat": 12,
+    "categories": ["high_protein", "low_fat", "lactose_free"],
+    "ingredients": [
+      { "name": "Ракчиња", "amount": 250, "unit": "г" },
+      { "name": "Варен ориз", "amount": 100, "unit": "г" },
+      { "name": "Зеленчук", "amount": 200, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Овес со whey и нискомаслено млеко",
+    "kcal": 590,
+    "protein": 55,
+    "carbs": 68,
     "fat": 9,
-    "categories": ["vegetarian", "low_fat", "low_carbs"],
+    "categories": ["high_protein", "low_fat"],
     "ingredients": [
-      { "name": "Јогурт", "amount": 220, "unit": "г" },
-      { "name": "Ленено семе", "amount": 12, "unit": "г" },
+      { "name": "Овес", "amount": 100, "unit": "г" },
+      { "name": "Млеко 0-1.5%", "amount": 250, "unit": "мл" },
+      { "name": "Whey протеин", "amount": 30, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Пилешка салата со јогурт дресинг",
+    "kcal": 430,
+    "protein": 45,
+    "carbs": 12,
+    "fat": 18,
+    "categories": ["high_protein", "low_fat"],
+    "ingredients": [
+      { "name": "Пилешко", "amount": 200, "unit": "г" },
+      { "name": "Зеленчук", "amount": 250, "unit": "г" },
+      { "name": "Нискомаслен јогурт", "amount": 50, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Сендвич со мисиркина шунка и зеленчук",
+    "kcal": 430,
+    "protein": 40,
+    "carbs": 36,
+    "fat": 10,
+    "categories": ["high_protein", "low_fat"],
+    "ingredients": [
+      { "name": "Интегрален леб", "amount": 90, "unit": "г" },
+      { "name": "Мисиркина шунка (low fat)", "amount": 200, "unit": "г" },
+      { "name": "Зеленчук", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Whey шејк со банана",
+    "kcal": 240,
+    "protein": 30,
+    "carbs": 29,
+    "fat": 2,
+    "categories": ["high_protein", "low_fat"],
+    "ingredients": [
+      { "name": "Whey протеин", "amount": 30, "unit": "г" },
+      { "name": "Банана", "amount": 120, "unit": "г" },
+      { "name": "Вода", "amount": 250, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Телешко посно со компири и салата",
+    "kcal": 680,
+    "protein": 55,
+    "carbs": 52,
+    "fat": 22,
+    "categories": ["high_protein", "lactose_free"],
+    "ingredients": [
+      { "name": "Телешко посно месо", "amount": 250, "unit": "г" },
+      { "name": "Компири", "amount": 250, "unit": "г" },
+      { "name": "Салата", "amount": 200, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "French toast со белки и интегрален леб",
+    "kcal": 430,
+    "protein": 40,
+    "carbs": 42,
+    "fat": 10,
+    "categories": ["high_protein", "low_fat"],
+    "ingredients": [
+      { "name": "Интегрален леб", "amount": 105, "unit": "г" },
+      { "name": "Белки", "amount": 5, "unit": "ком" },
+      { "name": "Цимет", "amount": 2, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Protein overnight oats со грчки јогурт и whey",
+    "kcal": 610,
+    "protein": 55,
+    "carbs": 70,
+    "fat": 10,
+    "categories": ["high_protein", "vegetarian", "low_fat"],
+    "ingredients": [
+      { "name": "Овес", "amount": 80, "unit": "г" },
+      { "name": "Грчки јогурт", "amount": 250, "unit": "г" },
+      { "name": "Whey protein", "amount": 30, "unit": "г" },
+      { "name": "Боровинки/јагоди", "amount": 100, "unit": "г" },
       { "name": "Цимет", "amount": 2, "unit": "г" }
     ]
   },
   {
     "meal_type": "snack",
-    "name": "Јогурт со овошје и гранола",
-    "kcal": 320,
-    "protein": 14,
-    "carbs": 52,
-    "fat": 6,
-    "categories": ["vegetarian", "low_fat"],
+    "name": "Варени јајца (3) со јаболко",
+    "kcal": 340,
+    "protein": 25,
+    "carbs": 22,
+    "fat": 18,
+    "categories": ["high_protein", "vegetarian", "low_fat"],
     "ingredients": [
-      { "name": "Јогурт", "amount": 200, "unit": "г" },
-      { "name": "Банана", "amount": 100, "unit": "г" },
-      { "name": "Гранола", "amount": 40, "unit": "г" }
+      { "name": "Јајца", "amount": 3, "unit": "ком" },
+      { "name": "Јаболко", "amount": 150, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Тофу тортилја со јогурт сос",
+    "kcal": 520,
+    "protein": 40,
+    "carbs": 40,
+    "fat": 20,
+    "categories": ["high_protein", "vegetarian"],
+    "ingredients": [
+      { "name": "Интегрална тортиља", "amount": 70, "unit": "г" },
+      { "name": "Тофу", "amount": 200, "unit": "г" },
+      { "name": "Зеленчук", "amount": 180, "unit": "г" },
+      { "name": "Јогурт сос", "amount": 40, "unit": "г" }
     ]
   },
   {
     "meal_type": "snack",
-    "name": "Качамак со урда",
-    "kcal": 360,
-    "protein": 14,
-    "carbs": 50,
+    "name": "Урда со краставица (250 г)",
+    "kcal": 290,
+    "protein": 35,
+    "carbs": 10,
+    "fat": 10,
+    "categories": ["high_protein", "vegetarian", "low_fat", "low_carbs"],
+    "ingredients": [
+      { "name": "Урда", "amount": 250, "unit": "г" },
+      { "name": "Краставица", "amount": 150, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Chickpea curry со ориз",
+    "kcal": 610,
+    "protein": 40,
+    "carbs": 86,
     "fat": 12,
-    "categories": ["vegetarian", "low_fat"],
+    "categories": ["high_protein", "vegetarian", "low_fat", "lactose_free"],
     "ingredients": [
-      { "name": "Кукурузно брашно", "amount": 100, "unit": "г" },
-      { "name": "Вода", "amount": 300, "unit": "мл" },
-      { "name": "Урда", "amount": 100, "unit": "г" },
-      { "name": "Масло", "amount": 10, "unit": "мл" }
+      { "name": "Наут", "amount": 250, "unit": "г" },
+      { "name": "Ориз", "amount": 150, "unit": "г" },
+      { "name": "Зеленчук", "amount": 200, "unit": "г" },
+      { "name": "Кари сос", "amount": 80, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Каша со боровинки",
-    "kcal": 280,
-    "protein": 8,
-    "carbs": 52,
-    "fat": 4,
-    "categories": ["vegetarian", "low_fat"],
-    "ingredients": [
-      { "name": "Овесна каша", "amount": 70, "unit": "г" },
-      { "name": "Млеко", "amount": 200, "unit": "мл" },
-      { "name": "Боровинки", "amount": 80, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Краставица со урда",
-    "kcal": 160,
-    "protein": 10,
+    "meal_type": "dinner",
+    "name": "Омлет со печурки и спанаќ",
+    "kcal": 430,
+    "protein": 40,
     "carbs": 8,
-    "fat": 8,
-    "categories": ["vegetarian", "low_fat", "low_carbs"],
+    "fat": 26,
+    "categories": ["high_protein", "vegetarian", "low_carbs"],
     "ingredients": [
-      { "name": "Краставица", "amount": 200, "unit": "г" },
+      { "name": "Јајца", "amount": 5, "unit": "ком" },
+      { "name": "Печурки", "amount": 120, "unit": "г" },
+      { "name": "Спанаќ", "amount": 100, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Greek yogurt bowl со ореви и овошје",
+    "kcal": 430,
+    "protein": 40,
+    "carbs": 24,
+    "fat": 20,
+    "categories": ["high_protein", "vegetarian"],
+    "ingredients": [
+      { "name": "Грчки јогурт", "amount": 300, "unit": "г" },
+      { "name": "Ореви", "amount": 15, "unit": "г" },
+      { "name": "Овошје", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Интегрални тестенини со тофу и доматен сос",
+    "kcal": 650,
+    "protein": 50,
+    "carbs": 74,
+    "fat": 16,
+    "categories": ["high_protein", "vegetarian", "low_fat", "lactose_free"],
+    "ingredients": [
+      { "name": "Интегрални тестенини", "amount": 100, "unit": "г" },
+      { "name": "Тофу", "amount": 200, "unit": "г" },
+      { "name": "Доматен сос", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Bean burrito bowl со урда",
+    "kcal": 640,
+    "protein": 50,
+    "carbs": 84,
+    "fat": 14,
+    "categories": ["high_protein", "vegetarian", "low_fat"],
+    "ingredients": [
+      { "name": "Грав", "amount": 200, "unit": "г" },
+      { "name": "Ориз", "amount": 150, "unit": "г" },
+      { "name": "Зеленчук", "amount": 180, "unit": "г" },
       { "name": "Урда", "amount": 100, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Ладна салата со мисиркино",
-    "kcal": 270,
-    "protein": 30,
-    "carbs": 9,
-    "fat": 12,
-    "categories": ["high_protein", "low_fat", "low_carbs", "lactose_free"],
-    "ingredients": [
-      { "name": "Мисиркино филе", "amount": 130, "unit": "г" },
-      { "name": "Зелена салата", "amount": 120, "unit": "г" },
-      { "name": "Пиперка", "amount": 70, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Мешани семки и ореви",
-    "kcal": 350,
-    "protein": 10,
-    "carbs": 18,
-    "fat": 26,
-    "categories": ["vegetarian", "low_carbs", "lactose_free"],
-    "ingredients": [
-      { "name": "Ореви", "amount": 40, "unit": "г" },
-      { "name": "Бадеми", "amount": 30, "unit": "г" },
-      { "name": "Суво грозје", "amount": 30, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Мусли со млеко",
-    "kcal": 400,
-    "protein": 14,
-    "carbs": 66,
-    "fat": 9,
-    "categories": ["vegetarian", "low_fat"],
-    "ingredients": [
-      { "name": "Мусли", "amount": 80, "unit": "г" },
-      { "name": "Млеко", "amount": 250, "unit": "мл" },
-      { "name": "Мед", "amount": 15, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Овесна каша со мед",
-    "kcal": 380,
-    "protein": 12,
-    "carbs": 65,
-    "fat": 8,
-    "categories": ["vegetarian", "low_fat"],
-    "ingredients": [
-      { "name": "Овесна каша", "amount": 80, "unit": "г" },
-      { "name": "Млеко", "amount": 200, "unit": "мл" },
-      { "name": "Мед", "amount": 25, "unit": "г" },
-      { "name": "Банана", "amount": 80, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Овошје и ореви",
-    "kcal": 280,
-    "protein": 6,
-    "carbs": 30,
-    "fat": 15,
-    "categories": ["vegetarian"],
-    "ingredients": [
-      { "name": "Јаболко", "amount": 150, "unit": "г" },
-      { "name": "Ореви", "amount": 30, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Овошна салата",
-    "kcal": 190,
-    "protein": 2,
-    "carbs": 44,
-    "fat": 1,
-    "categories": ["vegetarian", "low_fat", "lactose_free"],
-    "ingredients": [
-      { "name": "Јаболко", "amount": 200, "unit": "г" },
-      { "name": "Банана", "amount": 100, "unit": "г" },
-      { "name": "Портокал", "amount": 100, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Омлет со зеленчук",
-    "kcal": 320,
-    "protein": 22,
-    "carbs": 8,
-    "fat": 22,
+    "meal_type": "dinner",
+    "name": "Тофу scramble со зеленчук",
+    "kcal": 470,
+    "protein": 45,
+    "carbs": 16,
+    "fat": 24,
     "categories": ["high_protein", "vegetarian", "low_carbs", "lactose_free"],
     "ingredients": [
-      { "name": "Јајца", "amount": 3, "unit": "ком" },
-      { "name": "Пиперка", "amount": 80, "unit": "г" },
-      { "name": "Кромид", "amount": 50, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
+      { "name": "Тофу", "amount": 250, "unit": "г" },
+      { "name": "Зеленчук", "amount": 220, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Ориз со зеленчук",
-    "kcal": 320,
-    "protein": 8,
-    "carbs": 62,
-    "fat": 4,
-    "categories": ["vegetarian", "low_fat", "lactose_free"],
-    "ingredients": [
-      { "name": "Ориз", "amount": 100, "unit": "г" },
-      { "name": "Морков", "amount": 100, "unit": "г" },
-      { "name": "Тиквица", "amount": 100, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Печен наут со зачини",
-    "kcal": 240,
-    "protein": 11,
-    "carbs": 30,
-    "fat": 8,
-    "categories": ["vegetarian", "low_fat", "lactose_free"],
-    "ingredients": [
-      { "name": "Наут", "amount": 130, "unit": "г" },
-      { "name": "Паприка", "amount": 3, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 6, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Печена тиква со таан",
-    "kcal": 270,
-    "protein": 7,
-    "carbs": 34,
-    "fat": 12,
-    "categories": ["vegetarian", "lactose_free"],
-    "ingredients": [
-      { "name": "Тиква", "amount": 220, "unit": "г" },
-      { "name": "Таан", "amount": 25, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Пилешка салата",
-    "kcal": 360,
-    "protein": 34,
-    "carbs": 16,
+    "meal_type": "breakfast",
+    "name": "Сендвич со јајца, урда и зеленчук",
+    "kcal": 520,
+    "protein": 45,
+    "carbs": 40,
     "fat": 18,
-    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "categories": ["high_protein", "vegetarian"],
     "ingredients": [
-      { "name": "Пилешки гради (варени)", "amount": 150, "unit": "г" },
-      { "name": "Зелена салата", "amount": 100, "unit": "г" },
-      { "name": "Домат", "amount": 80, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 15, "unit": "мл" }
+      { "name": "Интегрален леб", "amount": 90, "unit": "г" },
+      { "name": "Јајца", "amount": 2, "unit": "ком" },
+      { "name": "Урда", "amount": 150, "unit": "г" },
+      { "name": "Зеленчук", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Cottage cheese bowl со овошје и цимет",
+    "kcal": 360,
+    "protein": 35,
+    "carbs": 30,
+    "fat": 9,
+    "categories": ["high_protein", "vegetarian", "low_fat"],
+    "ingredients": [
+      { "name": "Урда", "amount": 250, "unit": "г" },
+      { "name": "Овошје", "amount": 120, "unit": "г" },
+      { "name": "Цимет", "amount": 2, "unit": "г" }
     ]
   },
   {
     "meal_type": "snack",
-    "name": "Пилешки ролнички со краставица",
-    "kcal": 240,
-    "protein": 26,
-    "carbs": 6,
-    "fat": 11,
-    "categories": ["high_protein", "low_fat", "low_carbs", "lactose_free"],
-    "ingredients": [
-      { "name": "Пилешки гради", "amount": 120, "unit": "г" },
-      { "name": "Краставица", "amount": 120, "unit": "г" },
-      { "name": "Сенф", "amount": 10, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Протеински јогурт",
-    "kcal": 280,
+    "name": "Јајца со овошје",
+    "kcal": 300,
     "protein": 25,
     "carbs": 20,
-    "fat": 5,
-    "categories": ["high_protein"],
+    "fat": 14,
+    "categories": ["high_protein", "vegetarian"],
     "ingredients": [
-      { "name": "Протеински јогурт", "amount": 200, "unit": "г" },
-      { "name": "Банана", "amount": 80, "unit": "г" }
+      { "name": "Јајца", "amount": 3, "unit": "ком" },
+      { "name": "Овошје", "amount": 150, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Протеински пудинг со какао",
-    "kcal": 220,
-    "protein": 23,
-    "carbs": 15,
-    "fat": 7,
-    "categories": ["high_protein", "vegetarian", "low_fat", "low_carbs"],
+    "meal_type": "breakfast",
+    "name": "Протеински овес преку ноќ (без лактоза)",
+    "kcal": 650,
+    "protein": 48,
+    "carbs": 78,
+    "fat": 14,
+    "categories": ["high_protein", "low_fat", "lactose_free"],
     "ingredients": [
-      { "name": "Протеински пудинг", "amount": 180, "unit": "г" },
-      { "name": "Какао", "amount": 6, "unit": "г" }
+      { "name": "Овес", "amount": 80, "unit": "г" },
+      { "name": "Безлактозно млеко", "amount": 250, "unit": "мл" },
+      { "name": "Протеин изолат", "amount": 30, "unit": "г" },
+      { "name": "Банана", "amount": 120, "unit": "г" },
+      { "name": "Цимет", "amount": 2, "unit": "г" },
+      { "name": "Чиа семе", "amount": 10, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Протеински шејк",
-    "kcal": 220,
-    "protein": 24,
-    "carbs": 20,
-    "fat": 4,
-    "categories": ["high_protein", "vegetarian", "low_fat", "low_carbs"],
+    "meal_type": "breakfast",
+    "name": "Појадок чинија со јајца и авокадо",
+    "kcal": 540,
+    "protein": 35,
+    "carbs": 26,
+    "fat": 34,
+    "categories": ["high_protein", "lactose_free"],
     "ingredients": [
-      { "name": "Протеин во прав", "amount": 30, "unit": "г" },
-      { "name": "Млеко", "amount": 250, "unit": "мл" },
-      { "name": "Банана", "amount": 50, "unit": "г" }
+      { "name": "Јајца", "amount": 4, "unit": "ком" },
+      { "name": "Авокадо", "amount": 80, "unit": "г" },
+      { "name": "Домати", "amount": 120, "unit": "г" },
+      { "name": "Краставица", "amount": 120, "unit": "г" },
+      { "name": "Интегрален леб", "amount": 40, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Салата од наут и домат",
-    "kcal": 280,
-    "protein": 12,
+    "meal_type": "breakfast",
+    "name": "Појадок тортиља со пилешко",
+    "kcal": 560,
+    "protein": 55,
     "carbs": 34,
-    "fat": 10,
-    "categories": ["vegetarian", "low_fat", "lactose_free"],
+    "fat": 20,
+    "categories": ["high_protein", "lactose_free"],
     "ingredients": [
-      { "name": "Наут", "amount": 140, "unit": "г" },
-      { "name": "Домат", "amount": 120, "unit": "г" },
-      { "name": "Кромид", "amount": 40, "unit": "г" },
+      { "name": "Интегрална тортиља", "amount": 70, "unit": "г" },
+      { "name": "Пилешки гради", "amount": 150, "unit": "г" },
+      { "name": "Јајца", "amount": 2, "unit": "ком" },
+      { "name": "Зеленчук", "amount": 120, "unit": "г" },
+      { "name": "Лут сос", "amount": 10, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Протеинско смути (без лактоза)",
+    "kcal": 520,
+    "protein": 50,
+    "carbs": 56,
+    "fat": 7,
+    "categories": ["high_protein", "low_fat", "lactose_free"],
+    "ingredients": [
+      { "name": "Безлактозно млеко", "amount": 300, "unit": "мл" },
+      { "name": "Протеин изолат", "amount": 30, "unit": "г" },
+      { "name": "Овес", "amount": 50, "unit": "г" },
+      { "name": "Банана", "amount": 120, "unit": "г" },
+      { "name": "Лед", "amount": 100, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Тост за појадок со туна",
+    "kcal": 500,
+    "protein": 40,
+    "carbs": 36,
+    "fat": 18,
+    "categories": ["high_protein", "lactose_free"],
+    "ingredients": [
+      { "name": "Интегрален леб", "amount": 80, "unit": "г" },
+      { "name": "Туна во вода", "amount": 150, "unit": "г" },
+      { "name": "Краставица", "amount": 100, "unit": "г" },
+      { "name": "Лимон", "amount": 20, "unit": "г" },
       { "name": "Маслиново масло", "amount": 8, "unit": "мл" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Салата со туна",
-    "kcal": 310,
-    "protein": 28,
+    "meal_type": "breakfast",
+    "name": "Високопротеински мафини со јајца",
+    "kcal": 430,
+    "protein": 40,
+    "carbs": 8,
+    "fat": 24,
+    "categories": ["high_protein", "lactose_free", "low_carbs"],
+    "ingredients": [
+      { "name": "Јајца", "amount": 4, "unit": "ком" },
+      { "name": "Белки", "amount": 80, "unit": "г" },
+      { "name": "Печурки", "amount": 80, "unit": "г" },
+      { "name": "Спанаќ", "amount": 60, "unit": "г" },
+      { "name": "Пиперки", "amount": 60, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Протеински овес со путер од кикирики",
+    "kcal": 670,
+    "protein": 45,
+    "carbs": 82,
+    "fat": 18,
+    "categories": ["high_protein", "lactose_free"],
+    "ingredients": [
+      { "name": "Овес", "amount": 80, "unit": "г" },
+      { "name": "Безлактозно млеко", "amount": 250, "unit": "мл" },
+      { "name": "Протеин изолат", "amount": 30, "unit": "г" },
+      { "name": "Путер од кикирики", "amount": 15, "unit": "г" },
+      { "name": "Банана", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Појадок со чаден лосос",
+    "kcal": 520,
+    "protein": 45,
+    "carbs": 30,
+    "fat": 24,
+    "categories": ["high_protein", "lactose_free"],
+    "ingredients": [
+      { "name": "Чаден лосос", "amount": 150, "unit": "г" },
+      { "name": "Јајца", "amount": 2, "unit": "ком" },
+      { "name": "Интегрален леб", "amount": 70, "unit": "г" },
+      { "name": "Краставица", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Сендвич за појадок со мисиркина шунка",
+    "kcal": 510,
+    "protein": 45,
+    "carbs": 34,
+    "fat": 18,
+    "categories": ["high_protein", "low_fat"],
+    "ingredients": [
+      { "name": "Интегрален леб", "amount": 80, "unit": "г" },
+      { "name": "Мисиркина шунка (нискомаслена)", "amount": 150, "unit": "г" },
+      { "name": "Јајца", "amount": 2, "unit": "ком" },
+      { "name": "Зеленчук", "amount": 100, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Тофу кајгана (вегански појадок)",
+    "kcal": 440,
+    "protein": 38,
     "carbs": 14,
-    "fat": 16,
-    "categories": ["high_protein", "low_fat", "low_carbs", "lactose_free"],
+    "fat": 24,
+    "categories": ["high_protein", "vegetarian", "lactose_free", "low_carbs"],
     "ingredients": [
-      { "name": "Туна (конзерва)", "amount": 120, "unit": "г" },
-      { "name": "Зелена салата", "amount": 100, "unit": "г" },
-      { "name": "Краставица", "amount": 80, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 15, "unit": "мл" }
+      { "name": "Тофу", "amount": 250, "unit": "г" },
+      { "name": "Куркума", "amount": 3, "unit": "г" },
+      { "name": "Печурки", "amount": 100, "unit": "г" },
+      { "name": "Спанаќ", "amount": 80, "unit": "г" },
+      { "name": "Пиперки", "amount": 80, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Смути",
-    "kcal": 220,
-    "protein": 8,
-    "carbs": 35,
-    "fat": 5,
-    "categories": ["vegetarian"],
+    "meal_type": "breakfast",
+    "name": "Протеински палачинки без лактоза",
+    "kcal": 570,
+    "protein": 50,
+    "carbs": 62,
+    "fat": 12,
+    "categories": ["high_protein", "low_fat", "lactose_free"],
     "ingredients": [
-      { "name": "Банана", "amount": 100, "unit": "г" },
-      { "name": "Млеко", "amount": 200, "unit": "мл" }
+      { "name": "Овес (измелен)", "amount": 80, "unit": "г" },
+      { "name": "Белки", "amount": 3, "unit": "ком" },
+      { "name": "Јајце", "amount": 1, "unit": "ком" },
+      { "name": "Протеин изолат", "amount": 30, "unit": "г" },
+      { "name": "Банана", "amount": 100, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Смути со јагода",
-    "kcal": 220,
-    "protein": 8,
-    "carbs": 38,
-    "fat": 4,
-    "categories": ["vegetarian", "low_fat"],
+    "meal_type": "breakfast",
+    "name": "Појадок со телешко и јајца",
+    "kcal": 500,
+    "protein": 50,
+    "carbs": 8,
+    "fat": 30,
+    "categories": ["high_protein", "lactose_free", "low_carbs"],
     "ingredients": [
-      { "name": "Јагода", "amount": 200, "unit": "г" },
-      { "name": "Јогурт", "amount": 150, "unit": "г" },
-      { "name": "Мед", "amount": 15, "unit": "г" }
+      { "name": "Посно мелено телешко", "amount": 140, "unit": "г" },
+      { "name": "Јајца", "amount": 2, "unit": "ком" },
+      { "name": "Зеленчук", "amount": 120, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Тост со хумус и зеленчук",
-    "kcal": 350,
-    "protein": 12,
-    "carbs": 48,
-    "fat": 14,
-    "categories": ["vegetarian", "low_fat", "lactose_free"],
+    "meal_type": "breakfast",
+    "name": "Протеински пудинг со чиа",
+    "kcal": 390,
+    "protein": 38,
+    "carbs": 24,
+    "fat": 12,
+    "categories": ["high_protein", "low_fat", "lactose_free", "vegetarian"],
     "ingredients": [
-      { "name": "Интегрален леб", "amount": 100, "unit": "г" },
-      { "name": "Хумус", "amount": 80, "unit": "г" },
-      { "name": "Домат", "amount": 60, "unit": "г" },
-      { "name": "Краставица", "amount": 60, "unit": "г" }
+      { "name": "Безлактозно млеко", "amount": 250, "unit": "мл" },
+      { "name": "Протеин изолат", "amount": 30, "unit": "г" },
+      { "name": "Чиа семе", "amount": 25, "unit": "г" },
+      { "name": "Бобинки", "amount": 80, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Тофу со сусам и соја",
-    "kcal": 260,
-    "protein": 20,
-    "carbs": 10,
-    "fat": 15,
-    "categories": ["high_protein", "vegetarian", "low_carbs", "lactose_free"],
-    "ingredients": [
-      { "name": "Тофу", "amount": 170, "unit": "г" },
-      { "name": "Сусам", "amount": 8, "unit": "г" },
-      { "name": "Соја сос", "amount": 10, "unit": "мл" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Туна",
-    "kcal": 180,
-    "protein": 28,
-    "carbs": 0,
-    "fat": 6,
-    "categories": ["lactose_free"],
-    "ingredients": [
-      { "name": "Туна", "amount": 100, "unit": "г" }
-    ]
-  },
-  {
-    "meal_type": "snack",
-    "name": "Туна со авокадо",
-    "kcal": 350,
-    "protein": 28,
-    "carbs": 12,
+    "meal_type": "breakfast",
+    "name": "Подготвено бурито за појадок",
+    "kcal": 580,
+    "protein": 55,
+    "carbs": 36,
     "fat": 22,
+    "categories": ["high_protein", "lactose_free"],
+    "ingredients": [
+      { "name": "Интегрална тортиља", "amount": 70, "unit": "г" },
+      { "name": "Јајца", "amount": 3, "unit": "ком" },
+      { "name": "Пилешко", "amount": 100, "unit": "г" },
+      { "name": "Пиперки", "amount": 80, "unit": "г" },
+      { "name": "Салса", "amount": 30, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Солен овес со пилешко",
+    "kcal": 520,
+    "protein": 45,
+    "carbs": 42,
+    "fat": 16,
+    "categories": ["high_protein", "lactose_free"],
+    "ingredients": [
+      { "name": "Овес", "amount": 60, "unit": "г" },
+      { "name": "Пилешко", "amount": 150, "unit": "г" },
+      { "name": "Јајце", "amount": 1, "unit": "ком" },
+      { "name": "Зеленчук", "amount": 120, "unit": "г" },
+      { "name": "Зачини", "amount": 5, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Медитеранска чинија со јајца",
+    "kcal": 540,
+    "protein": 35,
+    "carbs": 14,
+    "fat": 38,
+    "categories": ["high_protein", "low_carbs", "vegetarian", "lactose_free"],
+    "ingredients": [
+      { "name": "Јајца", "amount": 4, "unit": "ком" },
+      { "name": "Маслинки", "amount": 50, "unit": "г" },
+      { "name": "Домат", "amount": 100, "unit": "г" },
+      { "name": "Краставица", "amount": 100, "unit": "г" },
+      { "name": "Авокадо", "amount": 70, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Пилешки гради со зеленчук на тава",
+    "kcal": 620,
+    "protein": 60,
+    "carbs": 16,
+    "fat": 32,
     "categories": ["high_protein", "low_carbs", "lactose_free"],
     "ingredients": [
-      { "name": "Туна (конзерва)", "amount": 120, "unit": "г" },
-      { "name": "Авокадо", "amount": 100, "unit": "г" },
+      { "name": "Пилешки гради", "amount": 250, "unit": "г" },
+      { "name": "Тиквички", "amount": 120, "unit": "г" },
+      { "name": "Пиперки", "amount": 100, "unit": "г" },
+      { "name": "Печурки", "amount": 100, "unit": "г" },
+      { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Бела риба со брокула и зелена салата",
+    "kcal": 470,
+    "protein": 50,
+    "carbs": 12,
+    "fat": 18,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Бела риба", "amount": 250, "unit": "г" },
+      { "name": "Брокула", "amount": 150, "unit": "г" },
+      { "name": "Зелена салата", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Протеински чиа пудинг",
+    "kcal": 430,
+    "protein": 40,
+    "carbs": 18,
+    "fat": 22,
+    "categories": ["high_protein", "low_carbs", "vegetarian"],
+    "ingredients": [
+      { "name": "Млеко без лактоза", "amount": 250, "unit": "мл" },
+      { "name": "Протеин изолат", "amount": 30, "unit": "г" },
+      { "name": "Чиа семе", "amount": 30, "unit": "г" },
+      { "name": "Бобинки", "amount": 60, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Посно телешко со зелка и печурки",
+    "kcal": 560,
+    "protein": 60,
+    "carbs": 14,
+    "fat": 24,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Посно телешко месо", "amount": 250, "unit": "г" },
+      { "name": "Зелка салата", "amount": 150, "unit": "г" },
+      { "name": "Печурки", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Салата со туна и авокадо",
+    "kcal": 500,
+    "protein": 45,
+    "carbs": 10,
+    "fat": 28,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Туна во вода", "amount": 200, "unit": "г" },
+      { "name": "Авокадо", "amount": 70, "unit": "г" },
+      { "name": "Марула", "amount": 80, "unit": "г" },
+      { "name": "Краставица", "amount": 80, "unit": "г" },
+      { "name": "Домат", "amount": 80, "unit": "г" },
+      { "name": "Лимон", "amount": 20, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Омлет со зеленчук",
+    "kcal": 460,
+    "protein": 45,
+    "carbs": 8,
+    "fat": 28,
+    "categories": ["high_protein", "low_carbs", "vegetarian", "lactose_free"],
+    "ingredients": [
+      { "name": "Јајца", "amount": 5, "unit": "ком" },
+      { "name": "Спанаќ", "amount": 80, "unit": "г" },
+      { "name": "Печурки", "amount": 100, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Мисиркини гради со ориз и салата",
+    "kcal": 590,
+    "protein": 55,
+    "carbs": 34,
+    "fat": 18,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Мисиркини гради", "amount": 250, "unit": "г" },
+      { "name": "Варен ориз", "amount": 120, "unit": "г" },
+      { "name": "Салата", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Ракчиња со зеленчук на пареа",
+    "kcal": 440,
+    "protein": 55,
+    "carbs": 10,
+    "fat": 16,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Ракчиња", "amount": 250, "unit": "г" },
+      { "name": "Зеленчук на пареа", "amount": 180, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "breakfast",
+    "name": "Нискојаглехидратна протеинска чинија",
+    "kcal": 480,
+    "protein": 50,
+    "carbs": 9,
+    "fat": 26,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Јајца", "amount": 3, "unit": "ком" },
+      { "name": "Белки од јајце", "amount": 150, "unit": "г" },
+      { "name": "Авокадо", "amount": 70, "unit": "г" },
+      { "name": "Зеленчук", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "snack",
+    "name": "Протеински шејк со ореви",
+    "kcal": 360,
+    "protein": 35,
+    "carbs": 8,
+    "fat": 20,
+    "categories": ["high_protein", "low_carbs", "vegetarian"],
+    "ingredients": [
+      { "name": "Протеин изолат", "amount": 30, "unit": "г" },
+      { "name": "Вода", "amount": 300, "unit": "мл" },
+      { "name": "Ореви", "amount": 20, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Пилешки копани без кожа со грчка салата",
+    "kcal": 610,
+    "protein": 55,
+    "carbs": 12,
+    "fat": 34,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Пилешки копани без кожа", "amount": 250, "unit": "г" },
+      { "name": "Домат", "amount": 100, "unit": "г" },
+      { "name": "Краставица", "amount": 100, "unit": "г" },
       { "name": "Зелена салата", "amount": 80, "unit": "г" },
       { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Туна со интегрален крекер",
-    "kcal": 250,
-    "protein": 24,
-    "carbs": 18,
-    "fat": 9,
-    "categories": ["high_protein", "low_fat", "lactose_free"],
+    "meal_type": "dinner",
+    "name": "Урда без лактоза со краставица и маслинки",
+    "kcal": 390,
+    "protein": 35,
+    "carbs": 9,
+    "fat": 22,
+    "categories": ["high_protein", "low_carbs", "vegetarian", "lactose_free"],
     "ingredients": [
-      { "name": "Туна (конзерва)", "amount": 110, "unit": "г" },
-      { "name": "Интегрален крекер", "amount": 40, "unit": "г" },
-      { "name": "Лимон", "amount": 20, "unit": "г" }
+      { "name": "Урда без лактоза", "amount": 250, "unit": "г" },
+      { "name": "Краставица", "amount": 120, "unit": "г" },
+      { "name": "Маслинки", "amount": 40, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Туна со целер и лимон",
-    "kcal": 230,
-    "protein": 29,
-    "carbs": 7,
-    "fat": 9,
-    "categories": ["high_protein", "low_fat", "low_carbs", "lactose_free"],
+    "meal_type": "breakfast",
+    "name": "Протеински смути",
+    "kcal": 500,
+    "protein": 50,
+    "carbs": 34,
+    "fat": 16,
+    "categories": ["high_protein", "low_carbs", "lactose_free", "vegetarian"],
     "ingredients": [
-      { "name": "Туна (конзерва)", "amount": 120, "unit": "г" },
-      { "name": "Целер", "amount": 100, "unit": "г" },
-      { "name": "Лимон", "amount": 20, "unit": "г" }
+      { "name": "Млеко без лактоза", "amount": 300, "unit": "мл" },
+      { "name": "Протеин изолат", "amount": 30, "unit": "г" },
+      { "name": "Овес", "amount": 30, "unit": "г" },
+      { "name": "Банана", "amount": 120, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Урда",
-    "kcal": 190,
-    "protein": 24,
-    "carbs": 6,
-    "fat": 6,
-    "categories": ["low_carbs"],
+    "meal_type": "lunch",
+    "name": "Лосос со зеленчук и зелена салата",
+    "kcal": 620,
+    "protein": 55,
+    "carbs": 12,
+    "fat": 36,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
     "ingredients": [
-      { "name": "Урда", "amount": 150, "unit": "г" }
+      { "name": "Лосос", "amount": 250, "unit": "г" },
+      { "name": "Зеленчук", "amount": 160, "unit": "г" },
+      { "name": "Зелена салата", "amount": 100, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Урда и јаболко",
-    "kcal": 310,
-    "protein": 28,
-    "carbs": 25,
-    "fat": 9,
-    "categories": ["high_protein"],
+    "meal_type": "dinner",
+    "name": "Пилешки ролат со зелена салата",
+    "kcal": 470,
+    "protein": 45,
+    "carbs": 10,
+    "fat": 22,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
     "ingredients": [
-      { "name": "Урда", "amount": 200, "unit": "г" },
-      { "name": "Јаболко", "amount": 150, "unit": "г" }
+      { "name": "Пилешки гради", "amount": 200, "unit": "г" },
+      { "name": "Лисја од зелена салата", "amount": 80, "unit": "г" },
+      { "name": "Зеленчук", "amount": 120, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Урда со цимет и јаболко",
-    "kcal": 260,
-    "protein": 22,
-    "carbs": 24,
-    "fat": 8,
-    "categories": ["high_protein", "vegetarian", "low_fat"],
+    "meal_type": "breakfast",
+    "name": "Шакшука",
+    "kcal": 430,
+    "protein": 35,
+    "carbs": 14,
+    "fat": 24,
+    "categories": ["high_protein", "low_carbs", "vegetarian", "lactose_free"],
     "ingredients": [
-      { "name": "Урда", "amount": 170, "unit": "г" },
-      { "name": "Јаболко", "amount": 120, "unit": "г" },
-      { "name": "Цимет", "amount": 2, "unit": "г" }
+      { "name": "Јајца", "amount": 4, "unit": "ком" },
+      { "name": "Доматен сос", "amount": 120, "unit": "г" },
+      { "name": "Пиперки", "amount": 100, "unit": "г" },
+      { "name": "Зачини", "amount": 5, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Хумус со морков и краставица",
-    "kcal": 230,
-    "protein": 9,
-    "carbs": 20,
-    "fat": 12,
-    "categories": ["vegetarian", "low_fat", "lactose_free"],
+    "meal_type": "lunch",
+    "name": "Мисиркини гради со пире од карфиол",
+    "kcal": 560,
+    "protein": 60,
+    "carbs": 14,
+    "fat": 24,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
     "ingredients": [
-      { "name": "Хумус", "amount": 90, "unit": "г" },
-      { "name": "Морков", "amount": 120, "unit": "г" },
-      { "name": "Краставица", "amount": 120, "unit": "г" }
+      { "name": "Мисиркини гради", "amount": 250, "unit": "г" },
+      { "name": "Пире од карфиол", "amount": 180, "unit": "г" },
+      { "name": "Салата", "amount": 120, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Чиа пудинг со бадемово млеко",
-    "kcal": 240,
-    "protein": 8,
-    "carbs": 22,
-    "fat": 12,
-    "categories": ["vegetarian", "low_fat", "lactose_free"],
+    "meal_type": "dinner",
+    "name": "Туна со јајца и зеленчук",
+    "kcal": 500,
+    "protein": 50,
+    "carbs": 9,
+    "fat": 26,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
     "ingredients": [
-      { "name": "Чиа семе", "amount": 30, "unit": "г" },
-      { "name": "Бадемово млеко", "amount": 220, "unit": "мл" },
-      { "name": "Боровинки", "amount": 60, "unit": "г" }
+      { "name": "Туна во вода", "amount": 200, "unit": "г" },
+      { "name": "Јајца", "amount": 2, "unit": "ком" },
+      { "name": "Зеленчук", "amount": 150, "unit": "г" }
     ]
   },
   {
-    "meal_type": "snack",
-    "name": "Шопска салата",
-    "kcal": 270,
-    "protein": 10,
+    "meal_type": "breakfast",
+    "name": "Нискојаглехидратни протеински палачинки",
+    "kcal": 470,
+    "protein": 45,
     "carbs": 16,
-    "fat": 18,
-    "categories": ["vegetarian", "low_carbs"],
+    "fat": 24,
+    "categories": ["high_protein", "low_carbs", "vegetarian"],
     "ingredients": [
-      { "name": "Домат", "amount": 200, "unit": "г" },
-      { "name": "Краставица", "amount": 100, "unit": "г" },
-      { "name": "Пиперка", "amount": 50, "unit": "г" },
-      { "name": "Бело сирење", "amount": 60, "unit": "г" },
-      { "name": "Маслиново масло", "amount": 10, "unit": "мл" }
+      { "name": "Јајца", "amount": 3, "unit": "ком" },
+      { "name": "Протеин изолат", "amount": 30, "unit": "г" },
+      { "name": "Бадемово брашно", "amount": 20, "unit": "г" },
+      { "name": "Бобинки", "amount": 50, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "lunch",
+    "name": "Посно телешко или пилешко со сладок компир",
+    "kcal": 610,
+    "protein": 60,
+    "carbs": 30,
+    "fat": 24,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Посно телешко или пилешко месо", "amount": 250, "unit": "г" },
+      { "name": "Сладок компир", "amount": 100, "unit": "г" },
+      { "name": "Салата", "amount": 120, "unit": "г" }
+    ]
+  },
+  {
+    "meal_type": "dinner",
+    "name": "Бела риба со зеленчук",
+    "kcal": 450,
+    "protein": 50,
+    "carbs": 10,
+    "fat": 16,
+    "categories": ["high_protein", "low_carbs", "lactose_free"],
+    "ingredients": [
+      { "name": "Бела риба", "amount": 250, "unit": "г" },
+      { "name": "Зеленчук", "amount": 180, "unit": "г" }
     ]
   }
 ]

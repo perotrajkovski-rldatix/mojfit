@@ -52,6 +52,7 @@ export interface Profile {
   activeTheme?: 'balanced-green' | 'neon-xp' | 'beast-mode-red' | 'elite-gold' | 'midnight-focus' | 'sunrise-motivation' | 'fresh-nutrition' | 'protein-power';
   unlockedBadgeIds?: string[];
   seenAchievementIds?: string[];
+  earnedAchievementIds?: string[];
   totalEarnedPoints?: number;
 }
 

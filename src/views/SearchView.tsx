@@ -100,7 +100,12 @@ export default function SearchView({ user, isPremium, selectedMealType, selected
       const liquidUnits = ['ml', 'l', 'cl', 'fl oz'];
       const pkgUnit = String(p.product_quantity_unit || '').toLowerCase().trim();
       const srvUnit = String(p.serving_quantity_unit || '').toLowerCase().trim();
-      const isLiquidProduct = hasPer100ml || liquidUnits.includes(pkgUnit) || liquidUnits.includes(srvUnit);
+      // Also check the free-text quantity field (e.g. "500 ml", "33 cl") and categories
+      const quantityStr = String(p.quantity || '').toLowerCase();
+      const hasLiquidQuantityStr = /\d\s*(ml|cl|dl|fl\s*oz|l\b)/.test(quantityStr);
+      const categoriesStr = String(p.categories_tags || p.categories || '').toLowerCase();
+      const isBeverageCategory = /beverage|drink|beer|wine|juice|soda|water|spirits|liquor/.test(categoriesStr);
+      const isLiquidProduct = hasPer100ml || liquidUnits.includes(pkgUnit) || liquidUnits.includes(srvUnit) || hasLiquidQuantityStr || isBeverageCategory;
       const basis: 'g' | 'ml' = isLiquidProduct ? 'ml' : 'g';
 
       // For liquids: prefer _100ml nutriment fields; fall back to _100g (density ≈ 1 for water-based drinks)
@@ -122,16 +127,18 @@ export default function SearchView({ user, isPremium, selectedMealType, selected
         ? (getKcal('energy-kcal_100ml', 'energy-kcal_100g') ||
            getKcalWithKjFallback('energy-kcal_100ml', 'energy_100ml') ||
            getKcalWithKjFallback('energy-kcal_100g', 'energy_100g'))
-        : getKcalWithKjFallback('energy-kcal_100g', 'energy_100g');
+        : (getKcalWithKjFallback('energy-kcal_100g', 'energy_100g') ||
+           getKcal('energy-kcal_100ml') ||
+           getKcalWithKjFallback('energy-kcal_100ml', 'energy_100ml'));
       const protein = basis === 'ml'
         ? (parseNumber(n['proteins_100ml']) ?? parseNumber(n['proteins_100g']) ?? 0)
-        : (parseNumber(n['proteins_100g']) ?? 0);
+        : (parseNumber(n['proteins_100g']) ?? parseNumber(n['proteins_100ml']) ?? 0);
       const carbs = basis === 'ml'
         ? (parseNumber(n['carbohydrates_100ml']) ?? parseNumber(n['carbohydrates_100g']) ?? 0)
-        : (parseNumber(n['carbohydrates_100g']) ?? 0);
+        : (parseNumber(n['carbohydrates_100g']) ?? parseNumber(n['carbohydrates_100ml']) ?? 0);
       const fat = basis === 'ml'
         ? (parseNumber(n['fat_100ml']) ?? parseNumber(n['fat_100g']) ?? 0)
-        : (parseNumber(n['fat_100g']) ?? 0);
+        : (parseNumber(n['fat_100g']) ?? parseNumber(n['fat_100ml']) ?? 0);
       const name = p.product_name || p.product_name_en || `Баркод ${barcode}`;
       const defaultPortion = getDefaultPortionFromOff(p.product_quantity, p.product_quantity_unit, basis);
       const scannedFood: Food = {

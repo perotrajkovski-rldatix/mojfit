@@ -337,6 +337,15 @@ function isChallengeCompleted(challenge: ChallengeItem): boolean {
   return challenge.progress >= challenge.target;
 }
 
+function getAchievementPoints(achievementId: string): number {
+  if (achievementId.startsWith('badge:')) return 50;
+  if (achievementId.startsWith('challenge:daily:')) return 10;
+  if (achievementId.startsWith('challenge:weekly:')) return 30;
+  if (achievementId.startsWith('challenge:monthly:')) return 150;
+  if (achievementId.startsWith('challenge:yearly:')) return 1000;
+  return 0;
+}
+
 function getPremiumWindowStartMs(profile: Profile | null): number {
   const timestampCandidates = [
     profile?.subscriptionStartedAt,
@@ -401,7 +410,14 @@ function AppContent() {
   const [activeAchievement, setActiveAchievement] = useState<AchievementToast | null>(null);
   const [focusedAchievementId, setFocusedAchievementId] = useState<string | null>(null);
   const [purchasedThemeIds, setPurchasedThemeIds] = useState<ThemeId[]>([]);
+  const awardedAchievementIdsRef = useRef<Set<string>>(new Set());
   const subscriptionSyncInFlightRef = useRef(false);
+  // Count consecutive missed checks before revoking premium — a single
+  // missed response (e.g. during Play/StoreKit renewal processing) should
+  // not immediately strip the user's access.
+  const playRevocationMissesRef = useRef(0);
+  const iosRevocationMissesRef = useRef(0);
+  const REVOCATION_MISS_THRESHOLD = 3; // 3 × 5 s = 15 s grace period
   const [playEntitled, setPlayEntitled] = useState(false);
   const [iosEntitled, setIosEntitled] = useState(false);
   const [isTrialEligible, setIsTrialEligible] = useState(false);
@@ -637,6 +653,9 @@ function AppContent() {
         );
 
         if (activePlaySubscription) {
+          // Active subscription found — reset miss counter.
+          playRevocationMissesRef.current = 0;
+
           // After account/profile deletion, do not auto-restore premium on a fresh profile.
           if (!hasSubscriptionHistory) {
             setPlayEntitled(false);
@@ -684,14 +703,21 @@ function AppContent() {
             await updateDoc(doc(db, 'profiles', user.uid), {
               isPremium: true,
               subscriptionStatus: 'active',
-              subscriptionStartedAt: nowIso,
+              // Preserve original start so the premium activity window never resets on re-subscribe
+              ...(profile?.subscriptionStartedAt ? {} : { subscriptionStartedAt: nowIso }),
               subscriptionPlatform: 'android',
             });
           }
         } else {
-          // No active subscription in Google Play. Only revoke if this profile's subscription
-          // was actually granted via Android — otherwise it may be a valid subscription the
-          // same account purchased on iOS, which Android has no authority to cancel.
+          // No active subscription in Google Play.
+          // Increment miss counter and only revoke after sustained absence — a transient
+          // gap (e.g. Play processing a renewal) must not strip premium access.
+          playRevocationMissesRef.current += 1;
+          if (playRevocationMissesRef.current < REVOCATION_MISS_THRESHOLD) {
+            return;
+          }
+          // Only revoke if this profile's subscription was actually granted via Android —
+          // otherwise it may be a valid subscription purchased on iOS.
           setPlayEntitled(false);
           if (profile?.isPremium && subscriptionOwnerPlatform(profile) === 'android') {
             await updateDoc(doc(db, 'profiles', user.uid), {
@@ -732,7 +758,7 @@ function AppContent() {
         inFlight = false;
       }
     };
-  }, [user?.uid, profile?.isPremium, profile?.subscriptionStatus]);
+  }, [user?.uid, profile?.isPremium, profile?.subscriptionStatus, profile?.subscriptionExpiresAt]);
 
   // Mirrors the Android Play Billing entitlement-sync effect above, adapted for StoreKit 2.
   useEffect(() => {
@@ -761,6 +787,9 @@ function AppContent() {
         );
 
         if (activeIOSSubscription) {
+          // Active subscription found — reset miss counter.
+          iosRevocationMissesRef.current = 0;
+
           // After account/profile deletion, do not auto-restore premium on a fresh profile.
           if (!hasSubscriptionHistory) {
             setIosEntitled(false);
@@ -806,14 +835,20 @@ function AppContent() {
             await updateDoc(doc(db, 'profiles', user.uid), {
               isPremium: true,
               subscriptionStatus: 'active',
-              subscriptionStartedAt: nowIso,
+              // Preserve original start so the premium activity window never resets on re-subscribe
+              ...(profile?.subscriptionStartedAt ? {} : { subscriptionStartedAt: nowIso }),
               subscriptionPlatform: 'ios',
             });
           }
         } else {
-          // No active App Store subscription. Only revoke if this profile's subscription was
-          // actually granted via iOS — otherwise it may be a valid subscription the same
-          // account purchased on Android, which iOS has no authority to cancel.
+          // No active App Store subscription.
+          // Increment miss counter and only revoke after sustained absence.
+          iosRevocationMissesRef.current += 1;
+          if (iosRevocationMissesRef.current < REVOCATION_MISS_THRESHOLD) {
+            return;
+          }
+          // Only revoke if this profile's subscription was actually granted via iOS —
+          // otherwise it may be a valid subscription purchased on Android.
           setIosEntitled(false);
           if (profile?.isPremium && subscriptionOwnerPlatform(profile) === 'ios') {
             await updateDoc(doc(db, 'profiles', user.uid), {
@@ -855,7 +890,7 @@ function AppContent() {
         inFlight = false;
       }
     };
-  }, [user?.uid, profile?.isPremium, profile?.subscriptionStatus]);
+  }, [user?.uid, profile?.isPremium, profile?.subscriptionStatus, profile?.subscriptionExpiresAt]);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -1418,6 +1453,45 @@ function AppContent() {
       return add.length > 0 ? [...prev, ...add] : prev;
     });
   }, [activeAchievement, completedAchievements, seenAchievementIds, seenAchievementsReady, user, profile?.isPremium]);
+
+  useEffect(() => {
+    if (!user || !profile?.isPremium) return;
+    if (completedAchievements.length === 0) return;
+
+    const earnedIds = Array.isArray(profile.earnedAchievementIds)
+      ? profile.earnedAchievementIds.filter((v): v is string => typeof v === 'string')
+      : [];
+    const earnedSet = new Set(earnedIds);
+    const newlyEarned = completedAchievements.filter(
+      a => !earnedSet.has(a.id) && !awardedAchievementIdsRef.current.has(a.id),
+    );
+    if (newlyEarned.length === 0) return;
+
+    const pointsToAdd = newlyEarned.reduce((sum, a) => sum + getAchievementPoints(a.id), 0);
+    if (pointsToAdd <= 0) return;
+
+    const nextEarnedIds = Array.from(new Set([...earnedIds, ...newlyEarned.map(a => a.id)]));
+    const currentTotal = Math.max(0, Number(profile.totalEarnedPoints ?? 0));
+    const nextTotal = currentTotal + pointsToAdd;
+    const currentUnlockedBadgeIds = Array.isArray(profile.unlockedBadgeIds)
+      ? profile.unlockedBadgeIds.filter((v): v is string => typeof v === 'string')
+      : [];
+    const newlyEarnedBadgeIds = newlyEarned
+      .filter(a => a.id.startsWith('badge:'))
+      .map(a => a.id.replace('badge:', ''));
+    const nextUnlockedBadgeIds = Array.from(new Set([...currentUnlockedBadgeIds, ...newlyEarnedBadgeIds]));
+    const newlyEarnedIds = newlyEarned.map(a => a.id);
+    newlyEarnedIds.forEach(id => awardedAchievementIdsRef.current.add(id));
+
+    updateDoc(doc(db, 'profiles', user.uid), {
+      earnedAchievementIds: nextEarnedIds,
+      totalEarnedPoints: nextTotal,
+      unlockedBadgeIds: nextUnlockedBadgeIds,
+    }).catch(error => {
+      newlyEarnedIds.forEach(id => awardedAchievementIdsRef.current.delete(id));
+      handleFirestoreError(error, OperationType.UPDATE, `profiles/${user.uid}/totalEarnedPoints`);
+    });
+  }, [completedAchievements, profile?.earnedAchievementIds, profile?.isPremium, profile?.totalEarnedPoints, user]);
 
   useEffect(() => {
     if (activeAchievement || achievementQueue.length === 0) return;
@@ -2103,6 +2177,7 @@ function AppContent() {
           : undefined;
 
       const subscriptionExpiresAt = addMonths(now, plan.months).toISOString();
+      // Preserve original start across re-subscribes so all prior premium activity stays in window
       const subscriptionStartedAt = profile.subscriptionStartedAt || now.toISOString();
       const updatedProfile: Profile = {
         ...profile,
@@ -2175,7 +2250,7 @@ function AppContent() {
       await updateDoc(doc(db, 'profiles', user.uid), {
         isPremium: true,
         subscriptionStatus: 'active',
-        subscriptionStartedAt: profile?.subscriptionStartedAt || nowIso,
+        ...(profile?.subscriptionStartedAt ? {} : { subscriptionStartedAt: nowIso }),
         subscriptionPlatform: 'ios',
       });
     }

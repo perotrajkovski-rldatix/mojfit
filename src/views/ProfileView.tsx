@@ -480,9 +480,17 @@ export default function ProfileView({
   const isPremium = profile?.isPremium ?? false;
 
   const savedPremiumBadgeIds = useMemo(() => {
-    // Read earned badge IDs from Firestore profile instead of localStorage
-    return profile?.unlockedBadgeIds || [];
-  }, [profile?.unlockedBadgeIds]);
+    // Merge explicit badge unlock list with persisted earned achievement IDs.
+    const unlockedIds = Array.isArray(profile?.unlockedBadgeIds)
+      ? profile.unlockedBadgeIds.filter((v): v is string => typeof v === 'string')
+      : [];
+    const earnedAchievementBadgeIds = Array.isArray(profile?.earnedAchievementIds)
+      ? profile.earnedAchievementIds
+          .filter((v): v is string => typeof v === 'string' && v.startsWith('badge:'))
+          .map(v => v.replace('badge:', ''))
+      : [];
+    return Array.from(new Set([...unlockedIds, ...earnedAchievementBadgeIds]));
+  }, [profile?.earnedAchievementIds, profile?.unlockedBadgeIds]);
 
   useEffect(() => {
     if (!isPremium) {
@@ -797,20 +805,22 @@ export default function ProfileView({
       
       // Calculate points and level only if premium
       if (!isPremium) {
+        const lifetimePoints = Math.max(0, Number(profile?.totalEarnedPoints ?? 0));
         return {
           earnedBadges: getBadgesByIds(savedPremiumBadgeIds),
-          level: Math.max(1, profile?.maxLevelAchieved ?? 1),
-          points: 0,
+          level: Math.max(getLevelFromPoints(lifetimePoints), profile?.maxLevelAchieved ?? 1),
+          points: lifetimePoints,
         };
       }
       
       const challengePoints = completedDaily * 10 + completedWeekly * 30 + completedMonthly * 150 + completedYearly * 1000;
       const badgePoints = earnedBadges.length * 50;
-      const points = challengePoints + badgePoints;
+      const cyclePoints = challengePoints + badgePoints;
+      const points = Math.max(Math.max(0, Number(profile?.totalEarnedPoints ?? 0)), cyclePoints);
       const level = Math.max(getLevelFromPoints(points), profile?.maxLevelAchieved ?? 1);
 
           return { earnedBadges, level, points };
-        }, [allMeals, challengeSwaps, isPremium, photos, profile?.maxLevelAchieved, profile?.subscriptionStartedAt, profile?.targetCalories, profile?.targetProtein, purchasedChallengeCompletions, savedPremiumBadgeIds, streakRestoreDays, themePurchaseIds.length, weightHistory]);
+        }, [allMeals, challengeSwaps, isPremium, photos, profile?.maxLevelAchieved, profile?.subscriptionStartedAt, profile?.targetCalories, profile?.targetProtein, profile?.totalEarnedPoints, purchasedChallengeCompletions, savedPremiumBadgeIds, streakRestoreDays, themePurchaseIds.length, weightHistory]);
 
   // Persist newly earned badges to Firestore
   useEffect(() => {

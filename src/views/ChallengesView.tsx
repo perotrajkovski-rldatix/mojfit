@@ -7,6 +7,7 @@ import { db, OperationType, handleFirestoreError } from '../firebase';
 import { generateWeekPlan } from '../data/mealPlanData';
 import type { Meal, Profile, ProgressPhoto, ViewType, WeightLog } from '../types';
 import { buildBadges, type BadgeWithState } from '../utils/badges';
+import { getBadgesByIds } from '../utils/badges';
 import {
 	applyChallengeSwaps,
 	buildChallengePool,
@@ -698,18 +699,32 @@ export default function ChallengesView({ user, profile, weightHistory, setView, 
 			  })
 			: [];
 
+		const earnedBadgeIdsFromProfile = Array.isArray(profile?.unlockedBadgeIds)
+			? profile.unlockedBadgeIds.filter((v): v is string => typeof v === 'string')
+			: [];
+		const earnedBadgeIdsFromAchievements = Array.isArray(profile?.earnedAchievementIds)
+			? profile.earnedAchievementIds
+				.filter((v): v is string => typeof v === 'string' && v.startsWith('badge:'))
+				.map(v => v.replace('badge:', ''))
+			: [];
+		const persistedEarnedBadgeIds = Array.from(new Set([
+			...earnedBadgeIdsFromProfile,
+			...earnedBadgeIdsFromAchievements,
+		]));
+
 		if (!isPremium) {
+			const lifetimePoints = Math.max(0, Number(profile?.totalEarnedPoints ?? 0));
 			return {
 				dailyChallenges: [] as ChallengeItem[],
 				weeklyChallenges: [] as ChallengeItem[],
 				monthlyChallenges: [] as ChallengeItem[],
 				yearlyChallenges: [] as ChallengeItem[],
-				badges: [] as BadgeWithState[],
+				badges: getBadgesByIds(persistedEarnedBadgeIds),
 				streak: 0,
-				earnedPoints: 0,
+				earnedPoints: lifetimePoints,
 				challengePoints: 0,
-				badgePoints: 0,
-				level: Math.max(1, profile?.maxLevelAchieved ?? 1),
+				badgePoints: persistedEarnedBadgeIds.length * 50,
+				level: Math.max(getLevelFromPoints(lifetimePoints), profile?.maxLevelAchieved ?? 1),
 				todayKey: todayStr,
 				weekKey,
 				monthKey,
@@ -901,15 +916,25 @@ export default function ChallengesView({ user, profile, weightHistory, setView, 
 			completedYearly: yearlyChallenges.filter(isChallengeCompleted).length,
 		});
 
+		const unlockedBadgeIds = new Set<string>(persistedEarnedBadgeIds);
+		badges.forEach(b => {
+			if (b.unlocked) unlockedBadgeIds.add(b.id);
+		});
+		const mergedBadges = badges.map(b => ({
+			...b,
+			unlocked: b.unlocked || unlockedBadgeIds.has(b.id),
+		}));
+
 		const completedDaily = dailyChallenges.filter(isChallengeCompleted).length;
 		const completedWeekly = weeklyChallenges.filter(isChallengeCompleted).length;
 		const completedMonthly = monthlyChallenges.filter(isChallengeCompleted).length;
 		const completedYearly = yearlyChallenges.filter(isChallengeCompleted).length;
-		const unlockedBadges = badges.filter(b => b.unlocked).length;
+		const unlockedBadges = mergedBadges.filter(b => b.unlocked).length;
 
 		const challengePoints = completedDaily * 10 + completedWeekly * 30 + completedMonthly * 150 + completedYearly * 1000;
 		const badgePoints = unlockedBadges * 50;
-		const earnedPoints = challengePoints + badgePoints;
+		const cycleEarnedPoints = challengePoints + badgePoints;
+		const earnedPoints = Math.max(Math.max(0, Number(profile?.totalEarnedPoints ?? 0)), cycleEarnedPoints);
 		const level = getLevelFromPoints(earnedPoints);
 
 		return {
@@ -917,7 +942,7 @@ export default function ChallengesView({ user, profile, weightHistory, setView, 
 			weeklyChallenges,
 			monthlyChallenges,
 			yearlyChallenges,
-			badges,
+			badges: mergedBadges,
 			streak,
 			earnedPoints,
 			challengePoints,
