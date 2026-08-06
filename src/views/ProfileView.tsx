@@ -298,6 +298,7 @@ function isChallengeCompleted(challenge: ChallengeItem): boolean {
 
 function getPremiumWindowStartMs(profile: Profile | null): number {
   const timestampCandidates = [
+    profile?.premiumWindowStartedAt,  // write-once anchor — never rewritten on re-subscribe
     profile?.subscriptionStartedAt,
     profile?.subscriptionTrialStartedAt,
   ];
@@ -327,9 +328,43 @@ function mealLogStreak(meals: Meal[]): number {
   return streak;
 }
 
-function mealLogStreakWithRestores(meals: Meal[], restoredDayKeys: string[]): number {
-  const dates = new Set(meals.map(m => dayKey(m.date)));
-  restoredDayKeys.forEach(k => dates.add(k));
+function getDailyCalorieTarget(profile: Profile | null, dayKeyValue: string): number {
+  if (!profile) return 0;
+
+  let target = profile.targetCalories || 0;
+  if (profile.mealPlanType && profile.mealPlanSeed) {
+    const week = generateWeekPlan(profile.targetCalories, profile.mealPlanSeed, profile.mealPlanType, profile.targetProtein);
+    const dayPlan = week[mondayBasedDayIndex(dayKeyValue)];
+    target = dayPlan.reduce((sum, meal) => sum + meal.kcal, 0);
+  }
+
+  return Math.max(0, target);
+}
+
+function getQualifiedStreakDayKeys(profile: Profile | null, meals: Meal[], restoredDayKeys: string[]): Set<string> {
+  const caloriesByDay = new Map<string, number>();
+  meals.forEach(meal => {
+    const key = dayKey(meal.date);
+    let totalCalories = caloriesByDay.get(key) || 0;
+    meal.items?.forEach(item => {
+      totalCalories += (item.food?.calories || 0) * (item.amount || 0);
+    });
+    caloriesByDay.set(key, totalCalories);
+  });
+
+  const qualifiedDays = new Set<string>();
+  caloriesByDay.forEach((calories, key) => {
+    const target = getDailyCalorieTarget(profile, key);
+    if (target > 0 && calories >= target) {
+      qualifiedDays.add(key);
+    }
+  });
+  restoredDayKeys.forEach(key => qualifiedDays.add(key));
+  return qualifiedDays;
+}
+
+function mealLogStreakWithRestores(profile: Profile | null, meals: Meal[], restoredDayKeys: string[]): number {
+  const dates = getQualifiedStreakDayKeys(profile, meals, restoredDayKeys);
   let streak = 0;
   const cursor = new Date();
   while (true) {
@@ -777,7 +812,7 @@ export default function ProfileView({
       const completedMonthly = monthlyChallenges.filter(isChallengeCompleted).length;
       const completedYearly = yearlyChallenges.filter(isChallengeCompleted).length;
 
-      const streak = mealLogStreakWithRestores(premiumMeals, premiumRestoreDays);
+      const streak = mealLogStreakWithRestores(profile, premiumMeals, premiumRestoreDays);
       const daysProteinHit = countProteinTargetDays(premiumMeals, proteinGoal);
 
       const totalPlannedMeals = countPlannedMeals(premiumMeals);

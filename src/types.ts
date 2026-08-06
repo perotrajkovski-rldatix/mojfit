@@ -54,6 +54,7 @@ export interface Profile {
   seenAchievementIds?: string[];
   earnedAchievementIds?: string[];
   totalEarnedPoints?: number;
+  premiumWindowStartedAt?: string;
 }
 
 export interface Meal {

@@ -276,23 +276,6 @@ function mealLogStreak(meals: Meal[]): number {
   return streak;
 }
 
-function mealLogStreakWithRestores(meals: Meal[], restoredDayKeys: string[]): number {
-  const dates = new Set(meals.map(m => dayKey(m.date)));
-  restoredDayKeys.forEach(k => dates.add(k));
-  let streak = 0;
-  const cursor = new Date();
-  while (true) {
-    const key = dayKey(cursor.toISOString());
-    if (dates.has(key)) {
-      streak += 1;
-      cursor.setDate(cursor.getDate() - 1);
-    } else {
-      break;
-    }
-  }
-  return streak;
-}
-
 function countPlannedMeals(meals: Meal[]): number {
   return meals.filter(m => m.items?.some(item => String(item.food?.id || '').startsWith('plan-'))).length;
 }
@@ -348,6 +331,7 @@ function getAchievementPoints(achievementId: string): number {
 
 function getPremiumWindowStartMs(profile: Profile | null): number {
   const timestampCandidates = [
+    profile?.premiumWindowStartedAt,  // write-once anchor — never rewritten on re-subscribe
     profile?.subscriptionStartedAt,
     profile?.subscriptionTrialStartedAt,
   ];
@@ -359,6 +343,62 @@ function getPremiumWindowStartMs(profile: Profile | null): number {
 
   // Keep non-premium history excluded even when legacy premium timestamps are missing.
   return profile?.isPremium ? Date.now() : Number.NaN;
+}
+
+function getDailyCalorieTarget(profile: Profile | null, dayKeyValue: string): number {
+  if (!profile) return 0;
+
+  let target = profile.targetCalories || 0;
+  if (profile.mealPlanType && profile.mealPlanSeed) {
+    const week = generateWeekPlan(
+      profile.targetCalories,
+      profile.mealPlanSeed,
+      profile.mealPlanType,
+      profile.targetProtein,
+    );
+    const dayPlan = week[mondayBasedDayIndex(dayKeyValue)];
+    target = dayPlan.reduce((sum, meal) => sum + meal.kcal, 0);
+  }
+
+  return Math.max(0, target);
+}
+
+function getQualifiedStreakDayKeys(profile: Profile | null, meals: Meal[], restoredDayKeys: string[]): Set<string> {
+  const caloriesByDay = new Map<string, number>();
+  meals.forEach(meal => {
+    const key = dayKey(meal.date);
+    let totalCalories = caloriesByDay.get(key) || 0;
+    meal.items?.forEach(item => {
+      totalCalories += (item.food?.calories || 0) * (item.amount || 0);
+    });
+    caloriesByDay.set(key, totalCalories);
+  });
+
+  const qualifiedDays = new Set<string>();
+  caloriesByDay.forEach((calories, key) => {
+    const target = getDailyCalorieTarget(profile, key);
+    if (target > 0 && calories >= target) {
+      qualifiedDays.add(key);
+    }
+  });
+  restoredDayKeys.forEach(key => qualifiedDays.add(key));
+  return qualifiedDays;
+}
+
+function mealLogStreakWithRestores(profile: Profile | null, meals: Meal[], restoredDayKeys: string[]): number {
+  const dates = getQualifiedStreakDayKeys(profile, meals, restoredDayKeys);
+  let streak = 0;
+  const cursor = new Date();
+  while (true) {
+    const key = dayKey(cursor.toISOString());
+    if (dates.has(key)) {
+      streak += 1;
+      cursor.setDate(cursor.getDate() - 1);
+    } else {
+      break;
+    }
+  }
+  return streak;
 }
 
 function AppContent() {
@@ -485,9 +525,6 @@ function AppContent() {
     user?.uid,
     user?.email,
     email,
-    profile?.subscriptionTrialStartedAt,
-    profile?.subscriptionPlanId,
-    profile?.subscriptionStartedAt,
     profile?.subscriptionLastChargeAt,
     profile?.subscriptionStatus,
   ]);
@@ -703,8 +740,8 @@ function AppContent() {
             await updateDoc(doc(db, 'profiles', user.uid), {
               isPremium: true,
               subscriptionStatus: 'active',
-              // Preserve original start so the premium activity window never resets on re-subscribe
               ...(profile?.subscriptionStartedAt ? {} : { subscriptionStartedAt: nowIso }),
+              ...(profile?.premiumWindowStartedAt ? {} : { premiumWindowStartedAt: nowIso }),
               subscriptionPlatform: 'android',
             });
           }
@@ -1396,7 +1433,7 @@ function AppContent() {
       yearKey,
     );
 
-    const streak = mealLogStreakWithRestores(premiumMeals, premiumRestoreDays);
+    const streak = mealLogStreakWithRestores(profile, premiumMeals, premiumRestoreDays);
     const daysProteinHit = countProteinTargetDays(premiumMeals, proteinGoal);
     const totalPlannedMeals = countPlannedMeals(premiumMeals);
 
@@ -1877,6 +1914,7 @@ function AppContent() {
         ...(profile?.subscriptionCurrency ? { subscriptionCurrency: profile.subscriptionCurrency } : {}),
         ...(profile?.subscriptionStatus ? { subscriptionStatus: profile.subscriptionStatus } : {}),
         ...(profile?.subscriptionStartedAt ? { subscriptionStartedAt: profile.subscriptionStartedAt } : {}),
+        ...(profile?.premiumWindowStartedAt ? { premiumWindowStartedAt: profile.premiumWindowStartedAt } : {}),
         ...(profile?.subscriptionExpiresAt ? { subscriptionExpiresAt: profile.subscriptionExpiresAt } : {}),
         ...(profile?.subscriptionTrialStartedAt ? { subscriptionTrialStartedAt: profile.subscriptionTrialStartedAt } : {}),
         ...(profile?.subscriptionTrialEndsAt ? { subscriptionTrialEndsAt: profile.subscriptionTrialEndsAt } : {}),
@@ -2095,6 +2133,7 @@ function AppContent() {
           subscriptionCurrency: 'MKD',
           subscriptionStartedAt: nowIso,
           subscriptionTrialStartedAt: nowIso,
+          premiumWindowStartedAt: profile.premiumWindowStartedAt || nowIso,
           subscriptionTrialEndsAt: trialEndsAt,
           subscriptionNextChargeAt: nextChargeAt,
           subscriptionNextPlanId: 'monthly',
@@ -2119,6 +2158,7 @@ function AppContent() {
             subscriptionCurrency: 'MKD',
             subscriptionStartedAt: nowIso,
             subscriptionTrialStartedAt: nowIso,
+            ...(profile.premiumWindowStartedAt ? {} : { premiumWindowStartedAt: nowIso }),
             subscriptionTrialEndsAt: trialEndsAt,
             subscriptionNextChargeAt: nextChargeAt,
             subscriptionNextPlanId: 'monthly',
@@ -2179,6 +2219,7 @@ function AppContent() {
       const subscriptionExpiresAt = addMonths(now, plan.months).toISOString();
       // Preserve original start across re-subscribes so all prior premium activity stays in window
       const subscriptionStartedAt = profile.subscriptionStartedAt || now.toISOString();
+      const premiumWindowStartedAt = profile.premiumWindowStartedAt || now.toISOString();
       const updatedProfile: Profile = {
         ...profile,
         isPremium: true,
@@ -2189,6 +2230,7 @@ function AppContent() {
         subscriptionPriceMKD: plan.priceMKD,
         subscriptionCurrency: 'MKD',
         subscriptionStartedAt,
+        premiumWindowStartedAt,
         subscriptionExpiresAt,
         subscriptionNextChargeAt: subscriptionExpiresAt,
         subscriptionNextPlanId: plan.id,
@@ -2208,6 +2250,7 @@ function AppContent() {
         subscriptionPriceMKD: plan.priceMKD,
         subscriptionCurrency: 'MKD',
         subscriptionStartedAt,
+        premiumWindowStartedAt,
         subscriptionExpiresAt,
         subscriptionNextChargeAt: subscriptionExpiresAt,
         subscriptionNextPlanId: plan.id,
@@ -2251,6 +2294,7 @@ function AppContent() {
         isPremium: true,
         subscriptionStatus: 'active',
         ...(profile?.subscriptionStartedAt ? {} : { subscriptionStartedAt: nowIso }),
+        ...(profile?.premiumWindowStartedAt ? {} : { premiumWindowStartedAt: nowIso }),
         subscriptionPlatform: 'ios',
       });
     }

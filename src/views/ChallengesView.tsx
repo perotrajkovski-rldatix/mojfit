@@ -115,9 +115,43 @@ function mealLogStreak(meals: Meal[]): number {
 	return streak;
 }
 
-function mealLogStreakWithRestores(meals: Meal[], restoredDayKeys: string[]): number {
-	const dates = new Set(meals.map(m => dayKey(m.date)));
-	restoredDayKeys.forEach(k => dates.add(k));
+function getDailyCalorieTarget(profile: Profile | null, dayKeyValue: string): number {
+	if (!profile) return 0;
+
+	let target = profile.targetCalories || 0;
+	if (profile.mealPlanType && profile.mealPlanSeed) {
+		const week = generateWeekPlan(profile.targetCalories, profile.mealPlanSeed, profile.mealPlanType, profile.targetProtein);
+		const dayPlan = week[mondayBasedDayIndex(dayKeyValue)];
+		target = dayPlan.reduce((sum, meal) => sum + meal.kcal, 0);
+	}
+
+	return Math.max(0, target);
+}
+
+function getQualifiedStreakDayKeys(profile: Profile | null, meals: Meal[], restoredDayKeys: string[]): Set<string> {
+	const caloriesByDay = new Map<string, number>();
+	meals.forEach(meal => {
+		const key = dayKey(meal.date);
+		let totalCalories = caloriesByDay.get(key) || 0;
+		meal.items?.forEach(item => {
+			totalCalories += (item.food?.calories || 0) * (item.amount || 0);
+		});
+		caloriesByDay.set(key, totalCalories);
+	});
+
+	const qualifiedDays = new Set<string>();
+	caloriesByDay.forEach((calories, key) => {
+		const target = getDailyCalorieTarget(profile, key);
+		if (target > 0 && calories >= target) {
+			qualifiedDays.add(key);
+		}
+	});
+	restoredDayKeys.forEach(key => qualifiedDays.add(key));
+	return qualifiedDays;
+}
+
+function mealLogStreakWithRestores(profile: Profile | null, meals: Meal[], restoredDayKeys: string[]): number {
+	const dates = getQualifiedStreakDayKeys(profile, meals, restoredDayKeys);
 	let streak = 0;
 	const cursor = new Date();
 	while (true) {
@@ -132,10 +166,8 @@ function mealLogStreakWithRestores(meals: Meal[], restoredDayKeys: string[]): nu
 	return streak;
 }
 
-function findRevivableDay(meals: Meal[], restoredDayKeys: string[]): string | null {
-	const mealDaySet = new Set(meals.map(m => dayKey(m.date)));
-	const completedDaySet = new Set(mealDaySet);
-	restoredDayKeys.forEach(k => completedDaySet.add(k));
+function findRevivableDay(profile: Profile | null, meals: Meal[], restoredDayKeys: string[]): string | null {
+	const completedDaySet = getQualifiedStreakDayKeys(profile, meals, restoredDayKeys);
 
 	const cursor = new Date();
 	cursor.setHours(0, 0, 0, 0);
@@ -153,7 +185,7 @@ function findRevivableDay(meals: Meal[], restoredDayKeys: string[]): string | nu
 			const prevKey = dayKeyFromDate(prevDay);
 			const isBridgeableGap = completedDaySet.has(nextKey) && completedDaySet.has(prevKey);
 
-			if (isBridgeableGap && !mealDaySet.has(missingKey)) {
+			if (isBridgeableGap && !completedDaySet.has(missingKey)) {
 				return missingKey;
 			}
 		}
@@ -196,6 +228,7 @@ function isChallengeCompleted(challenge: ChallengeItem): boolean {
 
 function getPremiumWindowStartMs(profile: Profile | null): number {
 	const timestampCandidates = [
+		profile?.premiumWindowStartedAt,  // write-once anchor — never rewritten on re-subscribe
 		profile?.subscriptionStartedAt,
 		profile?.subscriptionTrialStartedAt,
 	];
@@ -899,7 +932,7 @@ export default function ChallengesView({ user, profile, weightHistory, setView, 
 		const completedWithPurchase = (section: 'daily' | 'weekly' | 'monthly' | 'yearly', periodKey: string, challenge: ChallengeItem): boolean =>
 			isChallengeCompleted(challenge) || purchasedCompletions.has(challengeCompletionKey(section, periodKey, challenge.id));
 
-		const streak = mealLogStreakWithRestores(premiumMeals, premiumRestoreDays);
+		const streak = mealLogStreakWithRestores(profile, premiumMeals, premiumRestoreDays);
 		const daysProteinHit = countProteinTargetDays(premiumMeals, proteinGoal);
 		const totalPlannedMeals = countPlannedMeals(premiumMeals);
 
@@ -1028,7 +1061,7 @@ export default function ChallengesView({ user, profile, weightHistory, setView, 
 	}, [computed.dailyChallenges, computed.dailyRankedPool, computed.monthKey, computed.monthlyChallenges, computed.monthlyRankedPool, computed.todayKey, computed.weekKey, computed.weeklyChallenges, computed.weeklyRankedPool, computed.yearKey, computed.yearlyChallenges, computed.yearlyRankedPool]);
 	const selectedChallengeOption = challengeSpendOptions.find(option => option.key === selectedChallengeKey) ?? null;
 	const selectedSwapOption = challengeSwapOptions.find(option => option.key === selectedSwapKey) ?? null;
-	const revivableDay = useMemo(() => findRevivableDay(allMeals, streakRestoreDays), [allMeals, streakRestoreDays]);
+	const revivableDay = useMemo(() => findRevivableDay(profile, allMeals, streakRestoreDays), [allMeals, profile, streakRestoreDays]);
 	const revivableDayDisplay = revivableDay
 		? new Date(`${revivableDay}T00:00:00`).toLocaleDateString('mk-MK', {
 			day: '2-digit',
