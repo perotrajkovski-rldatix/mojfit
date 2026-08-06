@@ -702,40 +702,8 @@ function AppContent() {
           // Subscription is active in Google Play
           setPlayEntitled(true);
 
-          // If auto-renewing is false and we've passed expiration, revoke on expiration
-          if (!activePlaySubscription.autoRenewing && profile?.subscriptionExpiresAt) {
-            const expiresTime = new Date(profile.subscriptionExpiresAt).getTime();
-            if (Date.now() >= expiresTime) {
-              // Expired and not auto-renewing — revoke
-              await updateDoc(doc(db, 'profiles', user.uid), {
-                isPremium: false,
-                subscriptionStatus: 'expired',
-              });
-              return;
-            }
-          }
-
-          // If auto-renewing is true and expiration date is in the past, it auto-renewed
-          if (activePlaySubscription.autoRenewing && profile?.subscriptionExpiresAt) {
-            const expiresTime = new Date(profile.subscriptionExpiresAt).getTime();
-            if (Date.now() >= expiresTime) {
-              // Auto-renewed — update expiration to next period (add plan duration)
-              const planDuration = profile?.subscriptionDurationMonths || 1;
-              const newExpiresAt = addMonths(new Date(), planDuration).toISOString();
-              await updateDoc(doc(db, 'profiles', user.uid), {
-                isPremium: true,
-                subscriptionStatus: 'active',
-                subscriptionExpiresAt: newExpiresAt,
-                subscriptionNextChargeAt: newExpiresAt,
-                subscriptionLastChargeAt: new Date().toISOString(),
-                subscriptionPlatform: 'android',
-              });
-              return;
-            }
-          }
-
-          // Normal active case — ensure premium is set
-          if (!profile?.isPremium) {
+          // On Android, Play's active entitlement is the source of truth.
+          if (!profile?.isPremium || profile?.subscriptionStatus === 'expired') {
             const nowIso = new Date().toISOString();
             await updateDoc(doc(db, 'profiles', user.uid), {
               isPremium: true,
@@ -815,6 +783,9 @@ function AppContent() {
         const candidateProductIds = Array.from(new Set(Object.values(IOS_SUBSCRIPTION_PRODUCT_IDS)));
         const { purchases } = await StoreKitBilling.getActiveSubscriptions();
         const activeIOSSubscription = purchases.find(p => candidateProductIds.includes(p.productId));
+        const activeIOSSubscriptionExpiresAt = typeof activeIOSSubscription?.expiresAt === 'number'
+          ? new Date(activeIOSSubscription.expiresAt).toISOString()
+          : null;
         const hasSubscriptionHistory = !!(
           profile?.subscriptionPlanId
           || profile?.subscriptionStatus === 'active'
@@ -836,9 +807,11 @@ function AppContent() {
           // Subscription is active in the App Store
           setIosEntitled(true);
 
+          const knownExpiresAt = activeIOSSubscriptionExpiresAt || profile?.subscriptionExpiresAt;
+
           // If auto-renewing is false and we've passed expiration, revoke on expiration
-          if (!activeIOSSubscription.autoRenewing && profile?.subscriptionExpiresAt) {
-            const expiresTime = new Date(profile.subscriptionExpiresAt).getTime();
+          if (!activeIOSSubscription.autoRenewing && knownExpiresAt) {
+            const expiresTime = new Date(knownExpiresAt).getTime();
             if (Date.now() >= expiresTime) {
               await updateDoc(doc(db, 'profiles', user.uid), {
                 isPremium: false,
@@ -849,11 +822,10 @@ function AppContent() {
           }
 
           // If auto-renewing is true and expiration date is in the past, it auto-renewed
-          if (activeIOSSubscription.autoRenewing && profile?.subscriptionExpiresAt) {
-            const expiresTime = new Date(profile.subscriptionExpiresAt).getTime();
+          if (activeIOSSubscription.autoRenewing && knownExpiresAt) {
+            const expiresTime = new Date(knownExpiresAt).getTime();
             if (Date.now() >= expiresTime) {
-              const planDuration = profile?.subscriptionDurationMonths || 1;
-              const newExpiresAt = addMonths(new Date(), planDuration).toISOString();
+              const newExpiresAt = activeIOSSubscriptionExpiresAt || knownExpiresAt;
               await updateDoc(doc(db, 'profiles', user.uid), {
                 isPremium: true,
                 subscriptionStatus: 'active',
@@ -866,6 +838,17 @@ function AppContent() {
             }
           }
 
+          if (activeIOSSubscriptionExpiresAt && activeIOSSubscriptionExpiresAt !== profile?.subscriptionExpiresAt) {
+            await updateDoc(doc(db, 'profiles', user.uid), {
+              isPremium: true,
+              subscriptionStatus: 'active',
+              subscriptionExpiresAt: activeIOSSubscriptionExpiresAt,
+              subscriptionNextChargeAt: activeIOSSubscriptionExpiresAt,
+              subscriptionPlatform: 'ios',
+            });
+            return;
+          }
+
           // Normal active case — ensure premium is set
           if (!profile?.isPremium) {
             const nowIso = new Date().toISOString();
@@ -874,6 +857,11 @@ function AppContent() {
               subscriptionStatus: 'active',
               // Preserve original start so the premium activity window never resets on re-subscribe
               ...(profile?.subscriptionStartedAt ? {} : { subscriptionStartedAt: nowIso }),
+              ...(profile?.premiumWindowStartedAt ? {} : { premiumWindowStartedAt: nowIso }),
+              ...(activeIOSSubscriptionExpiresAt ? {
+                subscriptionExpiresAt: activeIOSSubscriptionExpiresAt,
+                subscriptionNextChargeAt: activeIOSSubscriptionExpiresAt,
+              } : {}),
               subscriptionPlatform: 'ios',
             });
           }
@@ -2287,6 +2275,9 @@ function AppContent() {
       return { restored: false, message: 'Не е пронајдена активна претплата за обновување.' };
     }
 
+    const restoredExpiresAt = typeof activeIOSSubscription.expiresAt === 'number'
+      ? new Date(activeIOSSubscription.expiresAt).toISOString()
+      : null;
     setIosEntitled(true);
     if (!profile?.isPremium) {
       const nowIso = new Date().toISOString();
@@ -2295,6 +2286,16 @@ function AppContent() {
         subscriptionStatus: 'active',
         ...(profile?.subscriptionStartedAt ? {} : { subscriptionStartedAt: nowIso }),
         ...(profile?.premiumWindowStartedAt ? {} : { premiumWindowStartedAt: nowIso }),
+        ...(restoredExpiresAt ? {
+          subscriptionExpiresAt: restoredExpiresAt,
+          subscriptionNextChargeAt: restoredExpiresAt,
+        } : {}),
+        subscriptionPlatform: 'ios',
+      });
+    } else if (restoredExpiresAt && restoredExpiresAt !== profile?.subscriptionExpiresAt) {
+      await updateDoc(doc(db, 'profiles', user.uid), {
+        subscriptionExpiresAt: restoredExpiresAt,
+        subscriptionNextChargeAt: restoredExpiresAt,
         subscriptionPlatform: 'ios',
       });
     }

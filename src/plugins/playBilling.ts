@@ -17,6 +17,7 @@ export interface BillingPurchase {
   acknowledged: boolean;
   autoRenewing: boolean;
   purchaseTime: number;
+  expiresAt?: number;
 }
 
 export interface RestoredPurchase {

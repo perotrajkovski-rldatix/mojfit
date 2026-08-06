@@ -168,6 +168,7 @@ public class StoreKitBillingPlugin: CAPPlugin, CAPBridgedPlugin {
                 "acknowledged": true,
                 "autoRenewing": autoRenewing,
                 "purchaseTime": transaction.purchaseDate.timeIntervalSince1970 * 1000,
+                "expiresAt": transaction.expirationDate?.timeIntervalSince1970.map { $0 * 1000 } as Any,
             ])
         }
 

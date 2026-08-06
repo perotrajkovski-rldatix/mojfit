@@ -14,6 +14,7 @@ export interface IOSBillingPurchase {
   acknowledged: boolean;
   autoRenewing: boolean;
   purchaseTime: number;
+  expiresAt?: number;
 }
 
 export interface IOSRestoredPurchase {
