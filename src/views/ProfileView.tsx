@@ -45,6 +45,7 @@ interface Props {
   startEditProfile: (data: OnboardingData) => void;
   setView: (v: ViewType) => void;
   handleLogout: () => void;
+  openThemeShop?: boolean;
 }
 
 function badgeVisual(id: string): {
@@ -499,7 +500,7 @@ function PremiumLevelBadge({ level }: { level: number }) {
 export default function ProfileView({
   user, profile, firstName, lastName, email,
   onboardingData, lastWeight, weightHistory,
-  startEditProfile, setView, handleLogout,
+  startEditProfile, setView, handleLogout, openThemeShop,
 }: Props) {
   const [allMeals, setAllMeals] = useState<Meal[]>([]);
   const [photos, setPhotos] = useState<ProgressPhoto[]>([]);
@@ -533,6 +534,10 @@ export default function ProfileView({
       setThemeFeedback(null);
     }
   }, [isPremium]);
+
+  useEffect(() => {
+    if (openThemeShop && isPremium) setShowThemeShop(true);
+  }, [openThemeShop, isPremium]);
 
   useEffect(() => {
     if (!user) return;

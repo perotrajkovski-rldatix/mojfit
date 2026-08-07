@@ -90,5 +90,5 @@ export interface OnboardingData {
   profileImage: string;
 }
 
-export type ViewType = 'auth' | 'onboarding' | 'dashboard' | 'search' | 'weight' | 'profile' | 'google-password' | 'subscription' | 'mealplan' | 'progress-photos' | 'challenges';
+export type ViewType = 'auth' | 'onboarding' | 'dashboard' | 'search' | 'weight' | 'profile' | 'google-password' | 'subscription' | 'mealplan' | 'progress-photos' | 'challenges' | 'themes';
 export type AuthModeType = 'login' | 'register';

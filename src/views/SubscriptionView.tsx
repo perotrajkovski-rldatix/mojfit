@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import {
-  Crown, ChevronLeft, Lock, Check, X,
+  Crown, ChevronLeft, ChevronRight, Lock, Check, X,
   Sparkles, Camera, Flame, ScanLine, Palette
 } from 'lucide-react';
 import { cn } from '../utils/cn';
@@ -26,6 +26,7 @@ const FEATURES: FeatureItem[] = [
     color: 'text-cyan-400',
     bg: 'bg-cyan-500/10',
     border: 'border-cyan-500/20',
+    action: 'search' as ViewType,
   },
   {
     icon: Sparkles,
@@ -43,6 +44,7 @@ const FEATURES: FeatureItem[] = [
     color: 'text-pink-400',
     bg: 'bg-pink-500/10',
     border: 'border-pink-500/20',
+    action: 'progress-photos' as ViewType,
   },
   {
     icon: Flame,
@@ -51,6 +53,7 @@ const FEATURES: FeatureItem[] = [
     color: 'text-orange-400',
     bg: 'bg-orange-500/10',
     border: 'border-orange-500/20',
+    action: 'challenges' as ViewType,
   },
   {
     icon: Palette,
@@ -59,6 +62,7 @@ const FEATURES: FeatureItem[] = [
     color: 'text-emerald-400',
     bg: 'bg-emerald-500/10',
     border: 'border-emerald-500/20',
+    action: 'themes' as ViewType,
   },
 ];
 
@@ -175,10 +179,10 @@ export default function SubscriptionView({ profile, setView, onSubscribe, isTria
   const [restoreMessage, setRestoreMessage] = useState<string | null>(null);
   const isTrialing = profile?.subscriptionStatus === 'trialing';
   const trialDaysLeft = getTrialDaysLeft(profile?.subscriptionTrialEndsAt);
-  const subscriptionStartDate = formatSubscriptionDate(profile?.subscriptionStartedAt);
+  const subscriptionStartDate = formatSubscriptionDate(profile?.subscriptionLastChargeAt ?? profile?.subscriptionStartedAt);
   const subscriptionExpiresDate = formatSubscriptionDate(profile?.subscriptionExpiresAt);
   const nextChargeDate = formatSubscriptionDate(profile?.subscriptionNextChargeAt);
-  const activeSubscriptionDays = getSubscriptionActiveDays(profile?.subscriptionStartedAt);
+  const activeSubscriptionDays = getSubscriptionActiveDays(profile?.subscriptionLastChargeAt ?? profile?.subscriptionStartedAt);
   const subscriptionStatusLabel =
     profile?.subscriptionStatus === 'trialing' ? 'Пробен период' :
     profile?.subscriptionStatus === 'active' ? 'Активна претплата' :
@@ -331,11 +335,11 @@ export default function SubscriptionView({ profile, setView, onSubscribe, isTria
                 transition={{ delay: i * 0.06 }}
                 className={cn(
                   'relative flex items-center gap-4 p-4 bg-zinc-900 rounded-2xl border transition-all select-none',
-                  !isPremium ? 'border-zinc-800 cursor-pointer' : cn('border', f.border),
+                  isPremium ? cn('border cursor-pointer active:scale-[0.98]', f.border) : 'border-zinc-800',
                 )}
-                onClick={!isPremium ? handleLockedFeatureClick : undefined}
-                role={!isPremium ? 'button' : undefined}
-                tabIndex={!isPremium ? 0 : undefined}
+                onClick={isPremium && f.action ? () => setView(f.action!) : undefined}
+                role={isPremium ? 'button' : undefined}
+                tabIndex={isPremium ? 0 : undefined}
               >
                 <div className={cn('w-11 h-11 rounded-xl flex items-center justify-center shrink-0', f.bg)}>
                   <Icon size={22} className={f.color} />
@@ -345,9 +349,7 @@ export default function SubscriptionView({ profile, setView, onSubscribe, isTria
                   <p className="text-xs text-zinc-600 mt-0.5 leading-relaxed">{f.description}</p>
                 </div>
                 {isPremium ? (
-                  <div className="w-7 h-7 rounded-full bg-emerald-500/15 flex items-center justify-center shrink-0">
-                    <Check size={14} className="text-emerald-400" />
-                  </div>
+                  <ChevronRight size={16} className="text-zinc-500 shrink-0" />
                 ) : (
                   <Lock size={16} className="text-zinc-600 shrink-0" />
                 )}

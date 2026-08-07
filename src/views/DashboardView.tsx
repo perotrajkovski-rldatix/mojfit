@@ -68,10 +68,12 @@ export default function DashboardView({
     );
   }, [meals]);
 
-  const targetCalories = planDayTargets?.calories ?? profile?.targetCalories ?? 0;
-  const targetProtein = planDayTargets?.protein ?? profile?.targetProtein ?? 0;
-  const targetCarbs = planDayTargets?.carbs ?? profile?.targetCarbs ?? 0;
-  const targetFat = planDayTargets?.fat ?? profile?.targetFat ?? 0;
+  const isPremium = profile?.isPremium ?? false;
+  const activePlanTargets = isPremium ? planDayTargets : null;
+  const targetCalories = activePlanTargets?.calories ?? profile?.targetCalories ?? 0;
+  const targetProtein = activePlanTargets?.protein ?? profile?.targetProtein ?? 0;
+  const targetCarbs = activePlanTargets?.carbs ?? profile?.targetCarbs ?? 0;
+  const targetFat = activePlanTargets?.fat ?? profile?.targetFat ?? 0;
 
 
   const weekDays = getWeekDays();

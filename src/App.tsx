@@ -1583,7 +1583,7 @@ function AppContent() {
       if (showMonthCalendar) { setShowMonthCalendar(false); return; }
       if (isEditingProfile) { handleCancelEditProfile(); return; }
       if (view === 'search') { setView('dashboard'); return; }
-      if (view === 'weight' || view === 'profile' || view === 'subscription' || view === 'progress-photos' || view === 'challenges' || view === 'mealplan') { setView('dashboard'); return; }
+      if (view === 'weight' || view === 'profile' || view === 'subscription' || view === 'progress-photos' || view === 'challenges' || view === 'mealplan' || view === 'themes') { setView('dashboard'); return; }
       if (view === 'onboarding' && onboardingStep > 0) { setOnboardingStep(s => s - 1); return; }
       if (view === 'onboarding' && onboardingStep === 0) {
         if (user) handleLogout(); else setView('auth');
@@ -2540,6 +2540,19 @@ function AppContent() {
             weightHistory={weightHistory}
             startEditProfile={handleStartEditProfile} setView={setView}
             handleLogout={handleLogout}
+          />
+        )}
+        {view === 'themes' && (
+          <ProfileView
+            key="themes"
+            user={user}
+            profile={profile} firstName={firstName} lastName={lastName} email={email}
+            onboardingData={onboardingData}
+            lastWeight={weightHistory.length > 0 ? weightHistory[weightHistory.length - 1].weight : null}
+            weightHistory={weightHistory}
+            startEditProfile={handleStartEditProfile} setView={setView}
+            handleLogout={handleLogout}
+            openThemeShop
           />
         )}
         {view === 'subscription' && (
